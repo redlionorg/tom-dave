@@ -6,3 +6,5 @@ cache:
     - "node_modules"
 script:
     - npm run prod
+ notifications:
+    slack: red-lion:GDDr1IxnP0JKI9aYRYMU0duX

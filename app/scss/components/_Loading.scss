@@ -1,0 +1,52 @@
+.loading {
+	@include center();
+	width: 260px;
+	color: $loadingTextColor;
+
+	.airpod-wrapper {
+		width: inherit;
+	}
+
+	.airpods {
+		.airpod {
+			position: absolute;
+		}
+
+		.airpod.left {
+			transform: scaleX(-1);
+		}
+	}
+
+	.foreground, .background {
+		width: 100%;
+	}
+
+	.foreground {
+		position: absolute;
+	}
+
+	p, button.enter {
+		@include fade(1s);
+	}
+
+	p {
+		width: 80%;
+		margin-left: 50%;
+		transform: translateX(-50%);
+		text-align: center;
+	}
+
+	button.enter {
+		margin-left: 50%;
+		transform: translateX(-50%);
+		width: 40%;
+		height: 25px;
+		margin-top: 30px;
+		background: $loadingTextColor;
+		color: $loadingBackgroundColor;
+	}
+
+	button.enter:hover {
+		transform: translate(calc(-50% + 1px), 1px)
+	}
+}

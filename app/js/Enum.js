@@ -1,7 +1,8 @@
-function _Enum() {
-	return {
+const Enum = {
+	ALBUMS: {
+		ABOUT: 0,
+		WORK: 1,
+		CONTACT: 2
 	}
 }
-
-let Enum = _Enum()
 export default Enum

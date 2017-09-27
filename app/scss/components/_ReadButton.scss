@@ -1,0 +1,29 @@
+.read-toggle {
+	position: fixed;
+	right: -42px;
+	top: 70%;
+	width: 90px;
+	height: 45px;
+	border-radius: 5px;
+	transform: rotate(-90deg);
+	transition: 0.4s transform;
+
+	button {
+		height: 25px;
+		position: absolute;
+		width: inherit;
+		color: #ffffff;
+	}
+
+	&.read, button.read {
+		background: $loadingTextColor;
+	}
+
+	&.listen, button.listen {
+		background: #f24506;
+	}
+
+	&:hover {
+		transform: rotate(-90deg) translateY(-5px);
+	}
+}
