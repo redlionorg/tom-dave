@@ -2,6 +2,7 @@
 	@include center();
 	width: 260px;
 	color: $loadingTextColor;
+	z-index: 1;
 
 	.airpod-wrapper {
 		width: inherit;
@@ -14,6 +15,15 @@
 
 		.airpod.left {
 			transform: scaleX(-1);
+			animation-name: airpodLeft;
+			animation-duration: 4s;
+			animation-fill-mode: forwards;
+		}
+
+		.airpod.right {
+			animation-name: airpodRight;
+			animation-duration: 4s;
+			animation-fill-mode: forwards;
 		}
 	}
 
@@ -47,6 +57,30 @@
 	}
 
 	button.enter:hover {
-		transform: translate(calc(-50% + 1px), 1px)
+		transform: translateX(-50%) translateY(1px);
+	}
+
+	button.enter:active {
+		transform: translateX(-50%) translateY(2px);
+	}
+}
+
+@keyframes airpodLeft {
+	0% {
+		transform: scaleX(-1) translateY(0px);
+	}
+
+	100% {
+		transform: scaleX(-1) translateY(-80px);
+	}
+}
+
+@keyframes airpodRight {
+	0% {
+		transform: translateY(0px);
+	}
+
+	100% {
+		transform: translateY(-110px);
 	}
 }

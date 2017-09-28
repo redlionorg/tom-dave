@@ -6,7 +6,8 @@
 	height: 45px;
 	border-radius: 5px;
 	transform: rotate(-90deg);
-	transition: 0.4s transform;
+	transition: 0.4s transform, 1s opacity;
+	z-index: 100;
 
 	button {
 		height: 25px;

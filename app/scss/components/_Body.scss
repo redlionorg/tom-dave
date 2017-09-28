@@ -3,6 +3,5 @@
 	height: calc(100% - #{$headerHeight});
 	width: 100%;
 	background: $loadingBackgroundColor;
-	// background: url(../images/background.jpg) repeat;
-	// background-size: 60%;
+	overflow: hidden;
 }

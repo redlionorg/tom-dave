@@ -11,6 +11,10 @@
 	}
 
 	.lit {
+		opacity: 0;
+	}
+
+	&.loaded .lit {
 		z-index: 2;
 		animation-name: toggle;
 		animation-duration: 20s;
@@ -25,6 +29,10 @@
 }
 
 @keyframes toggle {
+	0% {
+		opacity: 1;
+	}
+
 	79.999999999% {
 		opacity: 0;
 	}

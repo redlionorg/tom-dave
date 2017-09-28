@@ -1,11 +1,13 @@
 import React from 'react'
-import LoadingContainer from '../containers/Loading'
+import LoadingComponent from '../components/Loading'
 import ReadButtonComponent from '../components/ReadButton'
+import ContentWrapperComponent from '../components/ContentWrapper'
 
-const BodyComponent = () => (
+const BodyComponent = ({ loaded, entered, loadComplete, enter }) => (
 	<div className="body">
-		<LoadingContainer />
-		<ReadButtonComponent />
+		<LoadingComponent loaded={loaded} loadComplete={loadComplete} enter={enter} />
+		<ReadButtonComponent entered={entered} />
+		<ContentWrapperComponent entered={entered} />
 	</div>
 )
 export default BodyComponent

@@ -1,5 +1,6 @@
 const BaseReducer = (state = {
 	loaded: false,
+	hasEntered: false,
 	animating: false,
 	reading: false,
 	currentAlbum: undefined,
@@ -10,6 +11,11 @@ const BaseReducer = (state = {
 		return {
 			...state,
 			loaded: true
+		}
+	case 'SHOULD_ENTER':
+		return {
+			...state,
+			hasEntered: true
 		}
 	default:
 		return state

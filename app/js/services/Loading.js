@@ -3,7 +3,7 @@ import Observer from '../util/Observer'
 class Loading extends Observer {
 	constructor() {
 		super()
-		this.minimumWaitTime = 4000
+		this.minimumWaitTime = 4100
 		this.loaded = false
 		this.waited = false
 

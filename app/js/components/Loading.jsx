@@ -19,7 +19,7 @@ export default class LoadingComponent extends React.Component {
 					<img className="background" src="images/airpods_bottom_layer.jpg" />
 				</div>
 				<p className={`${!!this.props.loaded ? 'show' : 'hide'}`}>This site is best experienced with the sound turned on</p>
-				<button className={`enter ${!!this.props.loaded ? 'show' : 'hide'}`}>enter</button>
+				<button className={`enter ${!!this.props.loaded ? 'show' : 'hide'}`} onClick={this.props.enter}>enter</button>
 			</div>
 		)
 	}

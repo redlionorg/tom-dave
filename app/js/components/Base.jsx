@@ -1,11 +1,11 @@
 import React from 'react'
-import HeaderComponent from '../components/Header'
-import BodyComponent from '../components/Body'
+import HeaderContainer from '../containers/Header'
+import BodyContainer from '../containers/Body'
 
 const BaseComponent = () => (
 	<div className="base">
-		<HeaderComponent />
-		<BodyComponent />
+		<HeaderContainer />
+		<BodyContainer />
 	</div>
 )
 export default BaseComponent
