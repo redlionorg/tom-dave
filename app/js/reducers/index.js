@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux'
-import TestReducer from './Test'
+import BaseReducer from './Base'
 
 const AppReducer = combineReducers({
-	TestReducer
+	BaseReducer
 })
 
 export default AppReducer

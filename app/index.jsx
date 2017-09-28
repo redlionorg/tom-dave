@@ -5,7 +5,7 @@ import { createStore, applyMiddleware } from 'redux'
 import thunk from 'redux-thunk'
 import logger from 'redux-logger'
 import AppReducer from './js/reducers'
-import TestContainer from './js/containers/TestContainer'
+import BaseComponent from './js/components/Base'
 
 require('./index.scss')
 
@@ -20,9 +20,7 @@ const store = createStore(
 ReactDOM.render(
 	(
 		<Provider store={store}>
-			<div id="main-container">
-				<TestContainer />
-			</div>
+			<BaseComponent />
 		</Provider>
 	),
 	document.getElementById('app')

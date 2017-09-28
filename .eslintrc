@@ -7,5 +7,8 @@
 		"no-tabs": 0,
 		"comma-dangle": [2, "never"],
 		"react/jsx-indent": [2, "tab"]
+	},
+	"env": {
+		"browser": true
 	}
 }

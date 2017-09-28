@@ -135,26 +135,6 @@ select
 	box-sizing:border-box;
 }
 
-/* Text Inputs
------------------------------------------------*/
-
-input[type=date],
-input[type=datetime],
-input[type=datetime-local],
-input[type=email],
-input[type=month],
-input[type=number],
-input[type=password],
-input[type=range],
-input[type=search],
-input[type=tel],
-input[type=text],
-input[type=time],
-input[type=url],
-input[type=week]
-{
-}
-
 /* Button Controls
 -----------------------------------------------*/
 
@@ -165,14 +145,6 @@ input[type=radio]
 	height:13px;
 }
 
-/* File Uploads
------------------------------------------------*/
-
-input[type=file]
-{
-
-}
-
 /* Search Input
 -----------------------------------------------*/
 
@@ -180,7 +152,7 @@ input[type=file]
 input[type=search]
 {
 	-webkit-appearance:textfield;
-	-webkit-box-sizing:content-box;
+	box-sizing:content-box;
 }
 
 /* Turn off the recent search for webkit. It adds about 15px padding on the left */
@@ -198,8 +170,12 @@ input[type="button"],
 input[type="submit"]
 {
 	/* Fix IE7 display bug */
+	cursor: pointer;
 	overflow:visible;
 	width:auto;
+	font-weight: 800;
+	letter-spacing: 1px;
+	border-radius: 5px;
 }
 
 /* IE8 and FF freak out if this rule is within another selector */
@@ -224,11 +200,6 @@ textarea
 
 /* Selects
 -----------------------------------------------*/
-
-select
-{
-
-}
 
 select[multiple] 
 {

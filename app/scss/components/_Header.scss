@@ -1,0 +1,59 @@
+.header {
+	position: relative;
+	width: 100%;
+	height: $headerHeight;
+	background: #3aa7d0;
+
+	img {
+		@include center();
+		z-index: 1;
+		width: 440px;
+	}
+
+	.lit {
+		opacity: 0;
+	}
+
+	&.loaded .lit {
+		z-index: 2;
+		animation-name: toggle;
+		animation-duration: 20s;
+		animation-iteration-count: infinite;
+	}
+
+	@media(max-width: $phone) {
+		img {
+			width: 200px;
+		}
+	}
+}
+
+@keyframes toggle {
+	0% {
+		opacity: 1;
+	}
+
+	79.999999999% {
+		opacity: 0;
+	}
+
+	80% {
+		opacity: 1;
+	}
+
+	80.5% {
+		opacity: 0;
+	}
+
+	91.99999999% {
+		opacity: 0;
+	}
+
+	92% {
+		opacity: 1;
+	}
+
+	93% {
+		opacity: 0;
+	}
+}

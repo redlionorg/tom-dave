@@ -1,0 +1,7 @@
+.body {
+	position: relative;
+	height: calc(100% - #{$headerHeight});
+	width: 100%;
+	background: $loadingBackgroundColor;
+	overflow: hidden;
+}

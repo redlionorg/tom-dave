@@ -1,0 +1,86 @@
+.loading {
+	@include center();
+	width: 260px;
+	color: $loadingTextColor;
+	z-index: 1;
+
+	.airpod-wrapper {
+		width: inherit;
+	}
+
+	.airpods {
+		.airpod {
+			position: absolute;
+		}
+
+		.airpod.left {
+			transform: scaleX(-1);
+			animation-name: airpodLeft;
+			animation-duration: 4s;
+			animation-fill-mode: forwards;
+		}
+
+		.airpod.right {
+			animation-name: airpodRight;
+			animation-duration: 4s;
+			animation-fill-mode: forwards;
+		}
+	}
+
+	.foreground, .background {
+		width: 100%;
+	}
+
+	.foreground {
+		position: absolute;
+	}
+
+	p, button.enter {
+		@include fade(1s);
+	}
+
+	p {
+		width: 80%;
+		margin-left: 50%;
+		transform: translateX(-50%);
+		text-align: center;
+	}
+
+	button.enter {
+		margin-left: 50%;
+		transform: translateX(-50%);
+		width: 40%;
+		height: 25px;
+		margin-top: 30px;
+		background: $loadingTextColor;
+		color: $loadingBackgroundColor;
+	}
+
+	button.enter:hover {
+		transform: translateX(-50%) translateY(1px);
+	}
+
+	button.enter:active {
+		transform: translateX(-50%) translateY(2px);
+	}
+}
+
+@keyframes airpodLeft {
+	0% {
+		transform: scaleX(-1) translateY(0px);
+	}
+
+	100% {
+		transform: scaleX(-1) translateY(-80px);
+	}
+}
+
+@keyframes airpodRight {
+	0% {
+		transform: translateY(0px);
+	}
+
+	100% {
+		transform: translateY(-110px);
+	}
+}
