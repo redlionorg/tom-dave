@@ -1,4 +1,4 @@
-import Observer from '../util/Observer'
+import Observer from '../base/Observer'
 
 class Loading extends Observer {
 	constructor() {

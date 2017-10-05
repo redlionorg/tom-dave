@@ -3,22 +3,22 @@ export default class Observer {
 		this.subjects = {}
 	}
 
-	on(e, fn, args) {
+	on(e, fn) {
 		if (typeof e === 'undefined' || typeof fn !== 'function') {
 			return
 		}
 		if (!(e in this.subjects)) {
 			this.subjects[e] = []
 		}
-		this.subjects[e].push({ event: e, fn, args })
+		this.subjects[e].push(fn)
 	}
 
-	emit(e, args) {
+	emit(e, params) {
 		if (e in this.subjects) {
 			const values = Object.values(this.subjects[e])
 			for (let index = 0; index < values.length; index += 1) {
 				const subject = values[index]
-				subject.fn.call(this, subject.args, args)
+				subject.apply(this, params)
 			}
 		}
 	}
@@ -31,7 +31,7 @@ export default class Observer {
 			const values = Object.values(this.subjects[e])
 			for (let index = 0; index < values.length; index += 1) {
 				const subject = values[index]
-				if (subject.fn === fn) {
+				if (subject === fn) {
 					this.subjects[e].splice(0, index)
 				}
 			}

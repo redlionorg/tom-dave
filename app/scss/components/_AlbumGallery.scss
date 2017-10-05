@@ -1,0 +1,53 @@
+.album-gallery {
+	display: inline-block;
+	width: 640px;
+	top: 50px;
+	@include hcenter();
+	z-index: 2;
+
+	.album {
+		position: relative;
+		width: 200px;
+		height: 200px;
+		float: left;
+		margin: 0 10px;
+		cursor: pointer;
+		box-shadow: 5px 3px 2px -2px rgba(0, 0, 0, 0.3);
+		transition: transform, box-shadow 0.3s;
+
+		.normal, .listen {
+			position: relative;
+			z-index: 1;
+		}
+
+		.hover, .read {
+			position: absolute;
+			z-index: 2;
+			top: 0;
+			left: 0;
+			width: 100%;
+			opacity: 0;
+		}
+
+		&:hover {
+			transform: scale(1.01);
+			box-shadow: 11px 8px 8px -2px rgba(0, 0, 0, 0.5);
+			.hover {
+				opacity: 1;
+			}
+		}
+
+		&:first-child {
+			margin-left: 0;
+		}
+
+		&:last-child {
+			margin-right: 0;
+		}
+
+		&.selected {
+			opacity: 0;
+			cursor: auto;
+		}
+	}
+}

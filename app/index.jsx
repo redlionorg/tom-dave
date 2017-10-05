@@ -1,27 +1,44 @@
-import React from 'react'
-import ReactDOM from 'react-dom'
-import { Provider } from 'react-redux'
-import { createStore, applyMiddleware } from 'redux'
-import thunk from 'redux-thunk'
-import logger from 'redux-logger'
-import AppReducer from './js/reducers'
-import BaseComponent from './js/components/Base'
+import Header from './js/components/Header'
+import Loading from './js/components/Loading'
+import ReadToggle from './js/components/ReadToggle'
+import ContentWrapper from './js/components/ContentWrapper'
+import AlbumGallery from './js/components/AlbumGallery'
+import RecordAnimation from './js/components/RecordAnimation'
+import RecordPlayer from './js/components/RecordPlayer'
+import LoadingService from './js/services/Loading'
+import Component from './js/base/Component'
+import Global from './js/Global'
 
 require('./index.scss')
 
-const store = createStore(
-	AppReducer,
-	applyMiddleware(
-		thunk,
-		logger
-	)
-)
+class App extends Component {
+	constructor() {
+		super('#app')
+		LoadingService.on('loaded', this.onLoad.bind(this))
+	}
 
-ReactDOM.render(
-	(
-		<Provider store={store}>
-			<BaseComponent />
-		</Provider>
-	),
-	document.getElementById('app')
-)
+	onLoad() {
+		this.setGlobal('loaded', true)
+		this.$.removeClass('no-transition')
+	}
+}
+
+const app = new App(),
+	header = new Header(app),
+	loading = new Loading(app),
+	readToggle = new ReadToggle(app),
+	contentWrapper = new ContentWrapper(app),
+	albumGallery = new AlbumGallery(contentWrapper),
+	recordAnimation = new RecordAnimation(contentWrapper),
+	recordPlayer = new RecordPlayer(contentWrapper)
+
+Global.init({
+	loaded: false,
+	entered: false,
+	reading: false,
+	playing: false,
+	animating: false,
+	recordOnPlayer: false,
+	needleActivated: false,
+	currentAlbum: undefined
+})

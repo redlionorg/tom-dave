@@ -6,7 +6,6 @@
 	height: 45px;
 	border-radius: 5px;
 	transform: rotate(-90deg);
-	transition: 0.4s transform, 1s opacity;
 	z-index: 100;
 
 	button {
@@ -16,7 +15,12 @@
 		color: #ffffff;
 	}
 
+	&.read button.listen {
+		opacity: 0;
+	}
+
 	&.read, button.read {
+		transition: 1s opacity, 0.4s transform;
 		background: $loadingTextColor;
 	}
 

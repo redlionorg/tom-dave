@@ -19,6 +19,9 @@ html, body {
 	@import './scss/components/Loading';
 	@import './scss/components/ReadButton';
 	@import './scss/components/ContentWrapper';
+	@import './scss/components/AlbumGallery';
+	@import './scss/components/RecordPlayer';
+	@import './scss/components/RecordAnimation';
 
 	> div {
 		height: inherit;
