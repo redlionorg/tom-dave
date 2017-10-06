@@ -2,6 +2,7 @@ var webpack = require('webpack'),
     path = require('path'),
     autoprefixer = require('autoprefixer'),
     precss = require('precss'),
+    BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin,
     WebpackStripLoader = require('strip-loader'),
     stripLoader = {
      test: [/\.js$/, /\.es6$/],
@@ -31,7 +32,10 @@ module.exports = {
     filename: "index.compiled.js"
   },
   resolve: {
-    extensions: ['', '.js', '.jsx']
+    extensions: ['', '.js', '.jsx'],
+    alias: {
+      'TimelineLite': path.join(__dirname, 'node_modules/gsap/TimelineLite.js')
+    }
   },
   module: {
     loaders: [
@@ -76,6 +80,9 @@ module.exports = {
         'process.env': {
             'NODE_ENV': JSON.stringify('production')
         }
+    }),
+    new BundleAnalyzerPlugin({
+      analyzerMode: 'static'
     }),
     new webpack.optimize.OccurenceOrderPlugin(),
     new webpack.optimize.DedupePlugin(),

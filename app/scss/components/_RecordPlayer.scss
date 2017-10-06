@@ -65,6 +65,10 @@
 		.show {
 			opacity: 1;
 		}
+
+		img.paused {
+			animation-play-state: paused;
+		}
 	}
 
 	.needle {
@@ -80,6 +84,22 @@
 			animation-fill-mode: forwards;
 			animation-delay: 1s;
 		}
+
+		&.reverse {
+			animation-name: needleStopped;
+			animation-duration: 1s;
+			animation-fill-mode: forwards;
+		}
+	}
+}
+
+@keyframes needleStopped {
+	0% {
+		transform: rotate(20deg);
+	}
+
+	100% {
+		transform: rotate(0deg);
 	}
 }
 
@@ -92,6 +112,7 @@
 		transform: rotate(20deg)
 	}
 }
+
 
 @keyframes spin {
 	0% {

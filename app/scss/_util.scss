@@ -1,6 +1,7 @@
 .show {
-	opacity: 1;
+	opacity: 1 !important;
 	z-index: 2;
+	display: block !important;
 }
 
 .hide {

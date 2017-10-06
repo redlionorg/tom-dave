@@ -3,14 +3,15 @@ import Component from '../base/Component'
 export default class ReadToggle extends Component {
 	constructor(parent) {
 		super('.read-toggle', parent)
-		this.cacheDOMElement('text', 'p')
-		this.cacheDOMElement('button', 'button')
-
-		this.elements.button.on('click', this.onButtonClick.bind(this))
+		this.$.on('click', this.onButtonClick.bind(this))
 	}
 
 	onButtonClick() {
-		this.setGlobal('entered', true)
+		if (this.global.reading) {
+			this.setGlobal('reading', false)
+		} else if (!this.global.reading && this.global.playing) {
+			this.setGlobal('reading', true)
+		}
 	}
 
 	globalDidUpdate(param, value) {

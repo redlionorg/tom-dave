@@ -6,11 +6,21 @@ export default class Album extends Component {
 		this.deselect()
 		this.setLocal('index', index)
 
+		this.cacheDOMElement('albumRead', '.normal .read, .hover .read')
+		this.cacheDOMElement('albumListen', '.normal .listen, .hover .listen')
+
 		this.$.on('click', () => {
-			if (!this.local.selected) {
-				this.setGlobal('currentRecord', this.local.index)
-				this.setGlobal('animating', true)
-				this.select()
+			if (this.global.animating) {
+				return
+			}
+			if (!this.global.playing) {
+				if (!this.local.selected) {
+					this.setGlobal('currentRecord', this.local.index)
+					this.setGlobal('animating', true)
+				}
+			} else {
+				this.setGlobal('cuedRecord', index)
+				this.setGlobal('playing', false)
 			}
 		})
 	}
@@ -21,6 +31,30 @@ export default class Album extends Component {
 
 	deselect() {
 		this.setLocal('selected', false)
+	}
+
+	globalDidUpdate(param, value) {
+		switch (param) {
+		case 'currentRecord':
+			if (value === this.local.index) {
+				this.select()
+			}
+			if (typeof value === 'undefined') {
+				this.deselect()
+			}
+			break
+		case 'reading':
+			if (value) {
+				this.elements.albumRead.css('opacity', 1)
+				this.elements.albumListen.css('opacity', 0)
+			} else {
+				this.elements.albumRead.css('opacity', 0)
+				this.elements.albumListen.css('opacity', 1)
+			}
+			break
+		default:
+			break
+		}
 	}
 
 	localDidUpdate(param, value) {

@@ -1,6 +1,7 @@
 var webpack = require('webpack'),
     path = require('path'),
     autoprefixer = require('autoprefixer'),
+    BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin,
     precss = require('precss'),
     HtmlWebpackPlugin = require('html-webpack-plugin'),
     HTMLWebpackPluginConfig = new HtmlWebpackPlugin({
@@ -23,7 +24,10 @@ module.exports = {
   debug: true,
   devtool: 'source-map',
   resolve: {
-    extensions: ['', '.js', '.jsx']
+    extensions: ['', '.js', '.jsx'],
+    alias: {
+      'TimelineLite': path.join(__dirname, 'node_modules/gsap/TimelineLite.js')
+    }
   },
   module: {
     loaders: [
@@ -55,6 +59,10 @@ module.exports = {
           loader: 'file?name=fonts/[name].[ext]'
       },
       {
+          test: /\.mp3$/,
+          loader: 'file?name=audio/[name].[ext]'
+      },
+      {
         test: /\.json$/,
         loader: 'json-loader'
       }
@@ -69,6 +77,10 @@ module.exports = {
   },
   plugins: [
     HTMLWebpackPluginConfig,
+    new BundleAnalyzerPlugin({
+      openAnalyzer: false,
+      analyzerMode: 'static'
+    }),
     new webpack.DefinePlugin({
         'process.env': {
             'NODE_ENV': JSON.stringify('development')

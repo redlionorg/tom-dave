@@ -1,0 +1,11 @@
+.read-section {
+	@include hcenter();
+	width: 640px;
+	top: 300px;
+	z-index: 1;
+
+	.content {
+		opacity: 0;
+		display: none;
+	}
+}
