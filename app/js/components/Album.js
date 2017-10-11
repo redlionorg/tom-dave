@@ -16,7 +16,9 @@ export default class Album extends Component {
 			if (!this.global.playing) {
 				if (!this.local.selected) {
 					this.setGlobal('currentRecord', this.local.index)
-					this.setGlobal('animating', true)
+					if (!this.global.reading) {
+						this.setGlobal('animating', true)
+					}
 				}
 			} else {
 				this.setGlobal('cuedRecord', index)
@@ -38,8 +40,7 @@ export default class Album extends Component {
 		case 'currentRecord':
 			if (value === this.local.index) {
 				this.select()
-			}
-			if (typeof value === 'undefined') {
+			} else {
 				this.deselect()
 			}
 			break
@@ -60,6 +61,9 @@ export default class Album extends Component {
 	localDidUpdate(param, value) {
 		switch (param) {
 		case 'selected':
+			if (this.global.reading) {
+				break
+			}
 			if (value) {
 				this.$.addClass('selected')
 			} else {

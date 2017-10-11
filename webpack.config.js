@@ -12,7 +12,7 @@ var webpack = require('webpack'),
 
 module.exports = {
   entry: [
-    './app/index.jsx'
+    './app/index.js'
   ],
   resolveLoader: {
     root: path.join(__dirname, 'node_modules')

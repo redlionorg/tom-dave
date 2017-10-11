@@ -42,6 +42,10 @@ export default class RecordAnimation extends Component {
 	globalDidUpdate(param, value) {
 		switch (param) {
 		case 'currentRecord':
+			if (this.global.reading) {
+				break
+			}
+
 			switch (value) {
 			case Enum.ALBUMS.ABOUT:
 				this.currentAlbum = this.elements.albumAbout

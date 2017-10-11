@@ -9,7 +9,7 @@ export default class ReadToggle extends Component {
 	onButtonClick() {
 		if (this.global.reading) {
 			this.setGlobal('reading', false)
-		} else if (!this.global.reading && this.global.playing) {
+		} else {
 			this.setGlobal('reading', true)
 		}
 	}
@@ -18,11 +18,11 @@ export default class ReadToggle extends Component {
 		switch (param) {
 		case 'reading':
 			if (value) {
-				this.$.removeClass('read')
-				this.$.addClass('listen')
-			} else {
-				this.$.addClass('read')
 				this.$.removeClass('listen')
+				this.$.addClass('read')
+			} else {
+				this.$.addClass('listen')
+				this.$.removeClass('read')
 			}
 			break
 		case 'entered':

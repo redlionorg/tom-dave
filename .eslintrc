@@ -6,6 +6,7 @@
 		"indent": [2, "tab"],
 		"no-tabs": 0,
 		"class-methods-use-this": 0,
+		"no-new": 0,
 		"comma-dangle": [2, "never"],
 		"react/jsx-indent": [2, "tab"]
 	},
