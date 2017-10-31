@@ -1,0 +1,162 @@
+.listen-section {
+	position: relative !important;
+	@include hcenter();
+	width: 640px;
+	margin-top: 340px;
+	z-index: 1;
+
+	.content {
+		opacity: 0;
+		display: none;
+	}
+
+	.work {
+		.message {
+			width: 600px;
+			margin: 0 auto;
+			position: relative;
+
+			p {
+				background-color: #f24506;
+				padding: 12px;
+				text-transform: uppercase;
+				text-align: center;
+				color: white;
+				font-size: 9pt;
+			}
+		}
+
+		.scattered-items {
+			width: 100%;
+			clear: both;
+			position: relative;
+			display: inline-block;
+			margin-top: 40px;
+
+			.section {
+				float: left;
+				position: relative;
+			}
+
+			.section img {
+				display: block;
+				position: relative;
+				cursor: pointer;
+			}
+
+			&.tv {
+				height: 223px;
+				z-index: 1;
+				.section1 { z-index: 2; }
+				.tv-title { width: 240px; margin-left: -80px; }
+
+				.section2 { z-index: 1; width: 100px; }
+				.patch { z-index: 2; width: 150px; margin-left: -30px; }
+				.can { z-index: 1; width: 360px; margin-left: -110px; margin-top: -80px; }
+
+				.section3 { z-index: 2; width: 160px; }
+				.espresso { width: 280px; margin-left: -40px; margin-top: -46px; }
+				.sunglasses { width: 280px; width: 210px; margin-top: -70px; }
+
+				.section4 { z-index: 3; width: 100px; }
+				.stamp { width: 100%; margin-left: 20px; margin-top: 93px; }
+
+				.section5 { width: 120px; }
+				.caliper { width: 140px; margin-top: 40px; }
+			}
+
+			&.radio {
+				margin-top: 30px;
+				z-index: 3;
+
+				.section1 { width: 130px; margin-left: -70px; }
+				.coaster { width: 100%; }
+
+				.section2 { width: 150px; }
+				.nametag { width: 140px; margin-left: 10px; margin-top: -80px; }
+				.pencils { width: 210px; margin-left: 40px; }
+
+				.section3 { width: 150px; }
+				.camera { width: 240px; margin-left: -20px; margin-top: -30px; }
+
+				.radio-title { margin-top: -90px; width: 190px; }
+				.letter-press { width: 160px; margin-left: 20px; margin-top: -20px; }
+
+				.section5 { width: 90px; }
+				.sale-tag { width: 130px; margin-left: -30px; }
+			}
+
+			img {
+				width: 170px
+			}
+		}
+
+		.tube {
+			position: relative;
+			z-index: 2;
+			display: inline-block;
+			width: 100%;
+			cursor: pointer;
+
+			> img {
+				width: 410px;
+				float: right;
+				margin-right: -70px;
+			}
+		}
+	}
+
+	@media(min-height: 950px) {
+		margin-top: 470px;
+		width: 865px;
+
+		.work {
+			.scattered-items {
+				&.tv {
+					height: 300px;
+
+					.tv-title { width: 290px; margin-left: -80px; }
+	
+					.section2 { width: 150px; }
+					.patch { width: 200px; margin-left: -30px; }
+					.can { width: 410px; margin-left: -110px; margin-top: -80px; }
+	
+					.section3 { width: 210px; }
+					.espresso { width: 330px; margin-left: -40px; margin-top: -46px; }
+					.sunglasses { width: 330px; width: 210px; margin-top: -70px; }
+	
+					.section4 { width: 150px; }
+					.stamp { width: 100%; margin-left: 20px; margin-top: 93px; }
+	
+					.section5 { width: 140px; }
+					.caliper { width: 140px; margin-top: 40px; }
+				}
+	
+				&.radio {
+					margin-top: 50px;
+
+					.section1 { width: 180px; margin-left: -70px; }
+					.coaster { width: 100%; }
+	
+					.section2 { width: 200px; }
+					.nametag { width: 190px; margin-left: 10px; margin-top: -80px; }
+					.pencils { width: 260px; margin-left: 40px; }
+	
+					.section3 { width: 200px; }
+					.camera { width: 290px; margin-left: -20px; margin-top: -30px; }
+	
+					.radio-title { margin-top: -90px; width: 190px; }
+					.letter-press { width: 210px; margin-left: 20px; margin-top: -20px; }
+	
+					.section5 { width: 120px; }
+					.sale-tag { width: 180px; margin-left: -30px; }
+				}
+			}
+
+			.tube img {
+				margin-top: -40px;
+				width: 460px;
+			}
+		}
+	}
+}

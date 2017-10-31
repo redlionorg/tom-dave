@@ -1,9 +1,19 @@
 .album-gallery {
+	position: relative;
 	display: inline-block;
 	width: 640px;
 	top: 50px;
 	@include hcenter();
 	z-index: 2;
+
+	&.listen .album {
+		box-shadow: 5px 3px 2px -2px rgba(0, 0, 0, 0.3);
+
+		&:hover {
+			transform: scale(1.03);
+			box-shadow: 11px 8px 8px -2px rgba(0, 0, 0, 0.3);
+		}
+	}
 
 	.album {
 		position: relative;
@@ -12,8 +22,8 @@
 		float: left;
 		margin: 0 10px;
 		cursor: pointer;
-		box-shadow: 5px 3px 2px -2px rgba(0, 0, 0, 0.3);
-		transition: transform, box-shadow 0.3s;
+		transition: transform 0.3s;
+		transition: box-shadow 0.1s;
 
 		.normal, .listen {
 			position: relative;
@@ -29,14 +39,6 @@
 			opacity: 0;
 		}
 
-		&:hover {
-			transform: scale(1.01);
-			box-shadow: 11px 8px 8px -2px rgba(0, 0, 0, 0.5);
-			.hover {
-				opacity: 1;
-			}
-		}
-
 		&:first-child {
 			margin-left: 0;
 		}
@@ -48,6 +50,15 @@
 		&.selected {
 			opacity: 0;
 			cursor: auto;
+		}
+	}
+
+	@media(min-height: 950px) {
+		width: 865px;
+
+		.album {
+			width: 275px;
+			height: 275px;
 		}
 	}
 }

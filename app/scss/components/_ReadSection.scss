@@ -8,4 +8,9 @@
 		opacity: 0;
 		display: none;
 	}
+
+	@media(min-height: 950px) {
+		width: 865px;
+		top: 380px;
+	}
 }

@@ -16,7 +16,14 @@ export default class RecordPlayer extends Component {
 	}
 
 	onButtonClick() {
-		this.setGlobal('playing', false)
+		if (!this.global.playing) {
+			return
+		}
+		if (this.global.paused) {
+			this.setGlobal('paused', false)
+		} else {
+			this.setGlobal('paused', true)
+		}
 	}
 
 	getCSSRotation(target) {
@@ -74,6 +81,20 @@ export default class RecordPlayer extends Component {
 				this.elements.button.removeClass('playing')
 				this.elements[this.global.currentRecord].addClass('paused')
 				this.setGlobal('needleActivated', false)
+			}
+			break
+		case 'paused':
+			if (typeof this.global.currentRecord === 'undefined') {
+				break
+			}
+			if (value) {
+				AudioManager.pause(this.global.currentRecord)
+				this.elements.button.removeClass('playing')
+				this.elements[this.global.currentRecord].addClass('paused')
+			} else {
+				AudioManager.play(this.global.currentRecord)
+				this.elements.button.addClass('playing')
+				this.elements[this.global.currentRecord].removeClass('paused')
 			}
 			break
 		case 'recordOnPlayer':

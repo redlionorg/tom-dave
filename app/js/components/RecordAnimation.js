@@ -1,4 +1,5 @@
 import Component from '../base/Component'
+import WindowSize from '../services/WindowSize'
 import Enum from '../Enum'
 
 const CSSPlugin = require('../../../node_modules/gsap/CSSPlugin.js')
@@ -16,7 +17,9 @@ export default class RecordAnimation extends Component {
 		this.cacheDOMElement('recordWork', '.record .work')
 
 		this.currentAlbum = undefined
+		this.currentAlbumImage = undefined
 		this.currentRecord = undefined
+		this.animatedDown = false
 	}
 
 	onAlbumAnimatedDown() {
@@ -30,13 +33,29 @@ export default class RecordAnimation extends Component {
 	}
 
 	setTimeline() {
+		let yOffset = 0
+		if (WindowSize.height >= 950) {
+			yOffset = 330
+		} else {
+			yOffset = 226
+		}
+		const xOrigin = this.currentAlbum.position().left
+
 		this.timeline = new TimelineLite({
-			onComplete: this.onAlbumAnimatedDown.bind(this),
 			onReverseComplete: this.onAlbumAnimatedUp.bind(this)
 		}, CSSPlugin)
-			.to(this.currentAlbum, 1, { x: 0, y: 30, rotation: 90 })
+			.to(this.currentAlbum, 1, { x: 0, y: 30, rotation: 90, boxShadow: '11px -8px 8px -2px rgba(0, 0, 0, 0.3) ' })
 			.to(this.currentRecord, 0, { opacity: 1 })
-			.to(this.currentRecord, 1.2, { scale: 0.95, y: 226 })
+			.to(this.currentRecord, 1.2, { scale: 0.95, y: yOffset })
+			.add(() => {
+				if (!this.animatedDown) {
+					this.onAlbumAnimatedDown()
+					this.animatedDown = true
+				} else {
+					this.animatedDown = false
+				}
+			})
+			.to(this.currentAlbum, 1, { x: xOrigin, y: 0, rotation: 0, boxShadow: '11px 8px 8px -2px rgba(0, 0, 0, 0.3) ' })
 	}
 
 	globalDidUpdate(param, value) {

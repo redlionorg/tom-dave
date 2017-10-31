@@ -14,6 +14,15 @@ export default class ContentWrapper extends Component {
 				this.$.removeClass('entered')
 			}
 			break
+		case 'reading':
+			if (value) {
+				this.$.removeClass('listen')
+				this.$.addClass('read')
+			} else {
+				this.$.addClass('listen')
+				this.$.removeClass('read')
+			}
+			break
 		default:
 			break
 		}

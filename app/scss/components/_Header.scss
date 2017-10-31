@@ -7,7 +7,7 @@
 	img {
 		@include center();
 		z-index: 1;
-		width: 440px;
+		width: 450px;
 	}
 
 	.lit {
@@ -33,15 +33,15 @@
 		opacity: 1;
 	}
 
-	79.99% {
+	59.99% {
 		opacity: 1;
 	}
 
-	80% {
+	60% {
 		opacity: 0;
 	}
 
-	80.50% {
+	60.10% {
 		opacity: 1;
 	}
 
@@ -53,7 +53,11 @@
 		opacity: 0;
 	}
 
-	93% {
+	92.10% {
+		opacity: 1;
+	}
+
+	100% {
 		opacity: 1;
 	}
 }

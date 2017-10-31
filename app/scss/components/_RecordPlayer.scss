@@ -1,8 +1,13 @@
 .record-player {
+	position: relative !important;
 	@include hcenter();
 	width: 320px;
 	top: 300px;
 	z-index: 1;
+
+	.background {
+		box-shadow: 8px 14px 23px 1px rgba(0, 0, 0, 0.5);
+	}
 
 	.play-button {
 		position: absolute;
@@ -89,6 +94,27 @@
 			animation-name: needleStopped;
 			animation-duration: 1s;
 			animation-fill-mode: forwards;
+		}
+	}
+
+	@media(min-height: 950px) {
+		width: 475px;
+		top: 390px;
+
+		.play-button {
+			bottom: 27px;
+			left: 23px;
+		}
+
+		.needle {
+			top: -140px;
+			right: -155px;
+		}
+
+		.record {
+			width: 261px;
+			left: 107px;
+			top: 27px;
 		}
 	}
 }

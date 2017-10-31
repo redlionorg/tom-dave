@@ -3,9 +3,15 @@
 @import './scss/reset';
 @import './scss/util';
 
-html, body {
+html *, body * {
 	font-family: 'Comfortaa', cursive;
 	font-size: 10pt;
+	font-weight: 600;
+	letter-spacing: 1px;
+}
+
+body {
+	overflow-x: hidden;
 }
 
 #app {
@@ -23,6 +29,7 @@ html, body {
 	@import './scss/components/RecordPlayer';
 	@import './scss/components/RecordAnimation';
 	@import './scss/components/ReadSection';
+	@import './scss/components/ListenSection';
 
 	> div {
 		height: inherit;

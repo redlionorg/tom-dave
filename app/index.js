@@ -1,3 +1,4 @@
+import Body from './js/components/Body'
 import Header from './js/components/Header'
 import Loading from './js/components/Loading'
 import ReadToggle from './js/components/ReadToggle'
@@ -7,6 +8,8 @@ import RecordAnimation from './js/components/RecordAnimation'
 import RecordPlayer from './js/components/RecordPlayer'
 import ReadSection from './js/components/ReadSection'
 import LoadingService from './js/services/Loading'
+import ListenSection from './js/components/ListenSection'
+import WorkSection from './js/components/WorkSection'
 import Component from './js/base/Component'
 import Global from './js/Global'
 import AudioManager from './js/services/AudioManager'
@@ -24,20 +27,12 @@ class App extends Component {
 		AudioManager.add(Enum.ALBUMS.WORK, 'audio/work.mp3')
 		AudioManager.on('end', this.onAudioEnd.bind(this))
 
-		const header = new Header(app),
-			loading = new Loading(app),
-			readToggle = new ReadToggle(app),
-			contentWrapper = new ContentWrapper(app),
-			albumGallery = new AlbumGallery(contentWrapper),
-			recordAnimation = new RecordAnimation(contentWrapper),
-			recordPlayer = new RecordPlayer(contentWrapper),
-			readSection = new ReadSection(app)
-
 		Global.init({
 			loaded: false,
 			entered: false,
 			reading: false,
 			playing: false,
+			paused: false,
 			animating: false,
 			recordOnPlayer: false,
 			needleActivated: false,
@@ -45,6 +40,15 @@ class App extends Component {
 			currentAlbum: undefined,
 			cuedAlbum: undefined
 		})
+	}
+
+	onAudioEnd() {
+		this.setGlobal('playing', false)
+	}
+
+	onLoad() {
+		this.setGlobal('loaded', true)
+		this.$.removeClass('no-transition')
 	}
 
 	globalDidUpdate(param, value) {
@@ -56,17 +60,21 @@ class App extends Component {
 				this.setGlobal('cuedRecord', undefined)
 			}
 			break
+		default:
+			break
 		}
-	}
-
-	onAudioEnd(audio) {
-		this.setGlobal('playing', false)
-	}
-
-	onLoad() {
-		this.setGlobal('loaded', true)
-		this.$.removeClass('no-transition')
 	}
 }
 
 const app = new App()
+new Body(app)
+new Header(app)
+new Loading(app)
+new ReadToggle(app)
+const contentWrapper = new ContentWrapper(app)
+new AlbumGallery(contentWrapper)
+new RecordAnimation(contentWrapper)
+new RecordPlayer(contentWrapper)
+new ReadSection(app)
+const listenSection = new ListenSection(app)
+new WorkSection(listenSection)

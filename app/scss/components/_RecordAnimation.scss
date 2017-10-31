@@ -30,7 +30,7 @@
 	}
 
 	.album img {
-		box-shadow: 11px 8px 8px -2px rgba(0, 0, 0, 0.5);
+		box-shadow: 11px 8px 8px -2px rgba(0, 0, 0, 0.3);
 	}
 
 	.album .contact {
@@ -44,6 +44,19 @@
 	.rotateAlbum {
 		animation-name: rotateAlbum;
 		animation-duration: 2s;
+	}
+
+	@media(min-height: 950px) {
+		width: 275px;
+		height: 275px;
+
+		.album .contact {
+			transform: translateX(294px);
+		}
+	
+		.album .about {
+			transform: translateX(-296px);
+		}
 	}
 }
 

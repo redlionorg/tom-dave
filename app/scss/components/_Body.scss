@@ -1,7 +1,12 @@
 .body {
 	position: relative;
 	height: calc(100% - #{$headerHeight});
-	width: 100%;
+	width: calc(100% + 84px);
+	margin-left: -42px;
 	background: $loadingBackgroundColor;
 	overflow: hidden;
+}
+
+.body.entered {
+	overflow-y: scroll;
 }

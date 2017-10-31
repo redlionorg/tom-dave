@@ -1,6 +1,6 @@
 .loading {
 	@include center();
-	width: 260px;
+	width: 300px;
 	color: $loadingTextColor;
 	z-index: 1;
 
@@ -44,7 +44,7 @@
 	}
 
 	p {
-		width: 80%;
+		width: 90%;
 		margin-left: 50%;
 		transform: translateX(-50%);
 		text-align: center;
@@ -72,6 +72,12 @@
 	button.enter:active {
 		transform: translateX(-50%) translateY(2px);
 	}
+
+	@media(max-height: 950px) {
+		p {
+			width: 100%;
+		}
+	}
 }
 
 @keyframes airpodLeft {
@@ -80,7 +86,7 @@
 	}
 
 	100% {
-		transform: scaleX(-1) translateY(-80px);
+		transform: scaleX(-1) translateY(-100px);
 	}
 }
 
@@ -90,6 +96,6 @@
 	}
 
 	100% {
-		transform: translateY(-110px);
+		transform: translateY(-130px);
 	}
 }
