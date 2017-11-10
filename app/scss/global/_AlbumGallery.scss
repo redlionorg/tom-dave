@@ -53,6 +53,16 @@
 		}
 	}
 
+	@media(max-width: $phone) {
+		width: 460px;
+		top: 37px;
+
+		.album {
+			width: 140px;
+			height: 140px;
+		}
+	}
+
 	@media(min-height: 950px) {
 		width: 865px;
 

@@ -1,6 +1,7 @@
 import Component from '../base/Component'
 import WindowSize from '../services/WindowSize'
 import Enum from '../Enum'
+import UserAgent from '../services/UserAgent'
 
 const CSSPlugin = require('../../../node_modules/gsap/CSSPlugin.js')
 const TimelineLite = require('../../../node_modules/gsap/TimelineLite.js')
@@ -34,11 +35,17 @@ export default class RecordAnimation extends Component {
 
 	setTimeline() {
 		let yOffset = 0
-		if (WindowSize.height >= 950) {
-			yOffset = 330
+
+		if (UserAgent.isMobile()) {
+			yOffset = 172
 		} else {
-			yOffset = 226
+			if (WindowSize.height >= 950) {
+				yOffset = 330
+			} else {
+				yOffset = 226
+			}
 		}
+
 		const xOrigin = this.currentAlbum.position().left
 
 		this.timeline = new TimelineLite({

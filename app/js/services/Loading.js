@@ -1,14 +1,21 @@
 import Observer from '../base/Observer'
 
-class Loading extends Observer {
-	constructor() {
-		super()
-		this.minimumWaitTime = 4100
-		this.loaded = false
-		this.waited = false
+let instance
 
-		window.addEventListener('DOMContentLoaded', this.onDOMContentLoad.bind(this))
-		setTimeout(this.onWaited.bind(this), this.minimumWaitTime)
+export default class LoadingService extends Observer {
+	constructor() {
+		if (!instance) {
+			super()
+			this.minimumWaitTime = 4100
+			this.loaded = false
+			this.waited = false
+
+			window.addEventListener('DOMContentLoaded', this.onDOMContentLoad.bind(this))
+			setTimeout(this.onWaited.bind(this), this.minimumWaitTime)
+			instance = this
+		}
+
+		return instance
 	}
 
 	onDOMContentLoad() {
@@ -27,6 +34,3 @@ class Loading extends Observer {
 		}
 	}
 }
-
-const LoadingService = new Loading()
-export default LoadingService

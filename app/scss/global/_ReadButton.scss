@@ -33,4 +33,13 @@
 	&:hover {
 		transform: rotate(-90deg) translateY(-5px);
 	}
+
+	@media(max-width: $phone) {
+		right: -27px;
+		top: 327px;
+
+		button {
+			height: 35px;
+		}
+	}
 }

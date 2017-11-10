@@ -6,6 +6,7 @@
 
 	.airpod-wrapper {
 		width: inherit;
+		display: inline-block;
 	}
 
 	.airpods {
@@ -77,6 +78,55 @@
 		p {
 			width: 100%;
 		}
+	}
+
+	@media(max-width: $phone) {
+		width: 100%;
+		margin-top: 20px;
+
+		.airpod-wrapper {
+			position: relative;
+			width: 50%;
+			margin-left: 50%;
+			transform: translateX(-50%);
+		}
+
+		.airpod.left {
+			animation-name: airpodLeftMobile !important;
+		}
+
+		.airpod.right {
+			animation-name: airpodRightMobile !important;
+		}
+
+		p {
+			width: 260px;
+			line-height: 20px;
+		}
+
+		button.enter {
+			width: 27%;
+		}
+	}
+}
+
+@keyframes airpodLeftMobile {
+	0% {
+		transform: scaleX(-1) translateY(0px);
+	}
+
+	100% {
+		transform: scaleX(-1) translateY(-75px);
+	}
+}
+
+@keyframes airpodRightMobile {
+	0% {
+		transform: translateY(0px);
+	}
+
+	100% {
+		transform: translateY(-86px);
 	}
 }
 

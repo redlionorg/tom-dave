@@ -46,6 +46,14 @@
 		animation-duration: 2s;
 	}
 
+	@media(max-width: $phone) {
+		width: 140px;
+
+		.album .contact, .album .about {
+			transform: none;
+		}
+	}
+
 	@media(min-height: 950px) {
 		width: 275px;
 		height: 275px;

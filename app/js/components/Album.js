@@ -1,4 +1,6 @@
+import ZingTouch from '../services/ZingTouch'
 import Component from '../base/Component'
+import UserAgent from '../services/UserAgent'
 
 export default class Album extends Component {
 	constructor(selector, parent, index) {
@@ -9,25 +11,30 @@ export default class Album extends Component {
 		this.cacheDOMElement('albumRead', '.normal .read, .hover .read')
 		this.cacheDOMElement('albumListen', '.normal .listen, .hover .listen')
 
-		this.$.on('click', () => {
-			if (this.global.animating) {
-				return
-			}
-			if (!this.global.playing) {
-				if (!this.local.selected) {
-					this.setGlobal('currentRecord', this.local.index)
-					if (!this.global.reading) {
-						this.setGlobal('animating', true)
-					}
-				}
-			} else {
-				this.setGlobal('cuedRecord', index)
-				this.setGlobal('playing', false)
-			}
-		})
+		if (UserAgent.isMobile()) {
+			const zt = new ZingTouch()
+			zt.body.bind(this.$[0], new zt.Tap(), this.select.bind(this))
+		} else {
+			this.$.on('click', this.select.bind(this))
+		}
 	}
 
 	select() {
+		if (this.global.animating) {
+			return
+		}
+		if (!this.global.playing) {
+			if (!this.local.selected) {
+				this.setGlobal('currentRecord', this.local.index)
+				if (!this.global.reading) {
+					this.setGlobal('animating', true)
+				}
+			}
+		} else {
+			this.setGlobal('cuedRecord', this.local.index)
+			this.setGlobal('playing', false)
+		}
+
 		this.setLocal('selected', true)
 	}
 

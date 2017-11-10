@@ -5,6 +5,7 @@
 <title>Tom & Dave</title>
 <style>html,body {background-color: #fcedd8;}</style>
 <link href="https://fonts.googleapis.com/css?family=Comfortaa" rel="stylesheet">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
 <div id="app" class="no-transition">
@@ -35,35 +36,42 @@
 					<div class="colored"></div>
 				</div>
 				<div class="album-gallery listen">
-					<div class="album">
-						<div class="normal">
-							<img class="listen" src="images/album_about.jpg" />
-							<img class="read" src="images/album_about2.png" />
+					<div class="album-gallery-inner a1">
+						<div class="album">
+							<div class="normal">
+								<img class="listen" src="images/album_about.jpg" />
+								<img class="read" src="images/album_about2.png" />
+							</div>
+							<div class="hover">
+								<img class="listen" src="images/album_about_hover.jpg" />
+								<img class="read" src="images/album_about2_hover.png" />
+							</div>
 						</div>
-						<div class="hover">
-							<img class="listen" src="images/album_about_hover.jpg" />
-							<img class="read" src="images/album_about2_hover.png" />
+						<div class="album">
+							<div class="normal">
+								<img class="listen" src="images/album_work.jpg" />
+								<img class="read" src="images/album_work2.png" />
+							</div>
+							<div class="hover">
+								<img class="listen" src="images/album_work_hover.jpg" />
+								<img class="read" src="images/album_work2_hover.png" />
+							</div>
+						</div>
+						<div class="album">
+							<div class="normal">
+								<img class="listen" src="images/album_contact.jpg" />
+								<img class="read" src="images/album_contact.png" />
+							</div>
+							<div class="hover">
+								<img class="listen" src="images/album_contact_hover.jpg" />
+								<img class="read" src="images/album_contact2_hover.png" />
+							</div>
 						</div>
 					</div>
-					<div class="album">
-						<div class="normal">
-							<img class="listen" src="images/album_work.jpg" />
-							<img class="read" src="images/album_work2.png" />
-						</div>
-						<div class="hover">
-							<img class="listen" src="images/album_work_hover.jpg" />
-							<img class="read" src="images/album_work2_hover.png" />
-						</div>
-					</div>
-					<div class="album">
-						<div class="normal">
-							<img class="listen" src="images/album_contact.jpg" />
-							<img class="read" src="images/album_contact.png" />
-						</div>
-						<div class="hover">
-							<img class="listen" src="images/album_contact_hover.jpg" />
-							<img class="read" src="images/album_contact2_hover.png" />
-						</div>
+					<div class="album-gallery-controls">
+						<div class="dot selected"><div class="dot-inner"></div></div>
+						<div class="dot"><div class="dot-inner"></div></div>
+						<div class="dot"><div class="dot-inner"></div></div>
 					</div>
 				</div>
 				<div class="record-animation">
@@ -100,45 +108,84 @@
 					<img class="background" src="images/player.jpg" />
 				</div>
 				<div class="listen-section">
-					<div class="about content"></div>
-					<div class="work content show">
+					<div class="about content show"></div>
+					<div class="work content">
 						<div class="message">
-							<p>↓ Click on the objects below to explore some of our latest work ↓</p>
-						</div>
-						<div class="tv scattered-items">
-							<div class="section section1"><img class="tv-title" src="images/Item_Envelope_TV.png"></div>
-							<div class="section section2">
-								<img class="patch" src="images/Item_Patch.png">
-								<img class="can" src="images/Item_Energy_Drink.png">
-							</div>
-							<div class="section section3">
-								<img class="espresso" src="images/Item_Espresso.png">
-								<img class="sunglasses" src="images/Item_Sunglasses.png">
-							</div>
-							<div class="section section4">
-								<img class="stamp" src="images/Item_Stamp.png">
-							</div>
-							<div class="section section5">
-								<img class="caliper" src="images/Item_Caliper.png">
+							<div class="message-inner">
+								<div class="arrow arrow-left">↓</div>
+								<p>Click on the objects below to explore some of our latest work</p>
+								<div class="arrow arrow-right">↓</div>
 							</div>
 						</div>
-						<div class="tube">
-							<img class="tube" src="images/Item_Shipping_Tube.png">
+						<div class="desktop">
+							<div class="tv scattered-items">
+								<div class="section section1"><img class="tv-title" src="images/Item_Envelope_TV.png"></div>
+								<div class="section section2">
+									<img class="patch" src="images/Item_Patch.png">
+									<img class="can" src="images/Item_Energy_Drink.png">
+								</div>
+								<div class="section section3">
+									<img class="espresso" src="images/Item_Espresso.png">
+									<img class="sunglasses" src="images/Item_Sunglasses.png">
+								</div>
+								<div class="section section4">
+									<img class="stamp" src="images/Item_Stamp.png">
+								</div>
+								<div class="section section5">
+									<img class="caliper" src="images/Item_Caliper.png">
+								</div>
+							</div>
+							<div class="tube">
+								<img class="tube" src="images/Item_Shipping_Tube.png">
+							</div>
+							<div class="radio scattered-items">
+								<div class="section section1">
+									<img class="coaster" src="images/Item_Coaster.png">
+								</div>
+								<div class="section section2">
+									<img class="nametag" src="images/Item_Name_Tag.png">
+									<img class="pencils" src="images/Item_Pencils.png">
+								</div>
+								<div class="section section3"><img class="camera" src="images/Item_Camera.png"></div>
+								<div class="section section4">
+									<img class="radio-title" src="images/Item_Frame_Radio.png">
+									<img class="letter-press" src="images/Item_Letter_Press.png">
+								</div>
+								<div class="section section5"><img class="sale-tag" src="images/Item_Sale_Tag.png"></div>
+							</div>
 						</div>
-						<div class="radio scattered-items">
-							<div class="section section1">
-								<img class="coaster" src="images/Item_Coaster.png">
+						<div class="mobile">
+							<div class="tv scattered-items">
+								<div class="section section1">
+									<img class="tv-title" src="images/Item_Envelope_TV.png">
+									<img class="sunglasses" src="images/Item_Sunglasses.png">
+									<img class="can" src="images/Item_Energy_Drink.png">
+								</div>
+								<div class="section section2">
+									<img class="patch" src="images/Item_Patch.png">
+									<img class="caliper" src="images/Item_Caliper.png">
+								</div>
+								<div class="section section3">
+									<img class="espresso" src="images/Item_Espresso.png">
+									<img class="stamp" src="images/Item_Stamp.png">
+								</div>
 							</div>
-							<div class="section section2">
-								<img class="nametag" src="images/Item_Name_Tag.png">
-								<img class="pencils" src="images/Item_Pencils.png">
+							<div class="tube">
+								<img class="tube" src="images/Item_Shipping_Tube.png">
 							</div>
-							<div class="section section3"><img class="camera" src="images/Item_Camera.png"></div>
-							<div class="section section4">
-								<img class="radio-title" src="images/Item_Frame_Radio.png">
-								<img class="letter-press" src="images/Item_Letter_Press.png">
+							<div class="radio scattered-items">
+								<div class="section section1">
+									<img class="pencils" src="images/Item_Pencils.png">
+									<img class="camera" src="images/Item_Camera.png">
+									<img class="nametag" src="images/Item_Name_Tag.png">
+								</div>
+								<div class="section section2">
+									<img class="sale-tag" src="images/Item_Sale_Tag.png">
+									<img class="radio-title" src="images/Item_Frame_Radio.png">
+									<img class="letter-press" src="images/Item_Letter_Press.png">
+									<img class="coaster" src="images/Item_Coaster.png">
+								</div>
 							</div>
-							<div class="section section5"><img class="sale-tag" src="images/Item_Sale_Tag.png"></div>
 						</div>
 					</div>
 					<div class="contact content"></div>

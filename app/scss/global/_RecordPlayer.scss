@@ -97,6 +97,27 @@
 		}
 	}
 
+	@media(max-width: $phone) {
+		width: 250px;
+		top: 240px;
+
+		.needle {
+			top: -74px;
+			right: -81px;
+		}
+
+		.play-button {
+			bottom: 14px;
+			left: 13px;
+		}
+
+		.record {
+			width: 140px;
+			left: 55px;
+			top: 13px;
+		}
+	}
+
 	@media(min-height: 950px) {
 		width: 475px;
 		top: 390px;

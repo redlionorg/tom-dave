@@ -14,13 +14,21 @@ import Component from './js/base/Component'
 import Global from './js/Global'
 import AudioManager from './js/services/AudioManager'
 import Enum from './js/Enum'
+import UserAgent from './js/services/UserAgent'
 
 require('./index.scss')
+
+if (UserAgent.isDesktop()) {
+	require('./scss/desktop/index.scss')
+} else {
+	require('./scss/mobile/index.scss')
+}
 
 class App extends Component {
 	constructor() {
 		super('#app')
-		LoadingService.on('loaded', this.onLoad.bind(this))
+		const loading = new LoadingService()
+		loading.on('loaded', this.onLoad.bind(this))
 
 		AudioManager.add(Enum.ALBUMS.ABOUT, 'audio/about.mp3')
 		AudioManager.add(Enum.ALBUMS.CONTACT, 'audio/contact.mp3')
@@ -40,6 +48,11 @@ class App extends Component {
 			currentAlbum: undefined,
 			cuedAlbum: undefined
 		})
+
+		if (UserAgent.isMobile()) {
+			this.$.find('.desktop').addClass('hide-block')
+			this.$.find('.mobile').addClass('show')
+		}
 	}
 
 	onAudioEnd() {

@@ -1,5 +1,4 @@
 import Component from '../base/Component'
-import Enum from '../Enum'
 
 export default class WorkSection extends Component {
 	constructor(parent) {
@@ -21,13 +20,13 @@ export default class WorkSection extends Component {
 		this.cacheDOMElement('sale-tag', '.sale-tag')
 
 		const keys = Object.keys(this.elements)
-		for (let index = 0; index < keys.length; index++) {
+		for (let index = 0; index < keys.length; index += 1) {
 			const element = this.elements[keys[index]]
 			element.click(this.onWorkElementClick.bind(this, keys[index], element))
 		}
 	}
 
-	onWorkElementClick(item, $) {
+	onWorkElementClick(item) {
 		console.log(`${item} clicked!`)
 	}
 }
