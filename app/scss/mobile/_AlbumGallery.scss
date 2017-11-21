@@ -18,6 +18,7 @@
 	.album-gallery-controls {
 		@include hcenter();
 		top: 154px;
+		transition: opacity 0.3s;
 
 		.dot {
 			position: relative;

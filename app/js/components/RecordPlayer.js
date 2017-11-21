@@ -40,7 +40,7 @@ export default class RecordPlayer extends Component {
 	globalWillUpdate(param) {
 		switch (param) {
 		case 'currentRecord':
-			if (!this.global.currentRecord) {
+			if (!this.global.currentRecord || this.global.reading) {
 				break
 			}
 			this.elements[this.global.currentRecord].removeClass('show').removeClass('spin')
@@ -76,7 +76,10 @@ export default class RecordPlayer extends Component {
 				AudioManager.play(this.global.currentRecord)
 				this.elements.button.addClass('playing')
 			} else {
-				this.setGlobal('animating', true)
+				if (!this.global.reading) {
+					this.setGlobal('animating', true)
+				}
+
 				AudioManager.stop(this.global.currentRecord)
 				this.elements.button.removeClass('playing')
 				this.elements[this.global.currentRecord].addClass('paused')
@@ -123,6 +126,8 @@ export default class RecordPlayer extends Component {
 		case 'reading':
 			if (value) {
 				this.$.addClass('hide-block')
+				this.setGlobal('playing', false)
+				this.setGlobal('spinning', false)
 			} else {
 				this.$.removeClass('hide-block')
 			}

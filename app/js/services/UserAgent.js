@@ -1,9 +1,21 @@
-export default class UserAgent {
-	static isMobile() {
-		return !!navigator.userAgent.match(/mobi/i)
+class UserAgentClass {
+	constructor() {
+		this.ua = navigator.userAgent
+		this.mobile = !!this.ua.match(/mobi/i)
 	}
 
-	static isDesktop() {
-		return !this.isMobile()
+	userAgent() {
+		return this.ua
+	}
+
+	isMobile() {
+		return this.mobile
+	}
+
+	isDesktop() {
+		return !this.mobile
 	}
 }
+
+const UserAgent = new UserAgentClass()
+export default UserAgent

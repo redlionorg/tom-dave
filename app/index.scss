@@ -3,11 +3,12 @@
 @import './scss/reset';
 @import './scss/util';
 
-html *, body * {
+html, body {
 	font-family: 'Comfortaa', cursive;
 	font-size: 10pt;
 	font-weight: 600;
 	letter-spacing: 1px;
+	line-height: 12pt;
 }
 
 body {

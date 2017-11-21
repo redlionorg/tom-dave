@@ -46,7 +46,8 @@ class App extends Component {
 			needleActivated: false,
 			recordRotation: undefined,
 			currentAlbum: undefined,
-			cuedAlbum: undefined
+			cuedAlbum: undefined,
+			animateMobileCuedAlbumGallery: false
 		})
 
 		if (UserAgent.isMobile()) {
@@ -67,10 +68,14 @@ class App extends Component {
 	globalDidUpdate(param, value) {
 		switch (param) {
 		case 'animating':
-			if (!value && typeof this.global.cuedRecord !== 'undefined' && !this.global.playing) {
-				this.setGlobal('currentRecord', this.global.cuedRecord)
-				this.setGlobal('animating', true)
-				this.setGlobal('cuedRecord', undefined)
+			if (!value && typeof this.global.cuedRecord !== 'undefined' && !this.global.playing && !this.global.reading) {
+				if (UserAgent.isMobile()) {
+					this.setGlobal('animateMobileCuedAlbumGallery', true)
+				}
+				setTimeout(() => {
+					this.setGlobal('currentRecord', this.global.cuedRecord)
+					this.setGlobal('cuedRecord', undefined)
+				}, 300)
 			}
 			break
 		default:

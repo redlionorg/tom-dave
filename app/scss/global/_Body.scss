@@ -13,8 +13,6 @@
 	@media(max-width: $phone) {
 		width: 100%;
 		margin-left: 0;
-		&.entered {
-			height: calc(100% - 65px);
-		}
+		height: calc(100% - 65px);
 	}
 }

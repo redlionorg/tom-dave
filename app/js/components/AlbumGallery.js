@@ -13,9 +13,11 @@ export default class AlbumGallery extends Component {
 		this.albums[Enum.ALBUMS.WORK] = new Album('.album:nth-child(2)', this, Enum.ALBUMS.WORK)
 		this.albums[Enum.ALBUMS.CONTACT] = new Album('.album:nth-child(3)', this, Enum.ALBUMS.CONTACT)
 		this.index = 0
+		this.interactable = true
 
 		if (UserAgent.isMobile()) {
 			this.cacheDOMElement('inner', '.album-gallery-inner')
+			this.cacheDOMElement('controls', '.album-gallery-controls')
 			this.cacheDOMElement('dot1', '.album-gallery-controls .dot:first-child')
 			this.cacheDOMElement('dot2', '.album-gallery-controls .dot:nth-child(2)')
 			this.cacheDOMElement('dot3', '.album-gallery-controls .dot:last-child')
@@ -31,6 +33,10 @@ export default class AlbumGallery extends Component {
 	}
 
 	onSwipe(angle) {
+		if (!this.interactable) {
+			return
+		}
+
 		if (this.ZingTouch.Direction.IsLeft(angle)) {
 			this.navigateRight()
 		}
@@ -67,6 +73,22 @@ export default class AlbumGallery extends Component {
 		this.setGalleryIndex(this.index + 1)
 	}
 
+	disableSwipe() {
+		if (UserAgent.isDesktop()) {
+			return
+		}
+		this.interactable = false
+		this.elements.controls.css('opacity', 0.5)
+	}
+
+	enableSwipe() {
+		if (UserAgent.isDesktop()) {
+			return
+		}
+		this.interactable = true
+		this.elements.controls.css('opacity', 1)
+	}
+
 	globalDidUpdate(param, value) {
 		switch (param) {
 		case 'reading':
@@ -76,6 +98,25 @@ export default class AlbumGallery extends Component {
 			} else {
 				this.$.removeClass('read')
 				this.$.addClass('listen')
+			}
+			break
+		case 'currentRecord':
+			if (typeof value === 'undefined') {
+				this.enableSwipe()
+				this.albums[Enum.ALBUMS.ABOUT].deselect()
+				this.albums[Enum.ALBUMS.WORK].deselect()
+				this.albums[Enum.ALBUMS.CONTACT].deselect()
+			} else {
+				this.disableSwipe()
+			}
+			break
+		case 'animateMobileCuedAlbumGallery':
+			if (value) {
+				this.setGalleryIndex(this.global.cuedRecord)
+
+				setTimeout(() => {
+					this.setGlobal('animateMobileCuedAlbumGallery', false)
+				}, 300)
 			}
 			break
 		default:

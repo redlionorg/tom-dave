@@ -9,6 +9,7 @@
 	z-index: 100;
 	opacity: 0;
 	pointer-events: none;
+	transition: 0.3s opacity, 0.1s transform;
 
 	button {
 		height: 25px;
@@ -17,16 +18,15 @@
 		color: #ffffff;
 	}
 
-	&.read button.listen {
+	&.listen button.listen {
 		opacity: 0;
 	}
 
-	&.read, button.read {
-		transition: 1s opacity, 0.4s transform;
+	&.listen, button.read {
 		background: $loadingTextColor;
 	}
 
-	&.listen, button.listen {
+	&.read, button.listen {
 		background: #f24506;
 	}
 
@@ -35,7 +35,7 @@
 	}
 
 	@media(max-width: $phone) {
-		right: -27px;
+		right: -34px;
 		top: 327px;
 
 		button {

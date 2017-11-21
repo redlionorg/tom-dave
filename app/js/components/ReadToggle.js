@@ -1,4 +1,5 @@
 import Component from '../base/Component'
+import AudioManager from '../services/AudioManager'
 
 export default class ReadToggle extends Component {
 	constructor(parent) {
@@ -7,10 +8,15 @@ export default class ReadToggle extends Component {
 	}
 
 	onButtonClick() {
+		if (this.global.animating) {
+			return
+		}
 		if (this.global.reading) {
+			this.setGlobal('currentRecord', undefined)
 			this.setGlobal('reading', false)
 		} else {
 			this.setGlobal('reading', true)
+			AudioManager.stop(this.global.currentRecord)
 		}
 	}
 

@@ -20,22 +20,20 @@ export default class Album extends Component {
 	}
 
 	select() {
-		if (this.global.animating) {
+		if ((this.global.animating && !this.global.animateMobileCuedAlbumGallery)
+		|| this.local.selected) {
 			return
 		}
 		if (!this.global.playing) {
-			if (!this.local.selected) {
-				this.setGlobal('currentRecord', this.local.index)
-				if (!this.global.reading) {
-					this.setGlobal('animating', true)
-				}
+			this.setGlobal('currentRecord', this.local.index)
+			if (!this.global.reading) {
+				this.setGlobal('animating', true)
 			}
+			this.setLocal('selected', true)
 		} else {
 			this.setGlobal('cuedRecord', this.local.index)
 			this.setGlobal('playing', false)
 		}
-
-		this.setLocal('selected', true)
 	}
 
 	deselect() {
@@ -68,9 +66,6 @@ export default class Album extends Component {
 	localDidUpdate(param, value) {
 		switch (param) {
 		case 'selected':
-			if (this.global.reading) {
-				break
-			}
 			if (value) {
 				this.$.addClass('selected')
 			} else {
