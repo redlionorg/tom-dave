@@ -23,7 +23,7 @@ class _AudioManager extends Observer {
 			const sound = this.sounds[tag]
 			sound.audio.play()
 			sound.playing = true
-			this.emit('play', [sound])
+			this.emit('play', sound)
 		}
 	}
 
@@ -32,7 +32,7 @@ class _AudioManager extends Observer {
 			const sound = this.sounds[tag]
 			sound.audio.stop()
 			sound.playing = false
-			this.emit('stop', [sound])
+			this.emit('stop', sound)
 		}
 	}
 
@@ -41,12 +41,12 @@ class _AudioManager extends Observer {
 			const sound = this.sounds[tag]
 			sound.audio.pause()
 			sound.playing = false
-			this.emit('pause', [sound])
+			this.emit('pause', sound)
 		}
 	}
 
 	onEnd(sound) {
-		this.emit('end', [sound])
+		this.emit('end', sound)
 	}
 }
 

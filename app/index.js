@@ -1,23 +1,10 @@
-import Body from './js/components/Body'
-import Header from './js/components/Header'
-import Loading from './js/components/Loading'
-import ReadToggle from './js/components/ReadToggle'
-import ContentWrapper from './js/components/ContentWrapper'
-import AlbumGallery from './js/components/AlbumGallery'
-import RecordAnimation from './js/components/RecordAnimation'
-import RecordPlayer from './js/components/RecordPlayer'
-import ReadSection from './js/components/ReadSection'
-import LoadingService from './js/services/Loading'
-import ListenSection from './js/components/ListenSection'
-import WorkSection from './js/components/WorkSection'
+import * as Components from './js/components'
+import { UserAgent, AudioManager, Loader, YoutubeIframeAPI, GoogleMapAPI } from './js/services'
 import Component from './js/base/Component'
 import Global from './js/Global'
-import AudioManager from './js/services/AudioManager'
 import Enum from './js/Enum'
-import UserAgent from './js/services/UserAgent'
 
 require('./index.scss')
-
 if (UserAgent.isDesktop()) {
 	require('./scss/desktop/index.scss')
 } else {
@@ -27,12 +14,13 @@ if (UserAgent.isDesktop()) {
 class App extends Component {
 	constructor() {
 		super('#app')
-		const loading = new LoadingService()
-		loading.on('loaded', this.onLoad.bind(this))
+		const loader = new Loader()
+		loader.on('loaded', this.onLoad.bind(this))
 
 		AudioManager.add(Enum.ALBUMS.ABOUT, 'audio/about.mp3')
 		AudioManager.add(Enum.ALBUMS.CONTACT, 'audio/contact.mp3')
 		AudioManager.add(Enum.ALBUMS.WORK, 'audio/work.mp3')
+		AudioManager.add('record_noises', 'audio/player_start.mp3')
 		AudioManager.on('end', this.onAudioEnd.bind(this))
 
 		Global.init({
@@ -56,8 +44,10 @@ class App extends Component {
 		}
 	}
 
-	onAudioEnd() {
-		this.setGlobal('playing', false)
+	onAudioEnd(sound) {
+		if (typeof sound.id === 'number') {
+			this.setGlobal('playing', false)
+		}
 	}
 
 	onLoad() {
@@ -85,14 +75,18 @@ class App extends Component {
 }
 
 const app = new App()
-new Body(app)
-new Header(app)
-new Loading(app)
-new ReadToggle(app)
-const contentWrapper = new ContentWrapper(app)
-new AlbumGallery(contentWrapper)
-new RecordAnimation(contentWrapper)
-new RecordPlayer(contentWrapper)
-new ReadSection(app)
-const listenSection = new ListenSection(app)
-new WorkSection(listenSection)
+new Components.Body(app)
+new Components.Header(app)
+new Components.Loading(app)
+new Components.ReadToggle(app)
+const contentWrapper = new Components.ContentWrapper(app)
+new Components.AlbumGallery(contentWrapper)
+new Components.RecordAnimation(contentWrapper)
+new Components.RecordPlayer(contentWrapper)
+new Components.ReadSection(app)
+const listenSection = new Components.ListenSection(app)
+new Components.WorkSection(listenSection)
+
+new Components.Slider('.slider.tv-slider', app)
+// new Slider('.slider.radio-slider')
+

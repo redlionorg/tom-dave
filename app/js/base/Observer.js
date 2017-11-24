@@ -13,7 +13,7 @@ export default class Observer {
 		this.subjects[e].push(fn)
 	}
 
-	emit(e, params) {
+	emit(e, ...params) {
 		if (e in this.subjects) {
 			const values = Object.values(this.subjects[e])
 			for (let index = 0; index < values.length; index += 1) {

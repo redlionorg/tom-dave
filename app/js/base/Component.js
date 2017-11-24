@@ -1,8 +1,6 @@
 import Observer from './Observer'
 import Global from '../Global'
 
-const $ = require('zeptojs')
-
 export default class Component extends Observer {
 	constructor(selector, parent) {
 		super()
@@ -12,7 +10,7 @@ export default class Component extends Observer {
 		this.$ = undefined
 
 		if (typeof selector !== 'undefined') {
-			this.$ = $(selector)
+			this.$ = window.$(selector)
 		}
 
 		if (typeof parent !== 'undefined') {
@@ -67,7 +65,11 @@ export default class Component extends Observer {
 		}
 	}
 
-	cacheDOMElement(key, selector) {
-		this.elements[key] = this.$.find(selector)
+	cacheDOMElement(key, selector, element) {
+		if (typeof element !== 'undefined') {
+			this.elements[key] = element
+		} else {
+			this.elements[key] = this.$.find(selector)
+		}
 	}
 }

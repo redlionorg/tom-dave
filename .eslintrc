@@ -9,11 +9,17 @@
 		"no-new": 0,
 		"global-require": 0,
 		"no-lonely-if": 0,
+		"import/newline-after-import": 0,
+		"import/first": 0,
+		"no-unused-vars": 0,
 		"comma-dangle": [2, "never"],
 		"react/jsx-indent": [2, "tab"]
 	},
 	"env": {
 		"browser": true
 	},
-	
+	"globals": {
+		"YT": true,
+		"$": true
+	}
 }

@@ -16,7 +16,7 @@ class _Global extends Observer {
 			const newGlobal = { ...this.global }
 			newGlobal[param] = value
 			this.global = newGlobal
-			this.emit('setGlobal', [param, value, this.global])
+			this.emit('setGlobal', param, value, this.global)
 		}
 	}
 
@@ -29,7 +29,7 @@ class _Global extends Observer {
 			for (let index = 0; index < values.length; index += 1) {
 				const key = values[index]
 				const value = this.global[key]
-				this.emit('setGlobal', [key, value, this.global])
+				this.emit('setGlobal', key, value, this.global)
 			}
 		}
 	}

@@ -115,11 +115,10 @@ export default class RecordPlayer extends Component {
 				break
 			}
 			if (value) {
+				AudioManager.play('record_noises')
 				this.elements[this.global.currentRecord].addClass('spin')
 			} else {
 				this.elements[this.global.currentRecord].addClass('paused')
-				// const r = this.getCSSRotation(this.elements[this.global.currentRecord])
-				// this.setGlobal('recordRotation', r)
 				this.setGlobal('recordOnPlayer', false)
 			}
 			break

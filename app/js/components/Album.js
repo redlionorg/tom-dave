@@ -20,8 +20,7 @@ export default class Album extends Component {
 	}
 
 	select() {
-		if ((this.global.animating && !this.global.animateMobileCuedAlbumGallery)
-		|| this.local.selected) {
+		if (this.global.animating || this.local.selected) {
 			return
 		}
 		if (!this.global.playing) {

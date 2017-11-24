@@ -93,6 +93,7 @@ export default class AlbumGallery extends Component {
 		switch (param) {
 		case 'reading':
 			if (value) {
+				this.enableSwipe()
 				this.$.addClass('read')
 				this.$.removeClass('listen')
 			} else {
@@ -107,7 +108,9 @@ export default class AlbumGallery extends Component {
 				this.albums[Enum.ALBUMS.WORK].deselect()
 				this.albums[Enum.ALBUMS.CONTACT].deselect()
 			} else {
-				this.disableSwipe()
+				if (!this.global.reading) {
+					this.disableSwipe()
+				}
 			}
 			break
 		case 'animateMobileCuedAlbumGallery':

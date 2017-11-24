@@ -99,7 +99,7 @@ module.exports = {
               }
           }
       }
-    }),
+    })
   ],
   postcss: function () {
       return [precss, autoprefixer];
