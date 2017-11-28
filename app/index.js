@@ -30,6 +30,10 @@ class App extends Component {
 			playing: false,
 			paused: false,
 			animating: false,
+			showRadioLightbox: false,
+			radioLightboxIndex: 0,
+			showTVLightbox: false,
+			tvLightboxIndex: 0,
 			recordOnPlayer: false,
 			needleActivated: false,
 			recordRotation: undefined,
@@ -87,6 +91,6 @@ new Components.ReadSection(app)
 const listenSection = new Components.ListenSection(app)
 new Components.WorkSection(listenSection)
 
-new Components.Slider('.slider.tv-slider', app)
-// new Slider('.slider.radio-slider')
+new Components.TVSlider('.slider.tv-slider', app)
+new Components.RadioSlider('.slider.radio-slider', app)
 

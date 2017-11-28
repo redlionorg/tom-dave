@@ -2,7 +2,7 @@ import Observer from '../base/Observer'
 
 let instance
 
-export default class LoadingService extends Observer {
+export default class Loading extends Observer {
 	constructor() {
 		if (!instance) {
 			super()

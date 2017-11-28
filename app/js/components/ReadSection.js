@@ -28,7 +28,6 @@ export default class ReadSection extends Component {
 	}
 
 	resize() {
-		console.log('resize')
 		$(this.elements.mapBackground).css('height', this.elements.mapMiddleground.height() + 10)
 	}
 

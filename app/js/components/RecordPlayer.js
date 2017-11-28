@@ -68,6 +68,14 @@ export default class RecordPlayer extends Component {
 				}, 2000)
 			}
 			break
+		case 'showRadioLightbox':
+		case 'showTVLightbox':
+			if (value && this.global.playing) {
+				this.setGlobal('paused', true)
+			} else if (!value && this.global.playing) {
+				this.setGlobal('paused', false)
+			}
+			break
 		case 'playing':
 			if (typeof this.global.currentRecord === 'undefined') {
 				break
