@@ -5,17 +5,18 @@ import Global from './js/Global'
 import Enum from './js/Enum'
 
 require('./index.scss')
-if (UserAgent.isDesktop()) {
-	require('./scss/desktop/index.scss')
-} else {
-	require('./scss/mobile/index.scss')
-}
 
 class App extends Component {
 	constructor() {
 		super('#app')
 		const loader = new Loader()
 		loader.on('loaded', this.onLoad.bind(this))
+
+		if (UserAgent.isDesktop()) {
+			this.$.addClass('desktop')
+		} else {
+			this.$.addClass('mobile')
+		}
 
 		AudioManager.add(Enum.ALBUMS.ABOUT, 'audio/about.mp3')
 		AudioManager.add(Enum.ALBUMS.CONTACT, 'audio/contact.mp3')
@@ -33,6 +34,7 @@ class App extends Component {
 			showRadioLightbox: false,
 			radioLightboxIndex: 0,
 			showTVLightbox: false,
+			recordAngle: 0,
 			tvLightboxIndex: 0,
 			recordOnPlayer: false,
 			needleActivated: false,

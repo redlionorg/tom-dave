@@ -2,6 +2,7 @@ var webpack = require('webpack'),
     path = require('path'),
     autoprefixer = require('autoprefixer'),
     BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin,
+    ExtractTextPlugin = require('extract-text-webpack-plugin'),
     precss = require('precss'),
     HtmlWebpackPlugin = require('html-webpack-plugin'),
     HTMLWebpackPluginConfig = new HtmlWebpackPlugin({
@@ -14,17 +15,13 @@ module.exports = {
   entry: [
     './app/index.js'
   ],
-  resolveLoader: {
-    root: path.join(__dirname, 'node_modules')
-  },
   output: {
     path: __dirname + '/dist',
     filename: "index.compiled.js"
   },
-  debug: true,
   devtool: 'source-map',
   resolve: {
-    extensions: ['', '.js', '.jsx'],
+    extensions: ['.js', '.jsx'],
     alias: {
       'TimelineLite': path.join(__dirname, 'node_modules/gsap/TimelineLite.js')
     }
@@ -47,33 +44,25 @@ module.exports = {
       },
       {
         test: /\.scss$/,
-        loader: "style-loader!css-loader!postcss-loader!sass-loader?sourceMap"
+        loader: ExtractTextPlugin.extract(['css-loader', 'sass-loader'])
       },
-
       {
         test: /\.jpg|.jpeg|.png|.gif|.svg$/,
-        loader: "file?name=images/[name].[ext]"
+        loader: "file-loader?name=images/[name].[ext]"
       },
       {
           test: /\.(eot|svg|ttf|woff|woff2)$/,
-          loader: 'file?name=fonts/[name].[ext]'
+          loader: 'file-loader?name=fonts/[name].[ext]'
       },
       {
           test: /\.mp3$/,
-          loader: 'file?name=audio/[name].[ext]'
+          loader: 'file-loader?name=audio/[name].[ext]'
       },
       {
         test: /\.json$/,
         loader: 'json-loader'
       }
-    ],
-    sassLoader: {
-      includePaths: [path.resolve(__dirname, "./app/index.scss")]
-    },
-    eslint: {
-      configFile: './.eslintrc',  //your .eslintrc file 
-      emitWarning: true
-    }
+    ]
   },
   plugins: [
     HTMLWebpackPluginConfig,
@@ -81,13 +70,28 @@ module.exports = {
       openAnalyzer: false,
       analyzerMode: 'static'
     }),
+    new ExtractTextPlugin({ // define where to save the file
+      filename: 'index.css',
+      allChunks: true
+    }),
     new webpack.DefinePlugin({
         'process.env': {
             'NODE_ENV': JSON.stringify('development')
         }
+    }),
+    new webpack.LoaderOptionsPlugin({
+      options: {
+        eslint: {
+          configFile: './.eslintrc',  //your .eslintrc file 
+          emitWarning: true
+        },
+        sassLoader: {
+          includePaths: [path.resolve(__dirname, "./app/index.scss")]
+        },
+        resolveLoader: {
+          root: path.join(__dirname, 'node_modules')
+        }
+      }
     })
-  ],
-  postcss: function () {
-      return [precss, autoprefixer];
-  }
+  ]
 }

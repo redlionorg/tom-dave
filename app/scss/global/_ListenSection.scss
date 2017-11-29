@@ -9,6 +9,30 @@
 		opacity: 0;
 		display: none;
 	}
+
+	@media(max-width: $phone) {
+		width: 100%;
+		margin-top: 280px;
+
+		.work {
+			.message {
+				width: 330px;
+
+				.message-inner {
+					padding: 5px;
+				}
+
+				p {
+					line-height: 20px;
+				}
+			}
+		}
+	}
+
+	@media(min-height: 950px) {
+		margin-top: 470px;
+		width: 865px;
+	}
 }
 
 .legal {
@@ -59,6 +83,29 @@
 }
 
 .work {
+	.title-container {
+		position: relative;
+		width: 100%;
+		display: inline-block;
+		padding: 0 90px;
+
+		.tv-title, .radio-title {
+			width: 50%;
+
+			img {
+				cursor: pointer;
+			}
+		}
+
+		.tv-title {
+			float: left;
+		}
+
+		.radio-title {
+			float: right;
+		}
+	}
+
 	.message {
 		width: 600px;
 		background-color: #f54800;
@@ -91,254 +138,6 @@
 			text-align: center;
 			color: white;
 			font-size: 9pt;
-		}
-	}
-
-	.scattered-items {
-		width: 100%;
-		clear: both;
-		position: relative;
-		display: inline-block;
-		margin-top: 40px;
-
-		.section {
-			float: left;
-			position: relative;
-		}
-
-		.section img {
-			display: block;
-			position: relative;
-			cursor: pointer;
-		}
-
-		img {
-			width: 170px
-		}
-	}
-
-	.tube {
-		position: relative;
-		z-index: 2;
-		display: inline-block;
-		width: 100%;
-		cursor: pointer;
-
-		> img {
-			width: 410px;
-			float: right;
-			margin-right: -70px;
-		}
-	}
-
-	.desktop {
-		.scattered-items {
-			&.tv {
-				height: 223px;
-				z-index: 1;
-				.section1 { z-index: 2; }
-				.tv-title { width: 240px; margin-left: -80px; cursor: auto; }
-
-				.section2 { z-index: 1; width: 100px; }
-				.patch { z-index: 2; width: 150px; margin-left: -30px; }
-				.can { z-index: 1; width: 360px; margin-left: -110px; margin-top: -80px; }
-				.bag { width: 120px; margin-top: -120px; margin-left: -80px; }
-
-				.section3 { z-index: 2; width: 160px; }
-				.espresso { width: 280px; margin-left: -40px; margin-top: -46px; }
-				.sunglasses { width: 100px; margin-top: -20px; margin-left: 40px; }
-
-				.section4 { z-index: 3; width: 100px; }
-				.stamp { width: 100%; margin-left: 20px; margin-top: 93px; }
-				.headphones { margin-top: 30px; margin-left: -20px; width: 140px; }
-
-				.section5 { width: 120px; }
-				.caliper { width: 140px; margin-top: 40px; }
-			}
-
-			&.radio {
-				margin-top: 230px;
-				z-index: 3;
-
-				.section1 { width: 130px; margin-left: -70px; }
-				.coaster { width: 100%; }
-
-				.section2 { width: 150px; }
-				.nametag { width: 140px; margin-left: 10px; margin-top: -80px; }
-				.pencils { width: 210px; margin-left: 40px; }
-
-				.section3 { width: 150px; }
-				.camera { width: 240px; margin-left: -20px; margin-top: -30px; }
-
-				.radio-title { margin-top: -90px; width: 190px; cursor: auto; }
-				.letter-press { width: 160px; margin-left: 20px; margin-top: -20px; }
-
-				.section5 { width: 90px; }
-				.sale-tag { width: 130px; margin-left: -30px; }
-			}
-		}
-	}
-
-	.mobile {
-		.scattered-items {
-			&.tv {
-				.section1 { height: 260px; }
-				.tv-title { margin-left: -24px; z-index: 2; position: relative; }
-				.sunglasses { position: absolute; top: 60px; left: 10px; z-index: 3; }
-				.can { position: absolute; left: -48px; top: 118px; width: 230px; z-index: 1; }
-
-				.section2 { width: 69px; z-index: 2; }
-				.patch { width: 110px; left: -27px; top: 2px; }
-				.caliper { position: absolute; width: 100px; left: -13px; }
-
-				.section3 { width: 100px; }
-				.espresso { width: 200px; left: -42px; top: 8px; }
-				.stamp { width: 61px; left: 3px; }
-			}
-
-			&.radio {
-				margin-top: 20px;
-
-				.section1 { z-index: 2; width: 160px; }
-				.pencils { position: absolute; z-index: 2; top: 120px; width: 153px; left: 4px; }
-				.camera { width: 191px; left: 35px; }
-				.nametag { position: absolute; width: 100px; left: 102px; top: 90px; z-index: 2; }
-				.section2 { height: 300px; }
-				.sale-tag { position: absolute; width: 90px; top: -78px; z-index: 2; left: -14px; }
-				.radio-title { width: 134px; top: -38px; left: 5px; }
-				.letter-press { position: absolute; top: 69px; width: 120px; left: 42px; }
-				.coaster { position: absolute; width: 95px; top: 160px; left: 16px; }
-			}
-		}
-
-		.tube {
-			width: 100%;
-
-			img {
-				transform: translateX(-35%);
-				width: 340px;
-			}
-		}
-	}
-}
-
-@media(max-width: 414px) {
-	.work .mobile .scattered-items {
-		&.tv .section1 {
-			margin-left: 50px;
-		}
-
-		&.radio .section1 {
-			margin-left: 40px;
-		}
-	}
-}
-
-@media(max-width: 375px) {
-	.work .mobile .scattered-items {
-		&.tv .section1 {
-			margin-left: 26px;
-		}
-
-		&.radio .section1 {
-			margin-left: 20px;
-		}
-	}
-
-	.work .mobile {
-		.tube img {
-			transform: translateX(-25%);
-		}
-	}
-}
-
-@media(max-width: 320px) {
-	.work .mobile .scattered-items {
-		&.tv .section1 {
-			margin-left: 0px;
-		}
-
-		&.radio .section1 {
-			margin-left: 0xp;
-		}
-	}
-
-	.work .mobile {
-		.tube img {
-			transform: translateX(-13%);
-		}
-	}
-}
-
-@media(max-width: $phone) {
-	width: 100%;
-	margin-top: 280px;
-
-	.work {
-		.message {
-			width: 330px;
-
-			.message-inner {
-				padding: 5px;
-			}
-
-			p {
-				line-height: 20px;
-			}
-		}
-	}
-}
-
-@media(min-height: 950px) {
-	margin-top: 470px;
-	width: 865px;
-
-	.work {
-		.scattered-items {
-			&.tv {
-				height: 300px;
-
-				.tv-title { width: 290px; margin-left: -80px; }
-
-				.section2 { width: 150px; }
-				.patch { width: 200px; margin-left: -30px; }
-				.can { width: 410px; margin-left: -110px; margin-top: -80px; }
-
-				.section3 { width: 210px; }
-				.espresso { width: 330px; margin-left: -40px; margin-top: -46px; }
-				.sunglasses { width: 330px; width: 210px; margin-top: -70px; }
-
-				.section4 { width: 150px; }
-				.stamp { width: 100%; margin-left: 20px; margin-top: 93px; }
-
-				.section5 { width: 140px; }
-				.caliper { width: 140px; margin-top: 40px; }
-			}
-
-			&.radio {
-				margin-top: 50px;
-
-				.section1 { width: 180px; margin-left: -70px; }
-				.coaster { width: 100%; }
-
-				.section2 { width: 200px; }
-				.nametag { width: 190px; margin-left: 10px; margin-top: -80px; }
-				.pencils { width: 260px; margin-left: 40px; }
-
-				.section3 { width: 200px; }
-				.camera { width: 290px; margin-left: -20px; margin-top: -30px; }
-
-				.radio-title { margin-top: -90px; width: 190px; }
-				.letter-press { width: 210px; margin-left: 20px; margin-top: -20px; }
-
-				.section5 { width: 120px; }
-				.sale-tag { width: 180px; margin-left: -30px; }
-			}
-		}
-
-		.tube img {
-			margin-top: -40px;
-			width: 460px;
 		}
 	}
 }

@@ -36,6 +36,13 @@ class _AudioManager extends Observer {
 		}
 	}
 
+	get(tag) {
+		if (tag in this.sounds) {
+			return this.sounds[tag]
+		}
+		return false
+	}
+
 	pause(tag) {
 		if (tag in this.sounds && this.sounds[tag].playing) {
 			const sound = this.sounds[tag]

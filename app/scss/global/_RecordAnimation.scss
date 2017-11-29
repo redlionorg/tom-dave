@@ -10,7 +10,7 @@
 		width: inherit;
 		z-index: 1;
 
-		img:first-child {
+		.about {
 			position: relative;
 		}
 		img {
@@ -27,6 +27,11 @@
 
 	.record {
 		top: 30px;
+	}
+
+	.reflection {
+		z-index: 5;
+		opacity: 1 !important;
 	}
 
 	.album img {

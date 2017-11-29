@@ -83,6 +83,10 @@
 		img.paused {
 			animation-play-state: paused;
 		}
+
+		.reflection {
+			z-index: 3;
+		}
 	}
 
 	.needle {

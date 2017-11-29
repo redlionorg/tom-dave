@@ -3,12 +3,8 @@ var webpack = require('webpack'),
     autoprefixer = require('autoprefixer'),
     precss = require('precss'),
     BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin,
+    ExtractTextPlugin = require('extract-text-webpack-plugin'),
     WebpackStripLoader = require('strip-loader'),
-    stripLoader = {
-     test: [/\.js$/, /\.es6$/],
-     exclude: /node_modules/,
-     loader: WebpackStripLoader.loader('console.log')
-    },
     HtmlWebpackPlugin = require('html-webpack-plugin'),
     HTMLWebpackPluginConfig = new HtmlWebpackPlugin({
         template: './app/index.html',
@@ -17,91 +13,100 @@ var webpack = require('webpack'),
     })
 
 module.exports = {
-  entry: [
-    './app/index.js'
-  ],
-  loaders: [
-    {
-      test: /\.scss$/,
-      loader: "style-loader!css-loader!postcss-loader"
-    },
-    stripLoader
-  ],
-  output: {
-    path: __dirname + '/dist',
-    filename: "index.compiled.js"
-  },
-  resolve: {
-    extensions: ['', '.js', '.jsx'],
-    alias: {
-      'TimelineLite': path.join(__dirname, 'node_modules/gsap/TimelineLite.js')
+entry: [
+'./app/index.js'
+],
+output: {
+path: __dirname + '/dist',
+filename: "index.compiled.js"
+},
+devtool: 'source-map',
+resolve: {
+extensions: ['.js', '.jsx'],
+alias: {
+  'TimelineLite': path.join(__dirname, 'node_modules/gsap/TimelineLite.js')
+}
+},
+module: {
+loaders: [
+  {
+    test: /\.js|.jsx$/,
+    exclude: /node_modules/,
+    include: [path.resolve(__dirname, 'app')],
+    loader: "babel-loader",
+    query: {
+        presets: ['react', 'es2015', 'stage-0']
     }
   },
-  module: {
-    loaders: [
-      {
-        test: /\.js|.jsx$/,
-        exclude: /node_modules/,
-        include: [path.resolve(__dirname, 'app')],
-        loader: "babel-loader",
-        query: {
-            presets: ['react', 'es2015', 'stage-0']
-        }
-      },
-      {
-        test: /\.js$/,
-        exclude: /node_modules/,
-        loader: 'eslint-loader'
-      },
-      {
-        test: /\.scss$/,
-        loader: "style-loader!css-loader!postcss-loader!sass-loader?sourceMap"
-      },
-      {
-        test: /\.jpg|.jpeg|.png|.gif|.svg$/,
-        loader: "file?name=images/[name].[ext]"
-      },
-      {
-          test: /\.(eot|svg|ttf|woff|woff2)$/,
-          loader: 'file?name=fonts/[name].[ext]'
-      },
-      {
-        test: /\.json$/,
-        loader: 'json-loader'
-      }
-    ],
-    sassLoader: {
-      includePaths: [path.resolve(__dirname, "./app/index.scss")]
-    }
+  {
+    test: /\.scss$/,
+    loader: ExtractTextPlugin.extract(['css-loader', 'sass-loader'])
   },
-  plugins: [
-    HTMLWebpackPluginConfig,
-    new webpack.DefinePlugin({
-        'process.env': {
-            'NODE_ENV': JSON.stringify('production')
-        }
-    }),
-    new BundleAnalyzerPlugin({
-      analyzerMode: 'static'
-    }),
-    new webpack.optimize.OccurenceOrderPlugin(),
-    new webpack.optimize.DedupePlugin(),
-        new webpack.optimize.UglifyJsPlugin({
-      mangle: false,
-       output: {
-          space_colon: false,
-          comments: function(node, comment) {
-              var text = comment.value;
-              var type = comment.type;
-              if (type == "comment2") {
-                  // multiline comment
-                  return /@copyright/i.test(text);
-              }
-          }
+  {
+    test: /\.jpg|.jpeg|.png|.gif|.svg$/,
+    loader: "file-loader?name=images/[name].[ext]"
+  },
+  {
+      test: /\.(eot|svg|ttf|woff|woff2)$/,
+      loader: 'file-loader?name=fonts/[name].[ext]'
+  },
+  {
+      test: /\.mp3$/,
+      loader: 'file-loader?name=audio/[name].[ext]'
+  },
+  {
+    test: /\.json$/,
+    loader: 'json-loader'
+  },
+  {
+    test: /\.js$/,
+    exclude: /node_modules/,
+    loader: 'eslint-loader'
+  },
+]
+},
+plugins: [
+  HTMLWebpackPluginConfig,
+  new webpack.DefinePlugin({
+      'process.env': {
+          'NODE_ENV': JSON.stringify('production')
       }
-    })
-  ],
-  postcss: function () {
-      return [precss, autoprefixer];
-  }
-};
+  }),
+  new BundleAnalyzerPlugin({
+    analyzerMode: 'static'
+  }),
+  new ExtractTextPlugin({ // define where to save the file
+    filename: 'index.css',
+    allChunks: true
+  }),
+  new webpack.LoaderOptionsPlugin({
+    options: {
+      eslint: {
+        configFile: './.eslintrc',  //your .eslintrc file 
+        emitWarning: true
+      },
+      sassLoader: {
+        includePaths: [path.resolve(__dirname, "./app/index.scss")]
+      },
+      resolveLoader: {
+        modules: ['node_modules']
+      }
+    }
+  }),
+  new webpack.optimize.OccurrenceOrderPlugin(),
+  new webpack.optimize.UglifyJsPlugin({
+    mangle: false,
+     output: {
+        space_colon: false,
+        comments: function(node, comment) {
+            var text = comment.value;
+            var type = comment.type;
+            if (type == "comment2") {
+                // multiline comment
+                return /@copyright/i.test(text);
+            }
+        }
+    }
+  })
+]
+}

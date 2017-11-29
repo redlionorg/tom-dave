@@ -16,6 +16,8 @@ export default class RecordAnimation extends Component {
 		this.cacheDOMElement('recordAbout', '.record .about')
 		this.cacheDOMElement('recordContact', '.record .contact')
 		this.cacheDOMElement('recordWork', '.record .work')
+		this.cacheDOMElement('record', '.record')
+		this.cacheDOMElement('recordInner', '.record-inner')
 
 		this.currentAlbum = undefined
 		this.currentAlbumImage = undefined
@@ -32,6 +34,7 @@ export default class RecordAnimation extends Component {
 
 	onAlbumAnimatedUp() {
 		if (!this.global.reading) {
+			this.elements.recordInner.animate({ rotate: '0deg' }, 0)
 			this.setGlobal('currentRecord', undefined)
 			this.setGlobal('animating', false)
 		}
@@ -45,8 +48,8 @@ export default class RecordAnimation extends Component {
 				onReverseComplete: this.onAlbumAnimatedUp.bind(this)
 			}, CSSPlugin)
 				.to(this.currentAlbum, 1, { x: 0, rotation: 90, boxShadow: '11px -8px 8px -2px rgba(0, 0, 0, 0.3) ' })
-				.to(this.currentRecord, 0, { opacity: 1 })
-				.to(this.currentRecord, 1.2, { y: 186 })
+				.to([this.currentRecord, this.elements.reflection], 0, { opacity: 1 })
+				.to([this.currentRecord, this.elements.reflection], 1.2, { y: 186 })
 				.add(() => {
 					if (!this.animatedDown) {
 						this.onAlbumAnimatedDown()
@@ -68,8 +71,8 @@ export default class RecordAnimation extends Component {
 				onReverseComplete: this.onAlbumAnimatedUp.bind(this)
 			}, CSSPlugin)
 				.to(this.currentAlbum, 1, { x: 0, y: 30, rotation: 90, boxShadow: '11px -8px 8px -2px rgba(0, 0, 0, 0.3) ' })
-				.to(this.currentRecord, 0, { opacity: 1 })
-				.to(this.currentRecord, 1.2, { scale: 0.95, y: yOffset })
+				.to([this.elements.record, this.currentRecord], 0, { opacity: 1 })
+				.to(this.elements.record, 1.2, { scale: 0.95, y: yOffset })
 				.add(() => {
 					if (!this.animatedDown) {
 						this.onAlbumAnimatedDown()
@@ -88,6 +91,18 @@ export default class RecordAnimation extends Component {
 		}
 		if (typeof this.currentRecord !== 'undefined') {
 			this.currentRecord.css('opacity', 0)
+		}
+	}
+
+	globalWillUpdate(param, value) {
+		switch (param) {
+		case 'currentRecord':
+			if (typeof this.currentAlbum !== 'undefined') {
+				this.currentAlbum.removeClass('show')
+			}
+			break
+		default:
+			break
 		}
 	}
 
@@ -111,7 +126,6 @@ export default class RecordAnimation extends Component {
 				this.currentRecord = this.elements.recordContact
 				break
 			default:
-				this.currentAlbum.removeClass('show')
 				this.currentAlbum = undefined
 				this.currentRecord = undefined
 				break
@@ -129,6 +143,9 @@ export default class RecordAnimation extends Component {
 			} else {
 				this.$.removeClass('hide-block')
 			}
+			break
+		case 'recordAngle':
+			this.elements.recordInner.animate({ rotate: `${value}deg` }, 0)
 			break
 		case 'recordOnPlayer':
 			if (!this.currentRecord) {

@@ -24,8 +24,8 @@ export default class AlbumGallery extends Component {
 
 			const zt = new ZingTouch()
 			const gesture = new zt.Swipe({ numInputs: 1 })
-			zt.body.bind(this.$[0], gesture, (data) => {
-				const { currentDirection, velocity } = data.detail.data[0]
+			zt.body.bind(this.$[0], 'swipe', (event) => {
+				const { currentDirection, velocity } = event.detail.data[0]
 				this.onSwipe(currentDirection, velocity)
 			})
 			this.ZingTouch = zt

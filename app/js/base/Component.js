@@ -1,3 +1,4 @@
+import $ from '../vendor/zepto'
 import Observer from './Observer'
 import Global from '../Global'
 
