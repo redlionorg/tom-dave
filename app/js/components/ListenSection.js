@@ -1,6 +1,6 @@
 import Component from '../base/Component'
 import Enum from '../Enum'
-import { WindowSize } from '../services'
+import { WindowSize, UserAgent } from '../services'
 
 const $ = window.$
 
@@ -14,10 +14,14 @@ export default class ListenSection extends Component {
 		this.cacheDOMElement('mapForeground', '.map .foreground')
 		this.cacheDOMElement('mapBackground', '.map .background')
 		this.cacheDOMElement('mapMiddleground', '.map .middleground')
+		this.cacheDOMElement('map', '.map')
 
 		WindowSize.on('resize', this.resize.bind(this))
 
-		this.elements.mapMiddleground.on('mouseover', this.onMapHover.bind(this))
+		if (UserAgent.isDesktop()) {
+			this.elements.mapMiddleground.on('mouseover', this.onMapHover.bind(this))
+			this.elements.mapBackground.on('mouseout', this.onMapOut.bind(this))
+		}
 	}
 
 	onMapHover() {
@@ -26,6 +30,14 @@ export default class ListenSection extends Component {
 			opacity: 0
 		}, () => {
 			foreground.css('display', 'none')
+		})
+	}
+
+	onMapOut() {
+		const middleground = $(this.elements.mapMiddleground)
+		middleground.css('display', 'block')
+		middleground.animate({
+			opacity: 1
 		})
 	}
 
@@ -43,6 +55,9 @@ export default class ListenSection extends Component {
 			}
 			break
 		case 'currentRecord':
+			if (typeof value === 'undefined') {
+				return
+			}
 			this.elements.about.removeClass('show')
 			this.elements.work.removeClass('show')
 			this.elements.contact.removeClass('show')

@@ -90,6 +90,7 @@ new Components.RecordPlayer(contentWrapper)
 new Components.ReadSection(app)
 const listenSection = new Components.ListenSection(app)
 new Components.WorkSection(listenSection)
+new Components.Legal(app)
 
 new Components.TVSlider('.slider.tv-slider', app)
 new Components.RadioSlider('.slider.radio-slider', app)

@@ -12,6 +12,10 @@ export default class Body extends Component {
 				this.$.addClass('entered')
 			}
 			break
+		case 'reading':
+			console.log(this.$)
+			this.$[0].scrollTop = 0
+			break
 		default:
 			break
 		}

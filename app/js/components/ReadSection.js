@@ -1,6 +1,6 @@
 import Component from '../base/Component'
 import Enum from '../Enum'
-import { WindowSize } from '../services'
+import { WindowSize, UserAgent } from '../services'
 
 export default class ReadSection extends Component {
 	constructor(parent) {
@@ -15,7 +15,10 @@ export default class ReadSection extends Component {
 
 		WindowSize.on('resize', this.resize.bind(this))
 
-		this.elements.mapMiddleground.on('mouseover', this.onMapHover.bind(this))
+		if (UserAgent.isDesktop()) {
+			this.elements.mapMiddleground.on('mouseover', this.onMapHover.bind(this))
+			this.elements.mapBackground.on('mouseout', this.onMapOut.bind(this))
+		}
 	}
 
 	onMapHover() {
@@ -27,7 +30,16 @@ export default class ReadSection extends Component {
 		})
 	}
 
+	onMapOut() {
+		const middleground = $(this.elements.mapMiddleground)
+		middleground.css('display', 'block')
+		middleground.animate({
+			opacity: 1
+		})
+	}
+
 	resize() {
+		console.log('resize read')
 		$(this.elements.mapBackground).css('height', this.elements.mapMiddleground.height() + 10)
 	}
 

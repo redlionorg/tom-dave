@@ -1,18 +1,19 @@
 .read-toggle {
 	position: fixed;
-	right: -42px;
-	top: 423px;
+	right: -10px;
+	top: 437px;
 	width: 90px;
-	height: 45px;
-	border-radius: 5px;
+	height: 41px;
+	border-radius: 5px 5px 0 0;
 	transform: rotate(-90deg);
 	z-index: 100;
 	opacity: 0;
 	pointer-events: none;
-	transition: 0.3s opacity, 0.1s transform;
+	transition: 0.3s opacity, 0.1s height, 0.1s transform;
 
 	button {
-		height: 25px;
+		height: 41px;
+		font-size: 1.3em;
 		position: absolute;
 		width: inherit;
 		color: #ffffff;
@@ -31,7 +32,8 @@
 	}
 
 	&:hover {
-		transform: rotate(-90deg) translateY(-5px);
+		height: 43px;
+		transform: rotate(-90deg) translateY(-1px);
 	}
 
 	@media(max-width: $phone) {

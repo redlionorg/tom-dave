@@ -18,24 +18,33 @@
 
 		.stopped, .normal {
 			position: absolute;
-			z-index: 2;
 			left: 0;
 			top: 0;
 		}
 
 		.playing, .hover {
 			position: relative;
+		}
+
+		.stopped {
+			z-index: 2;
+		}
+
+		.playing {
 			z-index: 1;
 		}
 
 		.hover {
+			z-index: 2;
 			opacity: 0;
 		}
 
-		.stopped, .playing {
-			&:hover .hover {
-				opacity: 1;
-			}
+		.normal {
+			z-index: 1;
+		}
+
+		&:hover .hover {
+			opacity: 1;
 		}
 
 		&:active{
@@ -156,7 +165,7 @@
 	}
 
 	100% {
-		transform: rotate(20deg)
+		transform: rotate(25deg)
 	}
 }
 

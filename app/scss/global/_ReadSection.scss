@@ -2,7 +2,61 @@
 	@include hcenter();
 	width: 640px;
 	top: 300px;
+	line-height: 15pt;
 	z-index: 1;
+
+	.legal {
+		color: #000;
+	}
+
+	.about {
+		.message {
+			width: 127px;
+			background-color: #3bb8e0;
+			position: relative;
+			margin: 30px 0 15px 0;
+	
+			.message-inner {
+				padding: 8px;
+			}
+	
+			.arrow {
+				position: absolute;
+				top: 50%;
+				transform: translateY(-50%);
+				width: 10px;
+				color: white;
+				font-size: 9pt;
+			}
+	
+			.arrow-left {
+				left: 12px;
+			}
+	
+			.arrow-right {
+				right: 12px;
+			}
+	
+			p {
+				text-transform: uppercase;
+				text-align: center;
+				color: white;
+				font-size: 9pt;
+			}
+		}
+	}
+
+	.work {
+		.orange {
+			color: #f5571d;
+		}
+	}
+
+	.contact {
+		.map {
+			margin-top: 20px;
+		}
+	}
 
 	.content {
 		opacity: 0;
@@ -12,46 +66,7 @@
 	h4 {
 		color: $orangeColor;
 		line-height: 1.4em;
-	}
-
-	.contact {
-		.map {
-			position: relative;
-			width: 80%;
-			left: 50%;
-			transform: translateX(-50%);
-			margin: 40px 0 80px 0;
-
-			.foreground {
-				position: absolute;
-				top: 0;
-				left: 0;
-				width: 100%;
-				z-index: 4;
-				pointer-events: none;
-			}
-
-			.middleground {
-				position: absolute;
-				width: 93%;
-				left: 4%;
-				top: 4%;
-				transition: opacity 0.3s;
-				z-index: 3;
-			}
-
-			.background {
-				position: relative;
-				width: 92.5%;
-				margin-left: 4%;
-				margin-top: 4%;
-				z-index: 2;
-			}
-
-			iframe {
-				pointer-events: auto;
-			}
-		}
+		text-transform: uppercase;
 	}
 
 	@media(min-height: 950px) {

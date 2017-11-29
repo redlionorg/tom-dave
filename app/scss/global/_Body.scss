@@ -1,8 +1,8 @@
 .body {
 	position: relative;
 	height: calc(100% - #{$headerHeight});
-	width: calc(100% + 84px);
-	margin-left: -42px;
+	width: 100%;
+	margin-left: 0;
 	background: $loadingBackgroundColor;
 	overflow: hidden;
 

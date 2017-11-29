@@ -67,11 +67,11 @@
 	}
 
 	button.enter:hover {
-		transform: translateX(-50%) translateY(1px);
+		transform: translateX(-50%) translateY(2px);
 	}
 
 	button.enter:active {
-		transform: translateX(-50%) translateY(2px);
+		transform: translateX(-50%) translateY(3px);
 	}
 
 	@media(max-height: 950px) {
