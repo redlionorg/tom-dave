@@ -62,9 +62,9 @@ export default class RecordAnimation extends Component {
 		} else {
 			let yOffset = 0
 			if (WindowSize.height >= 950) {
-				yOffset = 330
+				yOffset = 350
 			} else {
-				yOffset = 226
+				yOffset = 246
 			}
 
 			this.timeline = new TimelineLite({

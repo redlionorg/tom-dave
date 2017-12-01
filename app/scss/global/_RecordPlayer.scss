@@ -1,8 +1,8 @@
 .record-player {
 	position: relative !important;
 	@include hcenter();
-	width: 320px;
-	top: 300px;
+	width: 350px;
+	top: 320px;
 	z-index: 1;
 
 	.background {
@@ -12,8 +12,8 @@
 	.play-button {
 		position: absolute;
 		width: percentage(75 / 490);
-		bottom: 18px;
-		left: 16px;
+		bottom: 19px;
+		left: 18px;
 		cursor: pointer;
 
 		.stopped, .normal {
@@ -58,8 +58,8 @@
 
 	.record {
 		position: absolute;
-		width: 180px;
-		left: 70px;
+		width: 200px;
+		left: 75px;
 		top: 16px;
 		z-index: 2;
 
@@ -92,8 +92,8 @@
 	.needle {
 		position: absolute;
 		width: 91.6%;
-		top: -96px;
-		right: -104px;
+		top: -104px;
+		right: -114px;
 		z-index: 5;
 
 		&.active {

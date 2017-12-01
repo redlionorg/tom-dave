@@ -39,7 +39,6 @@ export default class ReadSection extends Component {
 	}
 
 	resize() {
-		console.log('resize read')
 		$(this.elements.mapBackground).css('height', this.elements.mapMiddleground.height() + 10)
 	}
 
@@ -48,6 +47,7 @@ export default class ReadSection extends Component {
 		case 'reading':
 			if (value) {
 				this.$.removeClass('hide-block')
+				this.resize()
 			} else {
 				this.$.addClass('hide-block')
 			}

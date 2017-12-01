@@ -13,7 +13,6 @@ export default class Body extends Component {
 			}
 			break
 		case 'reading':
-			console.log(this.$)
 			this.$[0].scrollTop = 0
 			break
 		default:

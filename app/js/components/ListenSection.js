@@ -58,20 +58,29 @@ export default class ListenSection extends Component {
 			if (typeof value === 'undefined') {
 				return
 			}
-			this.elements.about.removeClass('show')
-			this.elements.work.removeClass('show')
-			this.elements.contact.removeClass('show')
+			this.elements.about.addClass('fade-out')
+			this.elements.contact.addClass('fade-out')
+			this.elements.work.addClass('fade-out')
+			break
+		case 'playing':
+			if (typeof this.global.currentRecord === 'undefined') {
+				return
+			}
 
-			switch (value) {
+			this.elements.about.removeClass('fade-out').removeClass('fade-in')
+			this.elements.contact.removeClass('fade-out').removeClass('fade-in')
+			this.elements.work.removeClass('fade-out').removeClass('fade-in')
+
+			switch (this.global.currentRecord) {
 			case Enum.ALBUMS.ABOUT:
-				this.elements.about.addClass('show')
+				this.elements.about.addClass('fade-in')
 				break
 			case Enum.ALBUMS.CONTACT:
-				this.elements.contact.addClass('show')
+				this.elements.contact.addClass('fade-in')
 				this.resize()
 				break
 			case Enum.ALBUMS.WORK:
-				this.elements.work.addClass('show')
+				this.elements.work.addClass('fade-in')
 				break
 			default:
 				break

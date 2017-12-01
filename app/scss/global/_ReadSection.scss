@@ -44,6 +44,13 @@
 				font-size: 9pt;
 			}
 		}
+
+		.cactus {
+			position: relative;
+			margin-top: 40px;
+			left: 68%;
+			width: 180px;
+		}
 	}
 
 	.work {
@@ -54,7 +61,42 @@
 
 	.contact {
 		.map {
+			position: relative;
+			width: 80%;
+			margin-left: 50%;
+			transform: translateX(-50%);
+			margin-bottom: 80px;
 			margin-top: 20px;
+	
+			.foreground {
+				position: absolute;
+				top: -5px;
+				left: 0;
+				width: 100%;
+				z-index: 4;
+				pointer-events: none;
+			}
+	
+			.middleground {
+				position: absolute;
+				width: 88%;
+				left: 5%;
+				top: 4%;
+				transition: opacity 0.3s;
+				z-index: 3;
+			}
+	
+			.background {
+				position: relative;
+				width: 88%;
+				margin-left: 5%;
+				margin-top: 4%;
+				z-index: 2;
+			}
+	
+			iframe {
+				pointer-events: auto;
+			}
 		}
 	}
 

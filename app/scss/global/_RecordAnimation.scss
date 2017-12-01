@@ -1,6 +1,6 @@
 .record-animation {
 	top: 50px;
-	width: 200px;
+	width: 220px;
 	@include hcenter();
 	z-index: 3;
 	pointer-events: none;
@@ -39,11 +39,11 @@
 	}
 
 	.album .contact {
-		transform: translateX(220px);
+		transform: translateX(240px);
 	}
 
 	.album .about {
-		transform: translateX(-220px);
+		transform: translateX(-240px);
 	}
 
 	.rotateAlbum {

@@ -1,7 +1,7 @@
 .album-gallery {
 	position: relative;
 	display: inline-block;
-	width: 640px;
+	width: 700px;
 	top: 50px;
 	@include hcenter();
 	z-index: 2;
@@ -21,8 +21,8 @@
 
 	.album {
 		position: relative;
-		width: 200px;
-		height: 200px;
+		width: 220px;
+		height: 220px;
 		float: left;
 		margin: 0 10px;
 		cursor: pointer;

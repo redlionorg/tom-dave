@@ -16,7 +16,6 @@ class _WindowSize extends Observer {
 	onResize() {
 		this.width = this.$.width()
 		this.height = this.$.height()
-		console.log('resize', this.width, this.height)
 		this.emit('resize', this.width, this.height)
 	}
 }

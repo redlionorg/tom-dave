@@ -12,7 +12,7 @@ class _AudioManager extends Observer {
 			id: tag,
 			playing: false
 		}
-		const howl = new Howl({ src: path, onend: this.onEnd.bind(this, sound) })
+		const howl = new Howl({ src: path, onend: this.onEnd.bind(this, tag, sound) })
 		sound.audio = howl
 
 		this.sounds[tag] = sound
@@ -52,7 +52,10 @@ class _AudioManager extends Observer {
 		}
 	}
 
-	onEnd(sound) {
+	onEnd(tag, sound) {
+		if (tag in this.sounds) {
+			this.sounds[tag].playing = false
+		}
 		this.emit('end', sound)
 	}
 }

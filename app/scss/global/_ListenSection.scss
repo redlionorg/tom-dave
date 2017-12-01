@@ -7,7 +7,14 @@
 
 	.content {
 		opacity: 0;
-		display: none;
+		visibility: hidden;
+		transform: translateY(20px);
+		transition: transform 0.8s;
+		transition-timing-function: ease-out;
+
+		&.fade-in {
+			transform: translateY(0px);
+		}
 	}
 
 	@media(max-width: $phone) {
@@ -40,46 +47,6 @@
 	display: none;
 	text-align: center;
 	margin-bottom: 30px;
-}
-
-.contact {
-	.map {
-		position: relative;
-		width: 80%;
-		margin-left: 50%;
-		transform: translateX(-50%);
-		margin-bottom: 80px;
-
-		.foreground {
-			position: absolute;
-			top: 0;
-			left: 0;
-			width: 100%;
-			z-index: 4;
-			pointer-events: none;
-		}
-
-		.middleground {
-			position: absolute;
-			width: 93%;
-			left: 4%;
-			top: 4%;
-			transition: opacity 0.3s;
-			z-index: 3;
-		}
-
-		.background {
-			position: relative;
-			width: 92.5%;
-			margin-left: 4%;
-			margin-top: 4%;
-			z-index: 2;
-		}
-
-		iframe {
-			pointer-events: auto;
-		}
-	}
 }
 
 .work {

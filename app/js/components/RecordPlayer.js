@@ -121,6 +121,7 @@ export default class RecordPlayer extends Component {
 				}
 
 				AudioManager.stop(this.global.currentRecord)
+				AudioManager.stop('record_noises')
 				this.elements.button.removeClass('playing')
 				this.elements[this.global.currentRecord].addClass('paused')
 				this.setGlobal('needleActivated', false)

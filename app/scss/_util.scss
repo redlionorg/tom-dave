@@ -25,3 +25,49 @@
 .orange {
 	color: $orangeColor;
 }
+
+@keyframes fadeIn {
+	0% {
+		visibility: hidden;
+		opacity: 0;
+	}
+
+	1% {
+		visibility: visible;
+		opacity: 0;
+	}
+
+	100% {
+		visibility: visible;
+		opacity: 1;
+	}
+}
+
+@keyframes fadeOut {
+	0% {
+		visibility: visible;
+		opacity: 1;
+	}
+
+	99% {
+		visibility: visible;
+		opacity: 0;
+	}
+
+	100% {
+		visibility: hidden;
+		opacity: 0;
+	}
+}
+
+.fade-in {
+	animation-name: fadeIn;
+	animation-duration: 1s;
+	animation-fill-mode: forwards;
+}
+
+.fade-out {
+	animation-name: fadeOut;
+	animation-duration: 1s;
+	animation-fill-mode: forwards;
+}

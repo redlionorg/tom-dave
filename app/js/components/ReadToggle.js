@@ -16,7 +16,7 @@ export default class ReadToggle extends Component {
 			this.setGlobal('reading', false)
 		} else {
 			this.setGlobal('reading', true)
-			AudioManager.stop(this.global.currentRecord)
+			this.setGlobal('playing', false)
 		}
 	}
 
