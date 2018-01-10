@@ -98,7 +98,7 @@ new Components.TVSlider('.slider.tv-slider', app)
 new Components.RadioSlider('.slider.radio-slider', app)
 
 const userHasVisited = Store.get('visited')
-if (!!userHasVisited) {
+if (userHasVisited) {
 	loader.setLoaded()
 	State.set('visited', true)
 	State.set('entered', true)

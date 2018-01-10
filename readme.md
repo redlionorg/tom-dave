@@ -1,9 +1,9 @@
-#tom-dave  
+# tom-dave  
   
-#Getting Started  
+# Getting Started  
 ```npm install```  
   
-#Development  
+# Development  
 ```npm start```  
 This runs webpack, which transpiles ```app/index.js``` and ```app/index.html``` to ```dist/index.compiled.js``` and ```dist/index.html``` respectively.  
   
@@ -12,18 +12,19 @@ This transpiles ```app/index.scss``` to ```dist/index.css```. This is done to ke
     
 Assets are not handled automatically. Any change to ```audio``` or ```images``` must be manually copied to the dist folder.  
   
-#Code style  
+# Code style  
 Javascript is linted using eslint via webpack. This ensures similar formatting throughout the codebase. The rules enforced can be found here: 
 https://github.com/airbnb/javascript
 
-#Stylesheet layout  
+# Stylesheet layout  
 Each component has it's own stylesheet with the same name. Styles exclusive to desktop or mobile are separated into ```app/scss/~platform/~component``` and are applied dynamically based on the user agent.  
   
-#Zepto.js  
+# Zepto.js  
 This application uses a custom build of Zepto.js for dom selection. It has the zepto, event, ie, and fx modules enabled. A compiled copy is found at ```app/js/vendor```. If a recompile is ever necessary, the codebase with instructions may be found here:  
 https://github.com/madrobby/zepto  
 
-#DOM manipulation  
+# App layout  
+### DOM manipulation  
 This application employs a component system somewhat similar to React. The intent is to have each component be concerned only with itself. Any outside data is to be sent through the messaging system explained below. Each component has a few convenience methods for dealing with the DOM. For posterity, a component is created like this
 
 ```
@@ -92,7 +93,7 @@ class Home extends Component {
   
 ```cacheDOMElement()``` uses ```$.find()```. It only searches within it's own DOM tree.
 
-#App messaging  
+### Messaging  
 This application employs a messaging system following the (observer pattern)[http://www.oodesign.com/observer-pattern.html] and lifecycle methods similar in function to React. This is implemented via ```State.js``` which is consumed by ```Component.js```. App components can then extend ```Component.js``` and implement it's methods.  
   
 To start, we must initialize the message's default value. This is done in ```index.js```. When initializing a message's default value, it is not sent to ```stateWillUpdate``` or ```stateDidUpdate```.
