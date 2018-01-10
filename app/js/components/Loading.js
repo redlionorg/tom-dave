@@ -1,4 +1,5 @@
 import Component from '../base/Component'
+import { Store } from '../services'
 
 export default class Loading extends Component {
 	constructor(parent) {
@@ -29,6 +30,11 @@ export default class Loading extends Component {
 			} else {
 				this.elements.button.removeClass('show')
 				this.elements.button.addClass('hide')
+			}
+			break
+		case 'entered':
+			if (value && !this.state.visited) {
+				setTimeout(() => this.element.addClass('entered'), 1000)
 			}
 			break
 		default:

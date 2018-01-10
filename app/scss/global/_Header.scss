@@ -4,6 +4,7 @@
 	z-index: 5;
 	height: $headerHeight;
 	background: #3aa7d0;
+	// width: calc(100% - 14px);
 
 	img {
 		@include center();

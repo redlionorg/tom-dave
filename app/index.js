@@ -40,8 +40,8 @@ class App extends Component {
 			needleActivated: false,
 			recordRotation: undefined,
 			currentAlbum: undefined,
-			cuedAlbum: undefined,
-			animateMobileCuedAlbumGallery: false
+			cuedRecord: undefined,
+			mobileGalleryIndex: 0
 		})
 
 		if (UserAgent.isMobile()) {
@@ -65,9 +65,6 @@ class App extends Component {
 		switch (param) {
 		case 'animating':
 			if (!value && typeof this.state.cuedRecord !== 'undefined' && !this.state.playing && !this.state.reading) {
-				if (UserAgent.isMobile()) {
-					this.setState('animateMobileCuedAlbumGallery', true)
-				}
 				setTimeout(() => {
 					this.setState('currentRecord', this.state.cuedRecord)
 					this.setState('cuedRecord', undefined)

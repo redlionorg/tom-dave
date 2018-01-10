@@ -30,8 +30,17 @@ export default class Album extends Component {
 			}
 			this.setProp('selected', true)
 		} else {
-			this.setState('cuedRecord', this.prop.index)
-			this.setState('playing', false)
+			if (UserAgent.isMobile()) {
+				if (this.state.mobileGalleryIndex === this.state.currentRecord) {
+					this.setState('playing', false)
+				} else {
+					this.setState('cuedRecord', this.prop.index)
+					this.setState('mobileGalleryIndex', this.state.currentRecord)
+				}
+			} else {
+				this.setState('cuedRecord', this.prop.index)
+				this.setState('playing', false)
+			}
 		}
 	}
 

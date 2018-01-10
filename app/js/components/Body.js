@@ -1,8 +1,11 @@
 import Component from '../base/Component'
+import { WindowSize } from '../services'
 
 export default class Body extends Component {
 	constructor(parent) {
 		super('.body', parent)
+		WindowSize.on('resize', this.resize.bind(this))
+		this.largeScreen = WindowSize.height >= 900
 	}
 
 	stateDidUpdate(param, value) {
@@ -17,6 +20,18 @@ export default class Body extends Component {
 			break
 		default:
 			break
+		}
+	}
+
+	resize() {
+		const windowIsLarge = WindowSize.height >= 900
+		// extend element to 100% height only when the window is scrollable
+		if (windowIsLarge && !this.largeScreen) {
+			this.largeScreen = true
+			this.element.css('height', '100%')
+		} else if (!windowIsLarge && this.largeScreen) {
+			this.largeScreen = false
+			this.element.css('height', 'auto')
 		}
 	}
 }

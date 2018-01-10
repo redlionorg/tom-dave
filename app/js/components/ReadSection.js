@@ -15,8 +15,8 @@ export default class ReadSection extends Component {
 		this.elements.radioButton.click(this.onRadioButtonClick.bind(this))
 		this.elements.tvButton.click(this.onTVButtonClick.bind(this))
 
-		// GoogleMapsAPI.on('ready', this.onMapAPIReady.bind(this))
-		this.map = GoogleMapsAPI.create(this.elements.map[0])
+		WindowSize.on('resize', this.onResize.bind(this))
+		this.mapElements = GoogleMapsAPI.create(this.elements.map[0])
 	}
 
 	onTVButtonClick() {
@@ -25,6 +25,12 @@ export default class ReadSection extends Component {
 
 	onRadioButtonClick() {
 		this.setState('showRadioLightbox', true)
+	}
+
+	onResize() {
+		const { map, marker } = this.mapElements
+		GoogleMapsAPI.google.maps.event.trigger(map, 'resize') // force redraw when visible so the map isn't blank
+		map.setCenter(new GoogleMapsAPI.google.maps.LatLng(GoogleMapsAPI.lat, GoogleMapsAPI.lng))
 	}
 
 	stateDidUpdate(param, value) {
@@ -50,7 +56,7 @@ export default class ReadSection extends Component {
 				break
 			case Enum.ALBUMS.CONTACT:
 				this.elements.contact.addClass('show')
-				GoogleMapsAPI.google.maps.event.trigger(this.map, 'resize') // force redraw when visible so the map isn't blank
+				this.onResize()
 				break
 			case Enum.ALBUMS.WORK:
 				this.elements.work.addClass('show')

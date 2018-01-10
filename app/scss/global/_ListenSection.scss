@@ -105,6 +105,14 @@
 			pointer-events: none;
 		}
 	}
+
+	@media(min-height: $largeScreen) {
+		width: 476px;
+
+		.rail {
+			left: 13.2%;
+		}
+	}
 }
 
 .work {

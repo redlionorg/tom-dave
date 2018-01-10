@@ -7,6 +7,7 @@
 	z-index: 2;
 	display: inline-block;
 	margin-top: 120px;
+	opacity: 1;
 
 	&.visited {
 		transition: none !important;
@@ -16,6 +17,10 @@
 	&.entered {
 		transition: 1s transform;
 		transform: translateX(0%);
+	}
+
+	&:not(.loaded) {
+		opacity: 0;
 	}
 
 	&.read .background .colored {

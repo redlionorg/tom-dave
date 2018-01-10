@@ -1,5 +1,5 @@
 .read-toggle {
-	position: absolute;
+	position: fixed;
     right: -30px;
 	top: 457px;
     width: 90px;
@@ -36,7 +36,7 @@
 	}
 
 	@media(max-width: $phone) {
-		right: -35px;
+		right: -45px;
 		top: 257px;
 
 		&:hover {

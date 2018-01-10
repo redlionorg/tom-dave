@@ -4,6 +4,8 @@ class GoogleMapsAPIClass extends Observer {
 	constructor() {
 		super()
 		this.ready = false
+		this.lat = 43.6477
+		this.lng = -79.4007
 		this.styles = [
 			{
 				elementType: 'geometry',
@@ -150,22 +152,27 @@ class GoogleMapsAPIClass extends Observer {
 			}
 		]
 
-		// window.initMap = this.onAPIReady.bind(this)
 		this.onAPIReady()
 	}
 
 	onAPIReady() {
 		this.ready = true
 		this.google = window.google
-		// this.emit('ready')
 	}
 
 	create(element) {
-		return new window.google.maps.Map(element, {
-			center: { lat: 43.6477, lng: -79.4007 },
+		const map = new window.google.maps.Map(element, {
+			center: { lat: this.lat, lng: this.lng },
 			zoom: 17,
 			styles: this.styles
 		})
+
+		const marker = new window.google.maps.Marker({
+			position: { lat: this.lat, lng: this.lng },
+			map
+		})
+
+		return { map, marker }
 	}
 }
 

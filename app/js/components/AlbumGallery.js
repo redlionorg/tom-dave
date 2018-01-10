@@ -46,12 +46,13 @@ export default class AlbumGallery extends Component {
 		}
 	}
 
-	setGalleryIndex(index) {
-		if (index < 0 || index > 2) {
+	setGalleryIndex(index, didSelect = false) {
+		if (index < 0 || index > 2 || this.index === index || !UserAgent.isMobile()) {
 			return
 		}
 
 		this.index = index
+		this.setState('mobileGalleryIndex', index)
 		const strVal = index + 1
 
 		for (let index1 = 1; index1 <= 3; index1 += 1) {
@@ -109,15 +110,33 @@ export default class AlbumGallery extends Component {
 				this.albums[Enum.ALBUMS.ABOUT].deselect()
 				this.albums[Enum.ALBUMS.WORK].deselect()
 				this.albums[Enum.ALBUMS.CONTACT].deselect()
+			} else {
+				this.setGalleryIndex(value)
 			}
 			break
-		case 'animateMobileCuedAlbumGallery':
-			if (value) {
-				this.setGalleryIndex(this.state.cuedRecord)
+		case 'mobileGalleryIndex':
+			this.setGalleryIndex(value)
 
+			if (typeof this.state.cuedRecord !== 'undefined') {	// if a record is cued, it was selected and should be played
+				console.log('cued')
 				setTimeout(() => {
-					this.setState('animateMobileCuedAlbumGallery', false)
+					this.setState('playing', false)
 				}, 300)
+			}
+			break
+		case 'animating':
+			if (UserAgent.isMobile() && typeof this.state.currentRecord !== 'undefined') {
+				if (!value) {
+					console.log('animating false, hide album', this.state.currentRecord)
+					// show the gallery record again so the user can navigate
+					this.albums[this.state.currentRecord].element.css('opacity', 1)
+				} else {
+					// only hide when this is set after init
+					console.log('animating true, show album', this.state.currentRecord)
+					if (this.state.entered) {
+						this.albums[this.state.currentRecord].element.css('opacity', 0)
+					}
+				}
 			}
 			break
 		default:

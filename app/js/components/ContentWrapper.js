@@ -1,13 +1,9 @@
 import $ from '../vendor/zepto'
 import Component from '../base/Component'
-import { WindowSize } from '../services'
 
 export default class ContentWrapper extends Component {
 	constructor(parent) {
 		super('.content-wrapper', parent)
-		this.largeScreen = WindowSize.height >= 900
-
-		WindowSize.on('resize', this.resize.bind(this))
 	}
 
 	stateDidUpdate(param, value) {
@@ -26,6 +22,11 @@ export default class ContentWrapper extends Component {
 				this.element.removeClass('visited')
 			}
 			break
+		case 'loaded':
+			if (value) {
+				this.element.addClass('loaded')
+			}
+			break
 		case 'reading':
 			if (value) {
 				this.element.removeClass('listen')
@@ -37,18 +38,6 @@ export default class ContentWrapper extends Component {
 			break
 		default:
 			break
-		}
-	}
-
-	resize() {
-		const windowIsLarge = WindowSize.height >= 900
-		// extend element to 100% height only when the window is scrollable
-		if (windowIsLarge && !this.largeScreen) {
-			this.largeScreen = true
-			this.elements.body.css('height', '100%')
-		} else if (!windowIsLarge && this.largeScreen) {
-			this.largeScreen = false
-			this.elements.body.css('height', 'auto')
 		}
 	}
 }

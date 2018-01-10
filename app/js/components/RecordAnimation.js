@@ -1,7 +1,7 @@
 import Component from '../base/Component'
 import WindowSize from '../services/WindowSize'
-import Enum from '../Enum'
 import UserAgent from '../services/UserAgent'
+import Enum from '../Enum'
 
 const CSSPlugin = require('../../../node_modules/gsap/CSSPlugin.js')
 const TimelineLite = require('../../../node_modules/gsap/TimelineLite.js')
@@ -18,6 +18,7 @@ export default class RecordAnimation extends Component {
 		this.cacheDOMElement('recordWork', '.record .work')
 		this.cacheDOMElement('record', '.record')
 		this.cacheDOMElement('recordInner', '.record-inner')
+		this.cacheDOMElement('reflection', '.reflection')
 
 		this.currentAlbum = undefined
 		this.currentAlbumImage = undefined
@@ -34,7 +35,9 @@ export default class RecordAnimation extends Component {
 
 	onAlbumAnimatedUp() {
 		if (!this.state.reading) {
-			this.elements.recordInner.animate({ rotate: '0deg' }, 0)
+			this.elements.recordAbout.animate({ rotate: '0deg' }, 0)
+			this.elements.recordContact.animate({ rotate: '0deg' }, 0)
+			this.elements.recordWork.animate({ rotate: '0deg' }, 0)
 			this.setState('currentRecord', undefined)
 			this.setState('animating', false)
 		}
@@ -108,10 +111,20 @@ export default class RecordAnimation extends Component {
 
 	stateDidUpdate(param, value) {
 		switch (param) {
+		case 'animating':
+			if (UserAgent.isMobile() && typeof this.currentAlbum !== 'undefined') {
+				if (!value) {
+					this.currentAlbum.removeClass('show')
+				} else {
+					this.currentAlbum.addClass('show')
+				}
+			}
+			break
 		case 'currentRecord':
 			if (this.state.reading) {
 				break
 			}
+
 			switch (value) {
 			case Enum.ALBUMS.ABOUT:
 				this.currentAlbum = this.elements.albumAbout
@@ -145,7 +158,7 @@ export default class RecordAnimation extends Component {
 			}
 			break
 		case 'recordAngle':
-			this.elements.recordInner.animate({ rotate: `${value}deg` }, 0)
+			this.currentRecord.animate({ rotate: `${value}deg` }, 0)
 			break
 		case 'recordOnPlayer':
 			if (!this.currentRecord) {
@@ -153,8 +166,10 @@ export default class RecordAnimation extends Component {
 			}
 			if (value) {
 				this.currentRecord.css('opacity', 0)
+				this.elements.reflection.css('opacity', 0)
 			} else {
 				this.currentRecord.css('opacity', 1)
+				this.elements.reflection.css('opacity', 1)
 				this.timeline.reverse()
 			}
 			break

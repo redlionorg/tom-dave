@@ -1,11 +1,9 @@
 .body {
 	position: relative;
-	width: calc(100% + 17px);
+	// width: calc(100% + 17px);
 
 	margin-left: 0;
 	background: $loadingBackgroundColor;
-	overflow: hidden;
-	overflow-y: scroll;
 	
 	&.entered {
 	}
