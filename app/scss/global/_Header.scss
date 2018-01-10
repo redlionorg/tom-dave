@@ -1,13 +1,15 @@
 .header {
-	position: relative;
+	position: fixed;
 	width: 100%;
+	z-index: 5;
 	height: $headerHeight;
 	background: #3aa7d0;
 
 	img {
 		@include center();
 		z-index: 1;
-		width: 470px;
+		height: 100%;
+		width: auto;
 	}
 
 	.lit {
@@ -22,10 +24,10 @@
 	}
 
 	@media(max-width: $phone) {
-		height: 65px;
+		height: 75px;
 
 		img {
-			width: 250px;
+			height: 99%;
 		}
 	}
 }

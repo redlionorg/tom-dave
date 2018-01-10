@@ -26,17 +26,17 @@ export default class RecordAnimation extends Component {
 	}
 
 	onAlbumAnimatedDown() {
-		if (!this.global.reading) {
-			this.setGlobal('recordOnPlayer', true)
-			this.setGlobal('needleActivated', true)
+		if (!this.state.reading) {
+			this.setState('recordOnPlayer', true)
+			this.setState('needleActivated', true)
 		}
 	}
 
 	onAlbumAnimatedUp() {
-		if (!this.global.reading) {
+		if (!this.state.reading) {
 			this.elements.recordInner.animate({ rotate: '0deg' }, 0)
-			this.setGlobal('currentRecord', undefined)
-			this.setGlobal('animating', false)
+			this.setState('currentRecord', undefined)
+			this.setState('animating', false)
 		}
 	}
 
@@ -48,8 +48,8 @@ export default class RecordAnimation extends Component {
 				onReverseComplete: this.onAlbumAnimatedUp.bind(this)
 			}, CSSPlugin)
 				.to(this.currentAlbum, 1, { x: 0, rotation: 90, boxShadow: '11px -8px 8px -2px rgba(0, 0, 0, 0.3) ' })
-				.to([this.currentRecord, this.elements.reflection], 0, { opacity: 1 })
-				.to([this.currentRecord, this.elements.reflection], 1.2, { y: 186 })
+				.to([this.elements.record, this.currentRecord], 0, { opacity: 1 })
+				.to([this.elements.record], 1.2, { y: 198 })
 				.add(() => {
 					if (!this.animatedDown) {
 						this.onAlbumAnimatedDown()
@@ -61,10 +61,10 @@ export default class RecordAnimation extends Component {
 				.to(this.currentAlbum, 1, { x: xOrigin, y: 0, rotation: 0, boxShadow: '11px 8px 8px -2px rgba(0, 0, 0, 0.3) ' })
 		} else {
 			let yOffset = 0
-			if (WindowSize.height >= 950) {
-				yOffset = 350
+			if (WindowSize.height >= 900) {
+				yOffset = 330
 			} else {
-				yOffset = 246
+				yOffset = 256
 			}
 
 			this.timeline = new TimelineLite({
@@ -72,7 +72,7 @@ export default class RecordAnimation extends Component {
 			}, CSSPlugin)
 				.to(this.currentAlbum, 1, { x: 0, y: 30, rotation: 90, boxShadow: '11px -8px 8px -2px rgba(0, 0, 0, 0.3) ' })
 				.to([this.elements.record, this.currentRecord], 0, { opacity: 1 })
-				.to(this.elements.record, 1.2, { scale: 0.95, y: yOffset })
+				.to(this.elements.record, 1.2, { scale: 1, y: yOffset })
 				.add(() => {
 					if (!this.animatedDown) {
 						this.onAlbumAnimatedDown()
@@ -94,7 +94,7 @@ export default class RecordAnimation extends Component {
 		}
 	}
 
-	globalWillUpdate(param, value) {
+	stateWillUpdate(param, value) {
 		switch (param) {
 		case 'currentRecord':
 			if (typeof this.currentAlbum !== 'undefined') {
@@ -106,10 +106,10 @@ export default class RecordAnimation extends Component {
 		}
 	}
 
-	globalDidUpdate(param, value) {
+	stateDidUpdate(param, value) {
 		switch (param) {
 		case 'currentRecord':
-			if (this.global.reading) {
+			if (this.state.reading) {
 				break
 			}
 			switch (value) {

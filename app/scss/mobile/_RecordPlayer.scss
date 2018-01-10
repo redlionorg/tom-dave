@@ -1,0 +1,7 @@
+.record-player {
+	.play-button {
+		&:hover .hover {
+			opacity: 0;
+		}
+	}
+}

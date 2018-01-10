@@ -1,12 +1,14 @@
 import Slider from './Slider'
 
 export default class RadioSlider extends Slider {
-	globalDidUpdate(param, value) {
+	stateDidUpdate(param, value) {
 		switch (param) {
 		case 'showRadioLightbox':
 			if (value) {
+				this.setState('animating', true)
 				this.show()
 			} else {
+				this.setState('animating', false)
 				this.hide()
 			}
 			break
@@ -22,6 +24,6 @@ export default class RadioSlider extends Slider {
 
 	hide() {
 		super.hide()
-		this.setGlobal('showRadioLightbox', false)
+		this.setState('showRadioLightbox', false)
 	}
 }

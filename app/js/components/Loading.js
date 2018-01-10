@@ -9,15 +9,23 @@ export default class Loading extends Component {
 	}
 
 	onButtonClick() {
-		this.setGlobal('entered', true)
+		this.setState('entered', true)
 	}
 
-	globalDidUpdate(param, value) {
+	stateDidUpdate(param, value) {
 		switch (param) {
+		case 'visited':
+			if (value) {
+				this.$.addClass('visited')
+			}
+			break
 		case 'loaded':
 			if (value) {
-				this.elements.button.addClass('show')
-				this.elements.button.removeClass('hide')
+				this.$.addClass('loaded')
+				setTimeout(() => {
+					this.elements.button.addClass('show')
+					this.elements.button.removeClass('hide')
+				}, 300)
 			} else {
 				this.elements.button.removeClass('show')
 				this.elements.button.addClass('hide')

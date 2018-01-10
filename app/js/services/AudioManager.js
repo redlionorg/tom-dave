@@ -27,10 +27,11 @@ class _AudioManager extends Observer {
 		}
 	}
 
-	stop(tag) {
+	stop(tag, emit = true) {
 		if (tag in this.sounds && this.sounds[tag].playing) {
 			const sound = this.sounds[tag]
 			sound.audio.stop()
+			sound.audio.seek(0)
 			sound.playing = false
 			this.emit('stop', sound)
 		}

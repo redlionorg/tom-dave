@@ -3,6 +3,12 @@
 	width: 300px;
 	color: $loadingTextColor;
 	z-index: 1;
+	transition: opacity 0.1s;
+	transition-delay: 1s;
+
+	&.entered {
+		opacity: 0;
+	}
 
 	.airpod-wrapper {
 		width: inherit;
@@ -49,6 +55,7 @@
 		margin-left: 50%;
 		transform: translateX(-50%);
 		text-align: center;
+		line-height: 1.5em;
 	}
 
 	button {
@@ -60,10 +67,11 @@
 		margin-left: 50%;
 		transform: translateX(-50%);
 		width: 40%;
-		height: 25px;
+		height: 29px;
 		margin-top: 30px;
 		background: $loadingTextColor;
 		color: $loadingBackgroundColor;
+		font-weight: 800;
 	}
 
 	button.enter:hover {
@@ -74,7 +82,7 @@
 		transform: translateX(-50%) translateY(3px);
 	}
 
-	@media(max-height: 950px) {
+	@media(max-height: $largeScreen) {
 		p {
 			width: 100%;
 		}
@@ -101,11 +109,12 @@
 
 		p {
 			width: 260px;
-			line-height: 20px;
+			line-height: 17px;
 		}
 
 		button.enter {
 			width: 27%;
+			height: 30px;
 		}
 	}
 }
@@ -116,7 +125,7 @@
 	}
 
 	100% {
-		transform: scaleX(-1) translateY(-75px);
+		transform: scaleX(-1) translateY(-61px);
 	}
 }
 

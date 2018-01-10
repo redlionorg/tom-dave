@@ -10,42 +10,9 @@ export default class ListenSection extends Component {
 		this.cacheDOMElement('about', '.about')
 		this.cacheDOMElement('work', '.work')
 		this.cacheDOMElement('contact', '.contact')
-
-		this.cacheDOMElement('mapForeground', '.map .foreground')
-		this.cacheDOMElement('mapBackground', '.map .background')
-		this.cacheDOMElement('mapMiddleground', '.map .middleground')
-		this.cacheDOMElement('map', '.map')
-
-		WindowSize.on('resize', this.resize.bind(this))
-
-		if (UserAgent.isDesktop()) {
-			this.elements.mapMiddleground.on('mouseover', this.onMapHover.bind(this))
-			this.elements.mapBackground.on('mouseout', this.onMapOut.bind(this))
-		}
 	}
 
-	onMapHover() {
-		const foreground = $(this.elements.mapMiddleground)
-		foreground.animate({
-			opacity: 0
-		}, () => {
-			foreground.css('display', 'none')
-		})
-	}
-
-	onMapOut() {
-		const middleground = $(this.elements.mapMiddleground)
-		middleground.css('display', 'block')
-		middleground.animate({
-			opacity: 1
-		})
-	}
-
-	resize() {
-		$(this.elements.mapBackground).css('height', this.elements.mapMiddleground.height() + 10)
-	}
-
-	globalDidUpdate(param, value) {
+	stateDidUpdate(param, value) {
 		switch (param) {
 		case 'reading':
 			if (value) {
@@ -54,16 +21,31 @@ export default class ListenSection extends Component {
 				this.$.removeClass('hide-block')
 			}
 			break
+		case 'cuedRecord':
+			this.lastRecord = this.state.currentRecord
+			break
 		case 'currentRecord':
 			if (typeof value === 'undefined') {
 				return
 			}
-			this.elements.about.addClass('fade-out')
-			this.elements.contact.addClass('fade-out')
-			this.elements.work.addClass('fade-out')
+			if (typeof this.lastRecord !== 'undefined') {
+				switch (this.lastRecord) {
+				case Enum.ALBUMS.ABOUT:
+					this.elements.about.addClass('fade-out').removeClass('fade-in')
+					break
+				case Enum.ALBUMS.CONTACT:
+					this.elements.contact.addClass('fade-out').removeClass('fade-in')
+					break
+				case Enum.ALBUMS.WORK:
+					this.elements.work.addClass('fade-out').removeClass('fade-in')
+					break
+				default:
+					break
+				}
+			}
 			break
 		case 'playing':
-			if (typeof this.global.currentRecord === 'undefined') {
+			if (typeof this.state.currentRecord === 'undefined') {
 				return
 			}
 
@@ -71,13 +53,12 @@ export default class ListenSection extends Component {
 			this.elements.contact.removeClass('fade-out').removeClass('fade-in')
 			this.elements.work.removeClass('fade-out').removeClass('fade-in')
 
-			switch (this.global.currentRecord) {
+			switch (this.state.currentRecord) {
 			case Enum.ALBUMS.ABOUT:
 				this.elements.about.addClass('fade-in')
 				break
 			case Enum.ALBUMS.CONTACT:
 				this.elements.contact.addClass('fade-in')
-				this.resize()
 				break
 			case Enum.ALBUMS.WORK:
 				this.elements.work.addClass('fade-in')

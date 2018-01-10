@@ -89,13 +89,16 @@ export default class AlbumGallery extends Component {
 		this.elements.controls.css('opacity', 1)
 	}
 
-	globalDidUpdate(param, value) {
+	stateDidUpdate(param, value) {
 		switch (param) {
 		case 'reading':
 			if (value) {
-				this.enableSwipe()
 				this.$.addClass('read')
 				this.$.removeClass('listen')
+
+				if (UserAgent.isMobile()) {
+					this.setState('currentRecord', this.index)
+				}
 			} else {
 				this.$.removeClass('read')
 				this.$.addClass('listen')
@@ -103,22 +106,17 @@ export default class AlbumGallery extends Component {
 			break
 		case 'currentRecord':
 			if (typeof value === 'undefined') {
-				this.enableSwipe()
 				this.albums[Enum.ALBUMS.ABOUT].deselect()
 				this.albums[Enum.ALBUMS.WORK].deselect()
 				this.albums[Enum.ALBUMS.CONTACT].deselect()
-			} else {
-				if (!this.global.reading) {
-					this.disableSwipe()
-				}
 			}
 			break
 		case 'animateMobileCuedAlbumGallery':
 			if (value) {
-				this.setGalleryIndex(this.global.cuedRecord)
+				this.setGalleryIndex(this.state.cuedRecord)
 
 				setTimeout(() => {
-					this.setGlobal('animateMobileCuedAlbumGallery', false)
+					this.setState('animateMobileCuedAlbumGallery', false)
 				}, 300)
 			}
 			break

@@ -6,7 +6,7 @@ export default class Album extends Component {
 	constructor(selector, parent, index) {
 		super(selector, parent)
 		this.deselect()
-		this.setLocal('index', index)
+		this.setProp('index', index)
 
 		this.cacheDOMElement('albumRead', '.normal .read, .hover .read')
 		this.cacheDOMElement('albumListen', '.normal .listen, .hover .listen')
@@ -20,29 +20,29 @@ export default class Album extends Component {
 	}
 
 	select() {
-		if (this.global.animating || this.local.selected) {
+		if (this.state.animating || this.prop.selected) {
 			return
 		}
-		if (!this.global.playing) {
-			this.setGlobal('currentRecord', this.local.index)
-			if (!this.global.reading) {
-				this.setGlobal('animating', true)
+		if (!this.state.playing) {
+			this.setState('currentRecord', this.prop.index)
+			if (!this.state.reading) {
+				this.setState('animating', true)
 			}
-			this.setLocal('selected', true)
+			this.setProp('selected', true)
 		} else {
-			this.setGlobal('cuedRecord', this.local.index)
-			this.setGlobal('playing', false)
+			this.setState('cuedRecord', this.prop.index)
+			this.setState('playing', false)
 		}
 	}
 
 	deselect() {
-		this.setLocal('selected', false)
+		this.setProp('selected', false)
 	}
 
-	globalDidUpdate(param, value) {
+	stateDidUpdate(param, value) {
 		switch (param) {
 		case 'currentRecord':
-			if (value === this.local.index) {
+			if (value === this.prop.index) {
 				this.select()
 			} else {
 				this.deselect()
@@ -62,7 +62,7 @@ export default class Album extends Component {
 		}
 	}
 
-	localDidUpdate(param, value) {
+	propDidUpdate(param, value) {
 		switch (param) {
 		case 'selected':
 			if (value) {

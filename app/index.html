@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <title>Tom & Dave</title>
 <style>html,body {background-color: #fcedd8;}</style>
+<link rel="stylesheet" href="index.css">
 <link href="https://fonts.googleapis.com/css?family=Comfortaa" rel="stylesheet">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
@@ -109,19 +110,18 @@
 						<img class="contact"  src="images/record_contact.png" />
 						<img class="work" src="images/record_work.png" />
 					</div>
-					<img class="background" src="images/player.jpg" />
+					<img class="background" src="images/player.png" />
 				</div>
 				<div class="listen-section">
 					<div class="about content"></div>
 					<div class="work content">
-						<div class="title-container">
-							<div class="tv-title"><img src="images/Item_Envelope_TV.png"></div>
-							<div class="radio-title"><img src="images/Item_Frame_Radio.png"></div>
+						<div class="switch">
+							<div class="rail"><img draggable="false" class="indicator" src="images/slider_indicator.png"></div>
+							<img class="background" draggable="false" src="images/slider_background.png">
 						</div>
 					</div>
 					<div class="contact content">
 					</div>
-					<div class="legal">© 2017, Tom & Dave, All Rights Reserved.</div>
 				</div>
 				<div class="read-section hide-block">
 					<div class="about content show">
@@ -147,42 +147,35 @@
 						<h4>Music Licensing</h4>
 						<p>We’ve placed literally thousands of music tracks on television shows, movies, and advertising, and have longstanding relationships with publishing companies and record labels.</p>
 						<br>
-						<h4>Voice Directing.</h4>
+						<h4>Voice Directing</h4>
 						<p> Tom has been directing huge celebrities, actors, musicians, voice over actors, union and non-union, for almost 30 years.</p>
 						<br>
 						<h4>Tom</h4>
 						<p>Musicians, actors, celebrities, writers, producers and clients love Tom’s low key control. Having spent time in each role, he understandsthe needs and the headspace of each. As well being a business person, clients know that he truly understands their business. If you were listening instead of reading, you’d be hearing his smooth voice.</p>
-						<img class="cactus" src="images/Item_Cactus.png">
 					</div>
 					<div class="work content">
 						<p>At Tom & Dave, we have over 30 years of experience crafting radio, TV, and more for a variety of clients.</p>
 						<br>
 						<p>Our combination of Canada’s best stock music library, and a worldwide network of accomplished composers and songwriters, means we create Canada’s best audio - period.</p>
 						<br>
-						<p class="orange">Click on the OBJECTS below to explore some of our latest work.</p>
-						<div class="title-container">
-							<div class="tv-title"><img src="images/Item_Envelope_TV.png"></div>
-							<div class="radio-title"><img src="images/Item_Frame_Radio.png"></div>
+						<p class="orange">Click on the BUTTONS below to explore some of our latest work.</p>
+						<div class="buttons">
+							<button class="tv">tv</button>
+							<button class="radio">radio</button>
 						</div>
 					</div>
 					<div class="contact content">
-						<h4>EMAIL:</h4>
+						<h4>EMAIL</h4>
 						<p><a href="mailto:dave@tomdave.ca">dave@tomdave.ca</a></p>
 						<br>
-						<h4>PHONE:</h4>
+						<h4>PHONE</h4>
 						<p><a href="tel:4165048084">416.504.8084</a></p>
 						<br>
-						<h4>IN PERSON:</h4>
-						<p>567 Queen Street West.<br>Toronto, Ontario.<br>M5V 2B6</p>
+						<h4>IN PERSON</h4>
+						<p>567 Queen Street West<br>Toronto, Ontario<br>M5V 2B6</p>
 
-						<div class="map">
-							<img class="foreground" src="images/map_foreground.png">
-							<img class="middleground" src="images/map_background.jpg">
-							<iframe class="background" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCVc7sD6aBsDnGHAtmwJwH_p336Lur9Jg4&q=567+Queen+St+W,+Toronto,+ON+M5V+2B6">
-							</iframe>
-						</div>
+						<div class="map"></div>
 					</div>
-					<div class="legal">© 2017, Tom & Dave, All Rights Reserved.</div>
 				</div>
 			</div>
 		</div>
@@ -205,13 +198,19 @@
 		<div class="slider radio-slider">
 			<div class="slides-container">
 				<div class="slides">
-					<div class="slide" data-id="nOI1prs03Fg" data-label="label1"></div>
+					<div class="slide" data-id="8wegxX8PzUI" data-label="label1"></div>
+					<div class="slide" data-id="jo76biNKmpQ" data-label="label1"></div>
+					<div class="slide" data-id="nJ-b_UvGRRw" data-label="label1"></div>
+					<div class="slide" data-id="lpKlM8eMgb0" data-label="label1"></div>
+					<div class="slide" data-id="zs2-QvyoOhc" data-label="label1"></div>
+					<div class="slide" data-id="AnAV4u7d7yQ" data-label="label1"></div>
 				</div>
 			</div>
 		</div>
 	</div>
 </div>
-<script src="https://cdn.polyfill.io/v2/polyfill.js?features=Object.values"></script>
+<script src="//cdn.polyfill.io/v2/polyfill.js?features=Object.values"></script>
 <script src="//www.youtube.com/iframe_api" async></script>
+<script src="//maps.googleapis.com/maps/api/js?key=AIzaSyBEkvINhhSRfPwFdy8l3mM4GPwht-SL9r4"></script>
 </body>
 </html>

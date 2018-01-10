@@ -52,7 +52,7 @@
 	}
 
 	@media(max-width: $phone) {
-		width: 140px;
+		width: 170px;
 		top: 37px;
 
 		.album .contact, .album .about {
@@ -60,7 +60,7 @@
 		}
 	}
 
-	@media(min-height: 950px) {
+	@media(min-height: $largeScreen) {
 		width: 275px;
 		height: 275px;
 

@@ -104,8 +104,8 @@ export default class Slider extends Component {
 	}
 
 	resize(width, height) {
-		const scaledWidth = width * 0.6
-		const scaledHeight = (scaledWidth / (16 / 9)) + 80
+		const scaledWidth = width < 750 ? width * 0.8 : width * 0.6
+		const scaledHeight = (scaledWidth / (16 / 9)) + 30
 
 		$(this.elements.container).css({
 			width: scaledWidth,
@@ -125,7 +125,8 @@ export default class Slider extends Component {
 	}
 
 	initialize() {
-		this.$.append('<div class="background"></div><div class="slides-controls"><div class="dots"></div><div class="arrow arrow-left"><img class="normal" src="images/lightbox-arrow.png"><img class="hover" src="images/lightbox-arrow-hover.png"></div><div class="arrow arrow-right"><img class="normal" src="images/lightbox-arrow.png"><img class="hover" src="images/lightbox-arrow-hover.png"></div><div class="exit"><img class="normal" src="images/lightbox-exit.png"><img class="hover" src="images/lightbox-exit-hover.png"></div></div>')
+		this.$.append('<div class="background"></div><div class="slides-controls"><div class="arrow arrow-left"><img class="normal" src="images/lightbox-arrow.png"><img class="hover" src="images/lightbox-arrow-hover.png"></div><div class="arrow arrow-right"><img class="normal" src="images/lightbox-arrow.png"><img class="hover" src="images/lightbox-arrow-hover.png"></div><div class="exit"><img class="normal" src="images/lightbox-exit.png"><img class="hover" src="images/lightbox-exit-hover.png"></div></div>')
+		this.elements.container.append('<div class="dots"></div>')
 		this.cacheDOMElement('controls', '.slides-controls')
 		this.cacheDOMElement('dots', '.dots')
 		this.cacheDOMElement('background', '.background')
@@ -150,16 +151,16 @@ export default class Slider extends Component {
 
 		this.elements.dots.append(dotElements)
 
-		this.$.find('.arrow-left').on('touchstart click', this.previous.bind(this))
-		this.$.find('.arrow-right').on('touchstart click', this.next.bind(this))
-		this.$.find('.exit').on('touchstart click', this.hide.bind(this))
-		this.elements.background.on('touchstart click', this.hide.bind(this))
+		this.$.find('.arrow-left').on('click', this.previous.bind(this))
+		this.$.find('.arrow-right').on('click', this.next.bind(this))
+		this.$.find('.exit').on('click', this.hide.bind(this))
+		this.elements.background.on('click', this.hide.bind(this))
 
 		const dots = this.$.find('.dot')
 		dots.forEach((dom, index) => {
 			const dot = $(dom)
 			this.dots.push(dom)
-			dot.on('touchstart click', this.setSlide.bind(this, index))
+			dot.on('click', this.setSlide.bind(this, index))
 		})
 	}
 

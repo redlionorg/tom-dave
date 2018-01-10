@@ -5,7 +5,7 @@ export default class Body extends Component {
 		super('.body', parent)
 	}
 
-	globalDidUpdate(param, value) {
+	stateDidUpdate(param, value) {
 		switch (param) {
 		case 'entered':
 			if (value) {

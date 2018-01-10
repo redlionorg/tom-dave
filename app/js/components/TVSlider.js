@@ -1,12 +1,14 @@
 import Slider from './Slider'
 
 export default class TVSlider extends Slider {
-	globalDidUpdate(param, value) {
+	stateDidUpdate(param, value) {
 		switch (param) {
 		case 'showTVLightbox':
 			if (value) {
+				this.setState('animating', true)
 				this.show()
 			} else {
+				this.setState('animating', true)
 				this.hide()
 			}
 			break
@@ -22,6 +24,6 @@ export default class TVSlider extends Slider {
 
 	hide() {
 		super.hide()
-		this.setGlobal('showTVLightbox', false)
+		this.setState('showTVLightbox', false)
 	}
 }

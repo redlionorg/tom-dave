@@ -1,15 +1,15 @@
 .read-toggle {
-	position: fixed;
-	right: -10px;
-	top: 437px;
-	width: 90px;
-	height: 41px;
+	position: absolute;
+    right: -30px;
+	top: 457px;
+    width: 90px;
+    height: 58px;
 	border-radius: 5px 5px 0 0;
 	transform: rotate(-90deg);
 	z-index: 100;
 	opacity: 0;
 	pointer-events: none;
-	transition: 0.3s opacity, 0.1s height, 0.1s transform;
+	transition: 0.3s opacity, 0.1s transform;
 
 	button {
 		height: 41px;
@@ -28,17 +28,20 @@
 	}
 
 	&.read, button.listen {
-		background: #f24506;
+		background: #ef3007;
 	}
 
 	&:hover {
-		height: 43px;
-		transform: rotate(-90deg) translateY(-1px);
+		transform: rotate(-90deg) translateY(-3px);
 	}
 
 	@media(max-width: $phone) {
-		right: -34px;
-		top: 327px;
+		right: -35px;
+		top: 257px;
+
+		&:hover {
+			transform: rotate(-90deg);
+		}
 
 		button {
 			height: 35px;

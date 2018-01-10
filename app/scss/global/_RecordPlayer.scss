@@ -1,7 +1,7 @@
 .record-player {
 	position: relative !important;
 	@include hcenter();
-	width: 350px;
+	width: 380px;
 	top: 320px;
 	z-index: 1;
 
@@ -12,8 +12,8 @@
 	.play-button {
 		position: absolute;
 		width: percentage(75 / 490);
-		bottom: 19px;
-		left: 18px;
+		bottom: 21px;
+    	left: 19px;
 		cursor: pointer;
 
 		.stopped, .normal {
@@ -47,7 +47,7 @@
 			opacity: 1;
 		}
 
-		&:active{
+		&:active {
 			transform: translate(1px, 1px);
 		}
 
@@ -58,8 +58,8 @@
 
 	.record {
 		position: absolute;
-		width: 200px;
-		left: 75px;
+		width: 220px;
+    	left: 80px;
 		top: 16px;
 		z-index: 2;
 
@@ -92,8 +92,8 @@
 	.needle {
 		position: absolute;
 		width: 91.6%;
-		top: -104px;
-		right: -114px;
+		top: -112px;
+    	right: -123px;
 		z-index: 5;
 
 		&.active {
@@ -111,32 +111,32 @@
 	}
 
 	@media(max-width: $phone) {
-		width: 250px;
-		top: 240px;
+		width: 300px;
+		top: 250px;
 
 		.needle {
-			top: -74px;
-			right: -81px;
+			top: -88px;
+    		right: -98px;
 		}
 
 		.play-button {
-			bottom: 14px;
-			left: 13px;
+			bottom: 17px;
+    		left: 15px;
 		}
 
 		.record {
-			width: 140px;
-			left: 55px;
-			top: 13px;
+			width: 170px;
+			left: 65px;
+			top: 15px;
 		}
 	}
 
-	@media(min-height: 950px) {
+	@media(min-height: $largeScreen) {
 		width: 475px;
 		top: 390px;
 
 		.play-button {
-			bottom: 27px;
+			bottom: 26px;
 			left: 23px;
 		}
 
@@ -146,9 +146,9 @@
 		}
 
 		.record {
-			width: 261px;
-			left: 107px;
-			top: 27px;
+			width: 267px;
+			left: 104px;
+			top: 24px;
 		}
 	}
 }

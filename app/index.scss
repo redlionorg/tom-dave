@@ -11,6 +11,15 @@ html, body {
 	line-height: 12pt;
 }
 
+input,
+label,
+select,
+button,
+textarea {
+	font-family: 'Comfortaa', cursive;
+	font-size: 10pt;
+}
+
 body {
 	overflow-x: hidden;
 }
@@ -29,7 +38,9 @@ body {
 		height: inherit;
 	}
 
-	&.mobile, &.mobile .base, &.mobile .body {
-		overflow: hidden;
+	&.mobile {
+		.base, .body, .content-wrapper {
+			overflow-x: hidden;
+		}
 	}
 }

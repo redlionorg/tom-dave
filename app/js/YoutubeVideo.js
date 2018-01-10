@@ -46,7 +46,6 @@ export default class YoutubeVideo extends Observer {
 			return
 		}
 		if (!this.playing) {
-			console.log(this.player)
 			this.playing = true
 			this.paused = false
 			this.stopped = false

@@ -1,3 +1,4 @@
+import $ from '../vendor/zepto'
 import Component from '../base/Component'
 import AudioManager from '../services/AudioManager'
 import Enum from '../Enum'
@@ -21,23 +22,23 @@ export default class RecordPlayer extends Component {
 	}
 
 	onButtonClick() {
-		if (!this.global.playing) {
+		if (!this.state.playing) {
 			return
 		}
-		if (this.global.paused) {
-			this.setGlobal('paused', false)
+		if (this.state.paused) {
+			this.setState('paused', false)
 		} else {
-			this.setGlobal('paused', true)
+			this.setState('paused', true)
 		}
 	}
 
 	onNeedleCued() {
-		this.setGlobal('playing', true)
-		this.setGlobal('animating', false)
+		this.setState('playing', true)
+		this.setState('animating', false)
 	}
 
 	onNeedleReset() {
-		this.setGlobal('spinning', false)
+		this.setState('spinning', false)
 	}
 
 	getCSSRotation(target) {
@@ -51,7 +52,7 @@ export default class RecordPlayer extends Component {
 		if (typeof tr === 'undefined' || tr === 'none') {
 			return 0
 		}
-		console.log(tr)
+
 		const values = tr.split('(')[1].split(')')[0].split(',')
 		return Math.round(Math.atan2(values[1], values[0]) * (180 / Math.PI))
 	}
@@ -76,104 +77,108 @@ export default class RecordPlayer extends Component {
 		this.timeline.play()
 	}
 
-	globalWillUpdate(param) {
+	stateWillUpdate(param, value) {
 		switch (param) {
 		case 'currentRecord':
-			if (!this.global.currentRecord || this.global.reading) {
+			if (typeof this.currentSound !== 'undefined') {
+				this.currentSound.audio.stop()
+			}
+			if (!this.state.currentRecord || this.state.reading) {
 				break
 			}
-			this.elements[this.global.currentRecord].removeClass('show').removeClass('spin')
+			this.elements[this.state.currentRecord].removeClass('show').removeClass('spin')
 			break
 		default:
 			break
 		}
 	}
 
-	globalDidUpdate(param, value) {
+	stateDidUpdate(param, value) {
 		switch (param) {
 		case 'needleActivated':
 			if (value) {
 				this.needleCue()
-				this.setGlobal('spinning', true)
+				this.setState('spinning', true)
 			} else {
 				this.needleReset()
 			}
 			break
 		case 'showRadioLightbox':
 		case 'showTVLightbox':
-			if (value && this.global.playing) {
-				this.setGlobal('paused', true)
-			} else if (!value && this.global.playing) {
-				this.setGlobal('paused', false)
+			if (value && this.state.playing) {
+				this.setState('paused', true)
+			} else if (!value && this.state.playing) {
+				// this.setState('paused', false)
 			}
 			break
 		case 'playing':
-			if (typeof this.global.currentRecord === 'undefined') {
+			if (typeof this.state.currentRecord === 'undefined') {
 				break
 			}
 			if (value) {
-				AudioManager.play(this.global.currentRecord)
+				AudioManager.play(this.state.currentRecord)
 				this.needlePlay()
 				this.elements.button.addClass('playing')
 			} else {
-				if (!this.global.reading) {
-					this.setGlobal('animating', true)
+				if (!this.state.reading) {
+					this.setState('animating', true)
 				}
 
-				AudioManager.stop(this.global.currentRecord)
+				this.setState('paused', false)
+				AudioManager.stop(this.state.currentRecord)
 				AudioManager.stop('record_noises')
 				this.elements.button.removeClass('playing')
-				this.elements[this.global.currentRecord].addClass('paused')
-				this.setGlobal('needleActivated', false)
+				this.elements[this.state.currentRecord].addClass('paused')
+				this.setState('needleActivated', false)
 			}
 			break
 		case 'paused':
-			if (typeof this.global.currentRecord === 'undefined') {
+			if (typeof this.state.currentRecord === 'undefined' || !this.state.playing) {
 				break
 			}
 			if (value) {
 				this.timeline.pause()
-				AudioManager.pause(this.global.currentRecord)
+				AudioManager.pause(this.state.currentRecord)
 				this.elements.button.removeClass('playing')
-				this.elements[this.global.currentRecord].addClass('paused')
+				this.elements[this.state.currentRecord].addClass('paused')
 			} else {
 				this.timeline.play()
-				AudioManager.play(this.global.currentRecord)
+				AudioManager.play(this.state.currentRecord)
 				this.elements.button.addClass('playing')
-				this.elements[this.global.currentRecord].removeClass('paused')
+				this.elements[this.state.currentRecord].removeClass('paused')
 			}
 			break
 		case 'recordOnPlayer':
-			if (typeof this.global.currentRecord === 'undefined') {
+			if (typeof this.state.currentRecord === 'undefined') {
 				break
 			}
 			if (value) {
-				this.elements[this.global.currentRecord].addClass('show')
+				this.elements[this.state.currentRecord].addClass('show')
 				this.elements.reflection.addClass('show')
-				this.currentSound = AudioManager.get(this.global.currentRecord)
+				this.currentSound = AudioManager.get(this.state.currentRecord)
 			} else {
-				this.elements[this.global.currentRecord].removeClass('show').removeClass('spin').removeClass('paused')
+				this.elements[this.state.currentRecord].removeClass('show').removeClass('spin').removeClass('paused')
 				this.elements.reflection.removeClass('show')
 			}
 			break
 		case 'spinning':
-			if (typeof this.global.currentRecord === 'undefined') {
+			if (typeof this.state.currentRecord === 'undefined') {
 				break
 			}
 			if (value) {
 				AudioManager.play('record_noises')
-				this.elements[this.global.currentRecord].addClass('spin')
+				this.elements[this.state.currentRecord].addClass('spin')
 			} else {
-				this.elements[this.global.currentRecord].addClass('paused')
-				this.setGlobal('recordAngle', this.getCSSRotation($(this.elements[this.global.currentRecord])))
-				this.setGlobal('recordOnPlayer', false)
+				this.elements[this.state.currentRecord].addClass('paused')
+				this.setState('recordAngle', this.getCSSRotation($(this.elements[this.state.currentRecord])))
+				this.setState('recordOnPlayer', false)
 			}
 			break
 		case 'reading':
 			if (value) {
 				this.$.addClass('hide-block')
-				this.setGlobal('playing', false)
-				this.setGlobal('spinning', false)
+				this.setState('playing', false)
+				this.setState('spinning', false)
 			} else {
 				this.$.removeClass('hide-block')
 			}

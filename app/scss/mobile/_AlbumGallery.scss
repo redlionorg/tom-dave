@@ -1,9 +1,28 @@
 .album-gallery {
+	&.listen .album {
+		&:hover {
+			transform: scale(1);
+			box-shadow: auto;
+		}
+	}
+
+	&.read {
+		.album {
+			.normal {
+				opacity: 0 !important;
+			}
+
+			.hover {
+				opacity: 1 !important;
+			}
+		}
+	}
+
 	.album-gallery-inner {
 		transition: transform 0.3s;
 
 		&.a1 {
-			transform: translateX(160px);
+			transform: translateX(180px);
 		}
 
 		&.a2 {
@@ -11,13 +30,13 @@
 		}
 
 		&.a3 {
-			transform: translateX(-160px);
+			transform: translateX(-180px);
 		}
 	}
 
 	.album-gallery-controls {
 		@include hcenter();
-		top: 154px;
+		top: 183px;
 		transition: opacity 0.3s;
 
 		.dot {

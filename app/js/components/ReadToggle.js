@@ -1,5 +1,6 @@
 import Component from '../base/Component'
 import AudioManager from '../services/AudioManager'
+import { UserAgent } from '../services'
 
 export default class ReadToggle extends Component {
 	constructor(parent) {
@@ -8,19 +9,19 @@ export default class ReadToggle extends Component {
 	}
 
 	onButtonClick() {
-		if (this.global.animating) {
+		if (this.state.animating) {
 			return
 		}
-		if (this.global.reading) {
-			this.setGlobal('currentRecord', undefined)
-			this.setGlobal('reading', false)
+		if (this.state.reading) {
+			this.setState('currentRecord', undefined)
+			this.setState('reading', false)
 		} else {
-			this.setGlobal('reading', true)
-			this.setGlobal('playing', false)
+			this.setState('reading', true)
+			this.setState('playing', false)
 		}
 	}
 
-	globalDidUpdate(param, value) {
+	stateDidUpdate(param, value) {
 		switch (param) {
 		case 'reading':
 			if (value) {

@@ -5,7 +5,7 @@ export default class Header extends Component {
 		super('.header', parent)
 	}
 
-	globalDidUpdate(param, value) {
+	stateDidUpdate(param, value) {
 		switch (param) {
 		case 'loaded':
 			if (value) {

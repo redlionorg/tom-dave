@@ -1,15 +1,14 @@
 import * as Components from './js/components'
-import { UserAgent, AudioManager, Loader, YoutubeIframeAPI, GoogleMapAPI } from './js/services'
+import { UserAgent, AudioManager, Loader, YoutubeIframeAPI, GoogleMapAPI, Store } from './js/services'
 import Component from './js/base/Component'
-import Global from './js/Global'
+import State from './js/State'
 import Enum from './js/Enum'
 
-require('./index.scss')
+const loader = new Loader()
 
 class App extends Component {
 	constructor() {
 		super('#app')
-		const loader = new Loader()
 		loader.on('loaded', this.onLoad.bind(this))
 
 		if (UserAgent.isDesktop()) {
@@ -24,7 +23,8 @@ class App extends Component {
 		AudioManager.add('record_noises', 'audio/player_start.mp3')
 		AudioManager.on('end', this.onAudioEnd.bind(this))
 
-		Global.init({
+		State.init({
+			visited: false,
 			loaded: false,
 			entered: false,
 			reading: false,
@@ -52,25 +52,25 @@ class App extends Component {
 
 	onAudioEnd(sound) {
 		if (typeof sound.id === 'number') {
-			this.setGlobal('playing', false)
+			this.setState('playing', false)
 		}
 	}
 
 	onLoad() {
-		this.setGlobal('loaded', true)
+		this.setState('loaded', true)
 		this.$.removeClass('no-transition')
 	}
 
-	globalDidUpdate(param, value) {
+	stateDidUpdate(param, value) {
 		switch (param) {
 		case 'animating':
-			if (!value && typeof this.global.cuedRecord !== 'undefined' && !this.global.playing && !this.global.reading) {
+			if (!value && typeof this.state.cuedRecord !== 'undefined' && !this.state.playing && !this.state.reading) {
 				if (UserAgent.isMobile()) {
-					this.setGlobal('animateMobileCuedAlbumGallery', true)
+					this.setState('animateMobileCuedAlbumGallery', true)
 				}
 				setTimeout(() => {
-					this.setGlobal('currentRecord', this.global.cuedRecord)
-					this.setGlobal('cuedRecord', undefined)
+					this.setState('currentRecord', this.state.cuedRecord)
+					this.setState('cuedRecord', undefined)
 				}, 300)
 			}
 			break
@@ -89,11 +89,19 @@ const contentWrapper = new Components.ContentWrapper(app)
 new Components.AlbumGallery(contentWrapper)
 new Components.RecordAnimation(contentWrapper)
 new Components.RecordPlayer(contentWrapper)
-new Components.ReadSection(app)
+const readSection = new Components.ReadSection(app)
 const listenSection = new Components.ListenSection(app)
 new Components.WorkSection(listenSection)
-new Components.Legal(app)
+new Components.Switch(listenSection)
 
 new Components.TVSlider('.slider.tv-slider', app)
 new Components.RadioSlider('.slider.radio-slider', app)
 
+const userHasVisited = Store.get('visited')
+if (!!userHasVisited) {
+	loader.setLoaded()
+	State.set('visited', true)
+	State.set('entered', true)
+} else {
+	Store.set('visited', true)
+}

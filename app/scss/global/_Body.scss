@@ -1,18 +1,17 @@
 .body {
 	position: relative;
-	height: calc(100% - #{$headerHeight});
-	width: 100%;
+	width: calc(100% + 17px);
+
 	margin-left: 0;
 	background: $loadingBackgroundColor;
 	overflow: hidden;
-
+	overflow-y: scroll;
+	
 	&.entered {
-		overflow-y: scroll;
 	}
 
 	@media(max-width: $phone) {
 		width: 100%;
 		margin-left: 0;
-		height: calc(100% - 65px);
 	}
 }

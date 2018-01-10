@@ -1,12 +1,12 @@
 import $ from '../vendor/zepto'
 import Observer from './Observer'
-import Global from '../Global'
+import State from '../State'
 
 export default class Component extends Observer {
 	constructor(selector, parent) {
 		super()
-		this.global = {}
-		this.local = {}
+		this.state = {}
+		this.prop = {}
 		this.elements = {}
 		this.$ = undefined
 
@@ -15,54 +15,54 @@ export default class Component extends Observer {
 		}
 
 		if (typeof parent !== 'undefined') {
-			parent.on('setLocal', (param, value, object) => {
-				this.setLocal(param, value, object)
+			parent.on('setProp', (param, value, object) => {
+				this.setProp(param, value, object)
 			})
 		}
 
-		Global.on('setGlobal', (param, value, object) => {
-			this.setGlobal(param, value, object)
+		State.on('setState', (param, value, object) => {
+			this.setState(param, value, object)
 		})
 	}
 
-	globalDidUpdate() {}
-	globalWillUpdate() {}
-	localDidUpdate() {}
-	localWillUpdate() {}
+	stateDidUpdate() {}
+	stateWillUpdate() {}
+	propDidUpdate() {}
+	propWillUpdate() {}
 
-	setGlobal(param, value, object) {	// propagates both up and down
+	setState(param, value, object) {	// propagates both up and down
 		if (typeof object !== 'undefined') {
-			this.globalWillUpdate(param, value)
-			this.global = {
-				...this.global,
+			this.stateWillUpdate(param, value)
+			this.state = {
+				...this.state,
 				...object
 			}
-			this.globalDidUpdate(param, value)
+			this.stateDidUpdate(param, value)
 		} else {
-			Global.set(param, value)
+			State.set(param, value)
 		}
 	}
 
-	setLocal(param, value, object) {	// propagates down
-		console.log(`${this.constructor.name} updated Local`, param, value, object)
+	setProp(param, value, object) {	// propagates down
+		console.log(`${this.constructor.name} updated Prop`, param, value, object)
 		if (typeof param === 'undefined') {
 			return
 		}
 		if (typeof object !== 'undefined') {
-			this.local = {
-				...this.local,
+			this.prop = {
+				...this.prop,
 				...object
 			}
-			this.emit('setLocal', [undefined, undefined, object])
+			this.emit('setProp', [undefined, undefined, object])
 			return
 		}
-		if (!(param in this.local) || value !== this.local[param]) {
-			const newLocal = { ...this.local }
-			newLocal[param] = value
-			this.localWillUpdate(param, value)
-			this.local = newLocal
-			this.localDidUpdate(param, value)
-			this.emit('setLocal', [param, value, undefined])
+		if (!(param in this.prop) || value !== this.prop[param]) {
+			const newProp = { ...this.prop }
+			newProp[param] = value
+			this.propWillUpdate(param, value)
+			this.prop = newProp
+			this.propDidUpdate(param, value)
+			this.emit('setProp', [param, value, undefined])
 		}
 	}
 

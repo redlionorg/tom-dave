@@ -1,9 +1,12 @@
 .read-section {
 	@include hcenter();
+	position: relative;
 	width: 640px;
 	top: 300px;
 	line-height: 15pt;
 	z-index: 1;
+	padding-bottom: 90px;
+	margin-top: 20px;
 
 	.legal {
 		color: #000;
@@ -44,55 +47,57 @@
 				font-size: 9pt;
 			}
 		}
-
-		.cactus {
-			position: relative;
-			margin-top: 40px;
-			left: 68%;
-			width: 180px;
-		}
 	}
 
 	.work {
+		min-height: 70vh;
 		.orange {
 			color: #f5571d;
+		}
+	
+		.buttons {
+			margin-top: 30px;
+			margin-left: 50%;
+			transform: translateX(-50%);
+		}
+
+		button.radio, button.tv {
+			width: 40%;
+			height: 29px;
+			color: $loadingBackgroundColor;
+			font-weight: 800;
+			margin: 0 10px;
+		}
+
+		button.tv {
+			background: #ef3007;
+			margin-left: 0;
+		}
+
+		button.radio {
+			background: $loadingTextColor;
+			margin-right: 0;
+		}
+	
+		button:hover {
+			transform: translateY(2px);
+		}
+	
+		button:active {
+			transform: translateY(3px);
 		}
 	}
 
 	.contact {
+		min-height: 70vh;
 		.map {
 			position: relative;
 			width: 80%;
+			height: 200px;
 			margin-left: 50%;
 			transform: translateX(-50%);
 			margin-bottom: 80px;
 			margin-top: 20px;
-	
-			.foreground {
-				position: absolute;
-				top: -5px;
-				left: 0;
-				width: 100%;
-				z-index: 4;
-				pointer-events: none;
-			}
-	
-			.middleground {
-				position: absolute;
-				width: 88%;
-				left: 5%;
-				top: 4%;
-				transition: opacity 0.3s;
-				z-index: 3;
-			}
-	
-			.background {
-				position: relative;
-				width: 88%;
-				margin-left: 5%;
-				margin-top: 4%;
-				z-index: 2;
-			}
 	
 			iframe {
 				pointer-events: auto;
@@ -111,7 +116,7 @@
 		text-transform: uppercase;
 	}
 
-	@media(min-height: 950px) {
+	@media(min-height: $largeScreen) {
 		width: 865px;
 		top: 380px;
 	}
@@ -120,5 +125,12 @@
 		top: 240px;
 		width: 100%;
 		padding: 0 30px 30px 30px;
+
+		.work {
+			button {
+				width: 27%;
+				height: 30px;
+			}
+		}
 	}
 }
