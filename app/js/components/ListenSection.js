@@ -16,9 +16,9 @@ export default class ListenSection extends Component {
 		switch (param) {
 		case 'reading':
 			if (value) {
-				this.$.addClass('hide-block')
+				this.element.addClass('hide-block')
 			} else {
-				this.$.removeClass('hide-block')
+				this.element.removeClass('hide-block')
 			}
 			break
 		case 'cuedRecord':

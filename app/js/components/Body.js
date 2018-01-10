@@ -9,11 +9,11 @@ export default class Body extends Component {
 		switch (param) {
 		case 'entered':
 			if (value) {
-				this.$.addClass('entered')
+				this.element.addClass('entered')
 			}
 			break
 		case 'reading':
-			this.$[0].scrollTop = 0
+			this.element[0].scrollTop = 0
 			break
 		default:
 			break

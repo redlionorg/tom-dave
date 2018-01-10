@@ -4,7 +4,7 @@ import WindowSize from '../services/WindowSize'
 
 const $ = window.$
 
-export default class Slider extends Component {
+export default class Slider extends Component { // lightbox
 	constructor(selector, parent) {
 		super(selector, parent)
 		this.videos = {}
@@ -125,13 +125,13 @@ export default class Slider extends Component {
 	}
 
 	initialize() {
-		this.$.append('<div class="background"></div><div class="slides-controls"><div class="arrow arrow-left"><img class="normal" src="images/lightbox-arrow.png"><img class="hover" src="images/lightbox-arrow-hover.png"></div><div class="arrow arrow-right"><img class="normal" src="images/lightbox-arrow.png"><img class="hover" src="images/lightbox-arrow-hover.png"></div><div class="exit"><img class="normal" src="images/lightbox-exit.png"><img class="hover" src="images/lightbox-exit-hover.png"></div></div>')
+		this.element.append('<div class="background"></div><div class="slides-controls"><div class="arrow arrow-left"><img class="normal" src="images/lightbox-arrow.png"><img class="hover" src="images/lightbox-arrow-hover.png"></div><div class="arrow arrow-right"><img class="normal" src="images/lightbox-arrow.png"><img class="hover" src="images/lightbox-arrow-hover.png"></div><div class="exit"><img class="normal" src="images/lightbox-exit.png"><img class="hover" src="images/lightbox-exit-hover.png"></div></div>')
 		this.elements.container.append('<div class="dots"></div>')
 		this.cacheDOMElement('controls', '.slides-controls')
 		this.cacheDOMElement('dots', '.dots')
 		this.cacheDOMElement('background', '.background')
 
-		const slides = this.$.find('.slide')
+		const slides = this.element.find('.slide')
 		this.slideCount = slides.length
 		let dotElements = ''
 
@@ -151,12 +151,12 @@ export default class Slider extends Component {
 
 		this.elements.dots.append(dotElements)
 
-		this.$.find('.arrow-left').on('click', this.previous.bind(this))
-		this.$.find('.arrow-right').on('click', this.next.bind(this))
-		this.$.find('.exit').on('click', this.hide.bind(this))
+		this.element.find('.arrow-left').on('click', this.previous.bind(this))
+		this.element.find('.arrow-right').on('click', this.next.bind(this))
+		this.element.find('.exit').on('click', this.hide.bind(this))
 		this.elements.background.on('click', this.hide.bind(this))
 
-		const dots = this.$.find('.dot')
+		const dots = this.element.find('.dot')
 		dots.forEach((dom, index) => {
 			const dot = $(dom)
 			this.dots.push(dom)
@@ -181,16 +181,16 @@ export default class Slider extends Component {
 	}
 
 	show() {
-		this.$.css('display', 'block')
-		this.$.animate({
+		this.element.css('display', 'block')
+		this.element.animate({
 			opacity: 1
 		}, 300)
 		this.currentVideo.play()
 	}
 
 	hide() {
-		this.$.animate({ opacity: 0 }, 300, () => {
-			this.$.css('display', 'none')
+		this.element.animate({ opacity: 0 }, 300, () => {
+			this.element.css('display', 'none')
 		})
 		this.currentVideo.stop()
 	}

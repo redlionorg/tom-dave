@@ -8,10 +8,10 @@ export default class Component extends Observer {
 		this.state = {}
 		this.prop = {}
 		this.elements = {}
-		this.$ = undefined
+		this.element = undefined
 
 		if (typeof selector !== 'undefined') {
-			this.$ = window.$(selector)
+			this.element = window.$(selector)
 		}
 
 		if (typeof parent !== 'undefined') {
@@ -70,7 +70,7 @@ export default class Component extends Observer {
 		if (typeof element !== 'undefined') {
 			this.elements[key] = element
 		} else {
-			this.elements[key] = this.$.find(selector)
+			this.elements[key] = this.element.find(selector)
 		}
 	}
 }

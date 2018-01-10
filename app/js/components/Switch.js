@@ -2,17 +2,17 @@ import Component from '../base/Component'
 import UserAgent from '../services/UserAgent'
 import ZingTouch from '../services/ZingTouch'
 
-export default class Switch extends Component {
+export default class Switch extends Component { // TV / Radio switch
 	constructor(parent) {
 		super('.switch', parent)
 
 		if (UserAgent.isDesktop()) {
-			this.$.on('mousedown', this.onMouseDown.bind(this))
-			this.$.on('mouseup', this.onMouseUp.bind(this))
+			this.element.on('mousedown', this.onMouseDown.bind(this))
+			this.element.on('mouseup', this.onMouseUp.bind(this))
 		} else {
 			const zt = new ZingTouch()
 			const gesture = new zt.Swipe({ numInputs: 1 })
-			zt.body.bind(this.$[0], 'swipe', (event) => {
+			zt.body.bind(this.element[0], 'swipe', (event) => {
 				const { currentDirection } = event.detail.data[0]
 				this.onSwipe(currentDirection)
 			})
@@ -72,7 +72,7 @@ export default class Switch extends Component {
 		case 'showTVLightbox':
 		case 'showRadioLightbox':
 			if (typeof value !== 'undefined' && !value) {
-				this.$.removeClass('left').removeClass('right')
+				this.element.removeClass('left').removeClass('right')
 			}
 			break
 		default:
@@ -84,13 +84,13 @@ export default class Switch extends Component {
 		setTimeout(() => {
 			this.setState('showTVLightbox', true)
 		}, 300)
-		this.$.addClass('left')
+		this.element.addClass('left')
 	}
 
 	swipeRight() {
 		setTimeout(() => {
 			this.setState('showRadioLightbox', true)
 		}, 300)
-		this.$.addClass('right')
+		this.element.addClass('right')
 	}
 }

@@ -8,14 +8,14 @@ class _WindowSize extends Observer {
 		super()
 		window.addEventListener('DOMContentLoaded', this.onResize.bind(this))
 		window.addEventListener('resize', Util.debounce(this.onResize.bind(this), 150))
-		this.$ = $(window)
+		this.element = $(window)
 		this.width = 0
 		this.height = 0
 	}
 
 	onResize() {
-		this.width = this.$.width()
-		this.height = this.$.height()
+		this.width = this.element.width()
+		this.height = this.element.height()
 		this.emit('resize', this.width, this.height)
 	}
 }

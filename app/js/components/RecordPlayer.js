@@ -176,11 +176,11 @@ export default class RecordPlayer extends Component {
 			break
 		case 'reading':
 			if (value) {
-				this.$.addClass('hide-block')
+				this.element.addClass('hide-block')
 				this.setState('playing', false)
 				this.setState('spinning', false)
 			} else {
-				this.$.removeClass('hide-block')
+				this.element.removeClass('hide-block')
 			}
 			break
 		default:

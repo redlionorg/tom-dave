@@ -8,9 +8,7 @@
 This runs webpack, which transpiles ```app/index.js``` and ```app/index.html``` to ```dist/index.compiled.js``` and ```dist/index.html``` respectively.  
   
 ```gulp```  
-This transpiles ```app/index.scss``` to ```dist/index.css```. This is done to keep CSS in it's own file since including it in js delays its load a noticeable amount.  
-    
-Assets are not handled automatically. Any change to ```audio``` or ```images``` must be manually copied to the dist folder.  
+This transpiles ```app/index.scss``` to ```dist/index.css```. This is done to keep CSS in it's own file since including it in js delays its load a noticeable amount. This also copies the ```audio``` and ```images``` folders to ```dist```. All relevant folders are watched for changes.
   
 # Code style  
 Javascript is linted using eslint via webpack. This ensures similar formatting throughout the codebase. The rules enforced can be found here: 
@@ -25,7 +23,7 @@ https://github.com/madrobby/zepto
 
 # App layout  
 ### DOM manipulation  
-This application employs a component system somewhat similar to React. The intent is to have each component be concerned only with itself. Any outside data is to be sent through the messaging system explained below. Each component has a few convenience methods for dealing with the DOM. For posterity, a component is created like this
+This application employs a component system somewhat similar to React. The intent is to have each component be concerned only with itself. Any outside data is to be sent through the messaging system explained below. Each component has a few convenience methods for dealing with the DOM. For posterity, a component is created like this:
 
 ```
 import Component from '../base/Component'
@@ -47,7 +45,7 @@ const app = new App()
 const home = new Home(app)
 ```
   
-By default, a component's DOM may be accessed via ```this.$```, which is just a reference to Zepto. 
+By default, a component's DOM may be accessed via ```this.element```, which is just a reference to Zepto. 
 
 ```
 import Component from '../base/Component'
@@ -56,7 +54,7 @@ class Home extends Component {
 	constructor(parent) {
 		super('.home', parent)
 
-		console.log(this.$) // this
+		console.log(this.element) // this
 		console.log($('.home')) // and this are identical
 	}
 }
@@ -94,9 +92,9 @@ class Home extends Component {
 ```cacheDOMElement()``` uses ```$.find()```. It only searches within it's own DOM tree.
 
 ### Messaging  
-This application employs a messaging system following the (observer pattern)[http://www.oodesign.com/observer-pattern.html] and lifecycle methods similar in function to React. This is implemented via ```State.js``` which is consumed by ```Component.js```. App components can then extend ```Component.js``` and implement it's methods.  
+This application employs a messaging system following the [observer pattern](http://www.oodesign.com/observer-pattern.html) and lifecycle methods similar in function to React. This is implemented via ```State.js``` which is consumed by ```Component.js```. App components can then extend ```Component.js``` and implement it's methods.  
   
-To start, we must initialize the message's default value. This is done in ```index.js```. When initializing a message's default value, it is not sent to ```stateWillUpdate``` or ```stateDidUpdate```.
+To start, we must initialize the message's default value. This is done in ```index.js```. When initializing a message's default value, it is not sent to ```stateWillUpdate()``` or ```stateDidUpdate()```.
 
 ```
 import State from './State'
@@ -157,4 +155,9 @@ You may also set props on components. These propagate downwards in the component
 this.setProp('isCute', true)
 ```  
 
-Components may listen for prop messages similar to state messages via ```propWillUpdate()``` and ```propDidUpdate()```.
+This may then be accessed (after the message has propagated) via  
+```
+this.prop.isCute
+```
+
+Again, remember that this prop is only available within the component it's defined in and it's child components. Components may listen for prop messages similar to state messages via ```propWillUpdate()``` and ```propDidUpdate()```.

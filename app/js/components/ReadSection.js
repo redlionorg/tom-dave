@@ -31,9 +31,9 @@ export default class ReadSection extends Component {
 		switch (param) {
 		case 'reading':
 			if (value) {
-				this.$.removeClass('hide-block')
+				this.element.removeClass('hide-block')
 			} else {
-				this.$.addClass('hide-block')
+				this.element.addClass('hide-block')
 			}
 			break
 		case 'currentRecord':

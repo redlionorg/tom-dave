@@ -9,9 +9,9 @@ export default class Header extends Component {
 		switch (param) {
 		case 'loaded':
 			if (value) {
-				this.$.addClass('loaded')
+				this.element.addClass('loaded')
 			} else {
-				this.$.removeClass('loaded')
+				this.element.removeClass('loaded')
 			}
 			break
 		default:

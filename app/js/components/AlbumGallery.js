@@ -24,7 +24,7 @@ export default class AlbumGallery extends Component {
 
 			const zt = new ZingTouch()
 			const gesture = new zt.Swipe({ numInputs: 1 })
-			zt.body.bind(this.$[0], 'swipe', (event) => {
+			zt.body.bind(this.element[0], 'swipe', (event) => {
 				const { currentDirection, velocity } = event.detail.data[0]
 				this.onSwipe(currentDirection, velocity)
 			})
@@ -93,15 +93,15 @@ export default class AlbumGallery extends Component {
 		switch (param) {
 		case 'reading':
 			if (value) {
-				this.$.addClass('read')
-				this.$.removeClass('listen')
+				this.element.addClass('read')
+				this.element.removeClass('listen')
 
 				if (UserAgent.isMobile()) {
 					this.setState('currentRecord', this.index)
 				}
 			} else {
-				this.$.removeClass('read')
-				this.$.addClass('listen')
+				this.element.removeClass('read')
+				this.element.addClass('listen')
 			}
 			break
 		case 'currentRecord':

@@ -8,7 +8,19 @@ gulp.task('sass', function () {
 	.pipe(minify())
     .pipe(gulp.dest('./dist'))
 });
+
+gulp.task('audio-assets', function() {
+  return gulp.src('./audio/**/*')
+    .pipe(gulp.dest('./dist/audio'))
+})
+
+gulp.task('image-assets', function() {
+  return gulp.src('./images/**/*')
+    .pipe(gulp.dest('./dist/images'))
+})
  
-gulp.task('default', ['sass'], function () {
+gulp.task('default', ['sass', 'audio-assets', 'image-assets'], function () {
   gulp.watch(['./app/scss/**/*.scss', './app/scss/index.scss'], ['sass'])
+  gulp.watch(['./images/**/*'], ['image-assets'])
+  gulp.watch(['./audio/**/*'], ['audio-assets'])
 });

@@ -16,12 +16,12 @@ export default class Loading extends Component {
 		switch (param) {
 		case 'visited':
 			if (value) {
-				this.$.addClass('visited')
+				this.element.addClass('visited')
 			}
 			break
 		case 'loaded':
 			if (value) {
-				this.$.addClass('loaded')
+				this.element.addClass('loaded')
 				setTimeout(() => {
 					this.elements.button.addClass('show')
 					this.elements.button.removeClass('hide')

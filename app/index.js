@@ -12,9 +12,9 @@ class App extends Component {
 		loader.on('loaded', this.onLoad.bind(this))
 
 		if (UserAgent.isDesktop()) {
-			this.$.addClass('desktop')
+			this.element.addClass('desktop')
 		} else {
-			this.$.addClass('mobile')
+			this.element.addClass('mobile')
 		}
 
 		AudioManager.add(Enum.ALBUMS.ABOUT, 'audio/about.mp3')
@@ -45,8 +45,8 @@ class App extends Component {
 		})
 
 		if (UserAgent.isMobile()) {
-			this.$.find('.desktop').addClass('hide-block')
-			this.$.find('.mobile').addClass('show')
+			this.element.find('.desktop').addClass('hide-block')
+			this.element.find('.mobile').addClass('show')
 		}
 	}
 
@@ -58,7 +58,7 @@ class App extends Component {
 
 	onLoad() {
 		this.setState('loaded', true)
-		this.$.removeClass('no-transition')
+		this.element.removeClass('no-transition')
 	}
 
 	stateDidUpdate(param, value) {

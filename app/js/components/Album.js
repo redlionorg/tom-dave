@@ -13,9 +13,9 @@ export default class Album extends Component {
 
 		if (UserAgent.isMobile()) {
 			const zt = new ZingTouch()
-			zt.body.bind(this.$[0], new zt.Tap(), this.select.bind(this))
+			zt.body.bind(this.element[0], new zt.Tap(), this.select.bind(this))
 		} else {
-			this.$.on('click', this.select.bind(this))
+			this.element.on('click', this.select.bind(this))
 		}
 	}
 
@@ -66,9 +66,9 @@ export default class Album extends Component {
 		switch (param) {
 		case 'selected':
 			if (value) {
-				this.$.addClass('selected')
+				this.element.addClass('selected')
 			} else {
-				this.$.removeClass('selected')
+				this.element.removeClass('selected')
 			}
 			break
 		default:

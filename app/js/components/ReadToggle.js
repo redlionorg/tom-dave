@@ -5,7 +5,7 @@ import { UserAgent } from '../services'
 export default class ReadToggle extends Component {
 	constructor(parent) {
 		super('.read-toggle', parent)
-		this.$.on('click', this.onButtonClick.bind(this))
+		this.element.on('click', this.onButtonClick.bind(this))
 	}
 
 	onButtonClick() {
@@ -25,20 +25,20 @@ export default class ReadToggle extends Component {
 		switch (param) {
 		case 'reading':
 			if (value) {
-				this.$.removeClass('listen')
-				this.$.addClass('read')
+				this.element.removeClass('listen')
+				this.element.addClass('read')
 			} else {
-				this.$.addClass('listen')
-				this.$.removeClass('read')
+				this.element.addClass('listen')
+				this.element.removeClass('read')
 			}
 			break
 		case 'entered':
 			if (value) {
-				this.$.removeClass('hide')
-				this.$.addClass('show')
+				this.element.removeClass('hide')
+				this.element.addClass('show')
 			} else {
-				this.$.addClass('hide')
-				this.$.removeClass('show')
+				this.element.addClass('hide')
+				this.element.removeClass('show')
 			}
 			break
 		default:
