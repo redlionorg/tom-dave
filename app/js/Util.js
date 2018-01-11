@@ -1,5 +1,6 @@
 export default class Util {
-	static debounce(fn, wait, immediate) { // throttles a function being called multiple times to every Xms
+	static debounce(fn, wait, immediate) {
+		// throttles a function being called multiple times to every Xms
 		let timeout
 
 		return (...args) => {

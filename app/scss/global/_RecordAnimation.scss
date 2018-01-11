@@ -5,7 +5,7 @@
 	z-index: 3;
 	pointer-events: none;
 
-	.record, .album {
+	.record, .animation-album {
 		position: absolute;
 		width: inherit;
 		z-index: 1;
@@ -34,15 +34,15 @@
 		opacity: 1;
 	}
 
-	.album img {
+	.animation-album img {
 		box-shadow: 11px 8px 8px -2px rgba(0, 0, 0, 0.3);
 	}
 
-	.album .contact {
+	.animation-album .contact {
 		transform: translateX(240px);
 	}
 
-	.album .about {
+	animation-.album .about {
 		transform: translateX(-240px);
 	}
 
@@ -55,7 +55,7 @@
 		width: 170px;
 		top: 37px;
 
-		.album .contact, .album .about {
+		.animation-album .contact, .animation-album .about {
 			transform: none;
 		}
 	}
@@ -64,11 +64,11 @@
 		width: 275px;
 		height: 275px;
 
-		.album .contact {
+		.animation-album .contact {
 			transform: translateX(294px);
 		}
 	
-		.album .about {
+		.animation-album .about {
 			transform: translateX(-296px);
 		}
 	}

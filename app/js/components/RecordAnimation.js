@@ -10,9 +10,9 @@ export default class RecordAnimation extends Component {
 	constructor(parent) {
 		super('.record-animation', parent)
 
-		this.cacheDOMElement('albumAbout', '.album .about')
-		this.cacheDOMElement('albumContact', '.album .contact')
-		this.cacheDOMElement('albumWork', '.album .work')
+		this.cacheDOMElement('albumAbout', '.animation-album .about')
+		this.cacheDOMElement('albumContact', '.animation-album .contact')
+		this.cacheDOMElement('albumWork', '.animation-album .work')
 		this.cacheDOMElement('recordAbout', '.record .about')
 		this.cacheDOMElement('recordContact', '.record .contact')
 		this.cacheDOMElement('recordWork', '.record .work')

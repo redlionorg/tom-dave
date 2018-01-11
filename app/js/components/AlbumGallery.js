@@ -14,6 +14,7 @@ export default class AlbumGallery extends Component {
 		this.albums[Enum.ALBUMS.CONTACT] = new Album('.album:nth-child(3)', this, Enum.ALBUMS.CONTACT)
 		this.index = 0
 		this.interactable = true
+		this.lastCurrentRecord = 0
 
 		if (UserAgent.isMobile()) {
 			this.cacheDOMElement('inner', '.album-gallery-inner')
@@ -90,6 +91,16 @@ export default class AlbumGallery extends Component {
 		this.elements.controls.css('opacity', 1)
 	}
 
+	stateWillUpdate(param, value) {
+		switch (param) {
+		case 'currentRecord':
+			this.lastCurrentRecord = this.state.currentRecord
+			break
+		default:
+			break
+		}
+	}
+
 	stateDidUpdate(param, value) {
 		switch (param) {
 		case 'reading':
@@ -118,27 +129,26 @@ export default class AlbumGallery extends Component {
 			this.setGalleryIndex(value)
 
 			if (typeof this.state.cuedRecord !== 'undefined') {	// if a record is cued, it was selected and should be played
-				console.log('cued')
 				setTimeout(() => {
 					this.setState('playing', false)
 				}, 300)
 			}
 			break
-		case 'animating':
-			if (UserAgent.isMobile() && typeof this.state.currentRecord !== 'undefined') {
+		case 'animating': {
+			const record = typeof this.state.currentRecord === 'undefined' ? this.lastCurrentRecord : this.state.currentRecord
+			if (UserAgent.isMobile()) {
 				if (!value) {
-					console.log('animating false, hide album', this.state.currentRecord)
 					// show the gallery record again so the user can navigate
-					this.albums[this.state.currentRecord].element.css('opacity', 1)
+					this.albums[record].element.css('opacity', 1)
 				} else {
 					// only hide when this is set after init
-					console.log('animating true, show album', this.state.currentRecord)
 					if (this.state.entered) {
-						this.albums[this.state.currentRecord].element.css('opacity', 0)
+						this.albums[record].element.css('opacity', 0)
 					}
 				}
 			}
 			break
+		}
 		default:
 			break
 		}
