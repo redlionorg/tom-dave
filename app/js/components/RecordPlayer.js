@@ -100,6 +100,7 @@ export default class RecordPlayer extends Component {
 				this.needleCue()
 				this.setState('spinning', true)
 			} else {
+				AudioManager.play('record_noises_end')
 				this.needleReset()
 			}
 			break

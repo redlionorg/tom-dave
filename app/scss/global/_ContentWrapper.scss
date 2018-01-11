@@ -1,8 +1,6 @@
 .content-wrapper {
 	position: relative;
 	width: 100%;
-	height: auto;
-	min-height: 100%;
 	transform: translateX(100%);
 	z-index: 2;
 	display: inline-block;
@@ -45,7 +43,8 @@
 	}
 
 	@media(max-width: $phone) {
-		margin-top: 75px;
+		margin-top: 65px;
+		height: calc(100% - 65px);
 		
 		> .background {
 			background-size: 416px;

@@ -82,6 +82,7 @@
 
 		img.paused {
 			animation-play-state: paused;
+			-webkit-animation-play-state: paused;
 		}
 
 		.reflection {
@@ -132,23 +133,23 @@
 	}
 
 	@media(min-height: $largeScreen) {
-		width: 475px;
+		width: 483px;
 		top: 390px;
 
 		.play-button {
 			bottom: 26px;
-			left: 23px;
+			left: 24px;
 		}
 
 		.needle {
-			top: -140px;
+			top: -142px;
 			right: -155px;
 		}
 
 		.record {
-			width: 267px;
+			width: 275px;
 			left: 104px;
-			top: 24px;
+			top: 23px;
 		}
 	}
 }

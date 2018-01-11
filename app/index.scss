@@ -4,7 +4,7 @@
 @import './scss/util';
 
 html, body {
-	font-family: 'Comfortaa', cursive;
+	font-family: 'Comfortaa', 'Helvetica Neue', helvetica, arial, sans-serif;
 	font-size: 10pt;
 	font-weight: 600;
 	letter-spacing: 1px;
@@ -16,12 +16,18 @@ label,
 select,
 button,
 textarea {
-	font-family: 'Comfortaa', cursive;
+	font-family: 'Comfortaa', 'Helvetica Neue', helvetica, arial, sans-serif;
 	font-size: 10pt;
 }
 
 body {
 	overflow-x: hidden;
+	overflow-y: visible;
+}
+
+img {
+	-webkit-backface-visibility: hidden;
+	outline: 1px solid transparent;
 }
 
 #app {

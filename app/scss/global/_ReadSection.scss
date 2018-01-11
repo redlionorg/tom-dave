@@ -5,7 +5,7 @@
 	top: 300px;
 	line-height: 15pt;
 	z-index: 1;
-	padding-bottom: 90px;
+	padding: 0 10px 30px 10px;
 	margin-top: 20px;
 
 	.legal {
@@ -50,7 +50,6 @@
 	}
 
 	.work {
-		min-height: 70vh;
 		.orange {
 			color: #f5571d;
 		}
@@ -119,6 +118,7 @@
 	@media(min-height: $largeScreen) {
 		width: 865px;
 		top: 380px;
+		padding: 0 50px;
 	}
 
 	@media(max-width: $phone) {
@@ -127,9 +127,21 @@
 		padding: 0 30px 30px 30px;
 
 		.work {
-			button {
-				width: 27%;
+			button.radio, button.tv {
+				display: block;
+				width: 60%;
 				height: 30px;
+				margin: 0 auto;
+			}
+	
+			button.tv {
+				background: #ef3007;
+				margin-bottom: 10px;
+			}
+	
+			button.radio {
+				background: $loadingTextColor;
+				margin-top: 10px;
 			}
 		}
 	}

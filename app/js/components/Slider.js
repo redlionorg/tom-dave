@@ -8,7 +8,6 @@ export default class Slider extends Component { // lightbox
 	constructor(selector, parent) {
 		super(selector, parent)
 		this.videos = {}
-		this.previews = []
 		this.labels = []
 		this.videoIds = []
 		this.dots = []
@@ -16,14 +15,12 @@ export default class Slider extends Component { // lightbox
 		this.videoReadyCount = 0
 		this.currentVideo = undefined
 		this.slideWidth = undefined
-		this.autoplay = false
 		this.currentSlide = 0
 		this.lastSlide = undefined
-		this.init = false
+
 		this.cacheDOMElement('container', '.slides-container')
 		this.cacheDOMElement('inner', '.slides')
 		this.initialize()
-		this.load(0)
 
 		WindowSize.on('resize', this.resize.bind(this))
 	}
@@ -32,12 +29,8 @@ export default class Slider extends Component { // lightbox
 		if (typeof this.lastSlide !== 'undefined') {
 			this.unload(this.lastSlide)
 		}
-		this.hidePreview()
-		if (this.init) {
-			this.currentVideo.play()
-		}
-		this.init = true
-		this.autoplay = false
+
+		this.currentVideo.play()
 	}
 
 	setSlide(index) {
@@ -51,8 +44,6 @@ export default class Slider extends Component { // lightbox
 
 		this.lastSlide = this.currentSlide
 		this.setSlidesPosition(newIndex)
-		this.showPreview()
-		this.autoplay = true
 		this.currentSlide = newIndex
 		this.load()
 	}
@@ -61,14 +52,14 @@ export default class Slider extends Component { // lightbox
 		if (typeof this.slideWidth === 'undefined') {
 			return
 		}
-		// this.elements.inner.animate({ translateX: index * -this.slideWidth }, 1000)
+
 		this.elements.inner.css({ left: index * -this.slideWidth })
 	}
 
 	load(index = this.currentSlide) {
 		const video = this.cacheVideo(index)
-
 		const dots = $(this.dots)
+
 		dots.removeClass('selected')
 		dots.eq(index).addClass('selected')
 		this.currentVideo = video
@@ -126,9 +117,9 @@ export default class Slider extends Component { // lightbox
 
 	initialize() {
 		this.element.append('<div class="background"></div><div class="slides-controls"><div class="arrow arrow-left"><img class="normal" src="images/lightbox-arrow.png"><img class="hover" src="images/lightbox-arrow-hover.png"></div><div class="arrow arrow-right"><img class="normal" src="images/lightbox-arrow.png"><img class="hover" src="images/lightbox-arrow-hover.png"></div><div class="exit"><img class="normal" src="images/lightbox-exit.png"><img class="hover" src="images/lightbox-exit-hover.png"></div></div>')
-		this.elements.container.append('<div class="dots"></div>')
+		this.elements.container.append('<div class="dots"><div class="dots-inner"></div></div>')
 		this.cacheDOMElement('controls', '.slides-controls')
-		this.cacheDOMElement('dots', '.dots')
+		this.cacheDOMElement('dots', '.dots-inner')
 		this.cacheDOMElement('background', '.background')
 
 		const slides = this.element.find('.slide')
@@ -144,23 +135,21 @@ export default class Slider extends Component { // lightbox
 			this.labels.push(label || '')
 			this.videoIds.push(videoId)
 			slide.append(`<div class="label">${label}</div>`)
-			// slide.append(`<div class="preview"><img src="https://img.youtube.com/vi/${videoId}/default.jpg"></div>`)
-			// this.previews.push(slide.find('.preview'))
 			this.elements.slides.push(dom)
 		})
 
 		this.elements.dots.append(dotElements)
 
-		this.element.find('.arrow-left').on('click', this.previous.bind(this))
-		this.element.find('.arrow-right').on('click', this.next.bind(this))
-		this.element.find('.exit').on('click', this.hide.bind(this))
-		this.elements.background.on('click', this.hide.bind(this))
+		this.element.find('.arrow-left').on('click touchstart', this.previous.bind(this))
+		this.element.find('.arrow-right').on('click touchstart', this.next.bind(this))
+		this.element.find('.exit').on('click touchstart', this.hide.bind(this))
+		this.elements.background.on('click touchstart', this.hide.bind(this))
 
 		const dots = this.element.find('.dot')
 		dots.forEach((dom, index) => {
 			const dot = $(dom)
 			this.dots.push(dom)
-			dot.on('click', this.setSlide.bind(this, index))
+			dot.on('click touchstart', this.setSlide.bind(this, index))
 		})
 	}
 
@@ -172,20 +161,17 @@ export default class Slider extends Component { // lightbox
 		this.setSlide(this.currentSlide - 1)
 	}
 
-	hidePreview(index = this.currentSlide) {
-		// this.previews[index].css('opacity', 0)
-	}
-
-	showPreview(index = this.currentSlide) {
-		// this.previews[index].css('opacity', 1)
-	}
-
 	show() {
 		this.element.css('display', 'block')
 		this.element.animate({
 			opacity: 1
 		}, 300)
-		this.currentVideo.play()
+
+		if (typeof this.currentVideo !== 'undefined') {
+			this.currentVideo.play()
+		} else {
+			this.load(0)
+		}
 	}
 
 	hide() {

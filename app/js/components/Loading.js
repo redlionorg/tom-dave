@@ -33,8 +33,12 @@ export default class Loading extends Component {
 			}
 			break
 		case 'entered':
-			if (value && !this.state.visited) {
-				setTimeout(() => this.element.addClass('entered'), 1000)
+			if (value) {
+				if (this.state.visited) {
+					this.element.addClass('entered')
+				} else {
+					setTimeout(() => this.element.addClass('entered'), 1000)
+				}
 			}
 			break
 		default:

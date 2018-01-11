@@ -1,12 +1,10 @@
 .body {
 	position: relative;
-	// width: calc(100% + 17px);
-
+	min-height: 100vh;
+	height: inherit;
+	overflow-y: visible;
 	margin-left: 0;
 	background: $loadingBackgroundColor;
-	
-	&.entered {
-	}
 
 	@media(max-width: $phone) {
 		width: 100%;

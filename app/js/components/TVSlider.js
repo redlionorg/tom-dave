@@ -2,6 +2,8 @@ import Slider from './Slider'
 
 export default class TVSlider extends Slider {
 	stateDidUpdate(param, value) {
+		super.stateDidUpdate(param, value)
+
 		switch (param) {
 		case 'showTVLightbox':
 			if (value) {

@@ -38,6 +38,7 @@ export default class ReadSection extends Component {
 		case 'reading':
 			if (value) {
 				this.element.removeClass('hide-block')
+				this.onResize()
 			} else {
 				this.element.addClass('hide-block')
 			}

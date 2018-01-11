@@ -53,8 +53,13 @@ export default class AlbumGallery extends Component {
 		}
 
 		this.index = index
-		this.setState('mobileGalleryIndex', index)
+		if (!didSelect) {
+			this.setState('mobileGalleryIndex', index)
+		}
 		const strVal = index + 1
+		if (this.state.reading) {
+			this.select(index)
+		}
 
 		for (let index1 = 1; index1 <= 3; index1 += 1) {
 			if (strVal === index1) {
@@ -126,7 +131,7 @@ export default class AlbumGallery extends Component {
 			}
 			break
 		case 'mobileGalleryIndex':
-			this.setGalleryIndex(value)
+			this.setGalleryIndex(value, true)
 
 			if (typeof this.state.cuedRecord !== 'undefined') {	// if a record is cued, it was selected and should be played
 				setTimeout(() => {

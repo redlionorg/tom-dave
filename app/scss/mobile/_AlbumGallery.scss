@@ -6,18 +6,6 @@
 		}
 	}
 
-	&.read {
-		.album {
-			.normal {
-				opacity: 0 !important;
-			}
-
-			.hover {
-				opacity: 1 !important;
-			}
-		}
-	}
-
 	.album-gallery-inner {
 		transition: transform 0.3s;
 

@@ -65,7 +65,7 @@ export default class RecordAnimation extends Component {
 		} else {
 			let yOffset = 0
 			if (WindowSize.height >= 900) {
-				yOffset = 330
+				yOffset = 333
 			} else {
 				yOffset = 256
 			}

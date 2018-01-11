@@ -1,10 +1,13 @@
 import Component from '../base/Component'
 import UserAgent from '../services/UserAgent'
 import ZingTouch from '../services/ZingTouch'
+import WindowSize from '../services/WindowSize'
 
 export default class Switch extends Component { // TV / Radio switch
 	constructor(parent) {
 		super('.switch', parent)
+
+		WindowSize.on('resize', this.onResize.bind(this))
 
 		if (UserAgent.isDesktop()) {
 			this.element.on('mousedown', this.onMouseDown.bind(this))
@@ -29,6 +32,7 @@ export default class Switch extends Component { // TV / Radio switch
 			x: event.clientX,
 			y: event.clientY
 		}
+		this.screenWidth = WindowSize.width
 	}
 
 	onMouseUp(event) {
@@ -45,6 +49,15 @@ export default class Switch extends Component { // TV / Radio switch
 
 			if (swipeDistance > 30) {
 				if (endpoint.x < this.origin.x) {
+					this.swipeLeft()
+				} else {
+					this.swipeRight()
+				}
+			} else if (swipeDistance < 3) {
+				const midpoint = this.width * 0.4433
+				const normalizedXOrigin = this.origin.x - ((this.screenWidth / 2) - (this.width / 2))
+
+				if (normalizedXOrigin < midpoint) {
 					this.swipeLeft()
 				} else {
 					this.swipeRight()
@@ -67,8 +80,17 @@ export default class Switch extends Component { // TV / Radio switch
 		}
 	}
 
+	onResize() {
+		this.width = this.element.width()
+	}
+
 	stateDidUpdate(param, value) {
 		switch (param) {
+		case 'currentRecord':
+			if (value === 1) {
+				this.onResize()
+			}
+			break
 		case 'showTVLightbox':
 		case 'showRadioLightbox':
 			if (typeof value !== 'undefined' && !value) {

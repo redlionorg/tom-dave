@@ -5,6 +5,7 @@
 	z-index: 1;
 	transition: opacity 0.1s;
 	transition-delay: 1s;
+	top: 63%;
 
 	&.entered {
 		opacity: 0;
@@ -90,12 +91,14 @@
 
 	@media(max-width: $phone) {
 		width: 100%;
-		margin-top: 20px;
+		height: 100vh;
+		top: 50%;
 
 		.airpod-wrapper {
 			position: relative;
 			width: 50%;
 			margin-left: 50%;
+			margin-top: 50%;
 			transform: translateX(-50%);
 		}
 
@@ -110,6 +113,7 @@
 		p {
 			width: 260px;
 			line-height: 17px;
+			letter-spacing: 0.8px;
 		}
 
 		button.enter {

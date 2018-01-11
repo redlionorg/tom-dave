@@ -36,7 +36,7 @@
 	}
 
 	@media(max-width: $phone) {
-		right: -45px;
+		right: -40px;
 		top: 341px;
 
 		&:hover {
@@ -46,5 +46,9 @@
 		button {
 			height: 35px;
 		}
+	}
+
+	@media(min-height: $largeScreen) {
+		top: 527px;
 	}
 }
