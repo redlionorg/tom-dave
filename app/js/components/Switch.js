@@ -14,12 +14,19 @@ export default class Switch extends Component { // TV / Radio switch
 			this.element.on('mouseup', this.onMouseUp.bind(this))
 		} else {
 			const zt = new ZingTouch()
-			const gesture = new zt.Swipe({ numInputs: 1 })
+			this.ZingTouch = zt
+
 			zt.body.bind(this.element[0], 'swipe', (event) => {
 				const { currentDirection } = event.detail.data[0]
 				this.onSwipe(currentDirection)
 			})
-			this.ZingTouch = zt
+
+			zt.body.bind(this.element[0], 'tap', (event) => {
+				event.clientX = event.detail.events[0].clientX
+				event.clientY = event.detail.events[0].clientY
+				this.onMouseDown(event)
+				this.onMouseUp(event)
+			})
 		}
 
 		this.isMouseDown = false

@@ -28,35 +28,35 @@
 
 @keyframes fadeIn {
 	0% {
-		display: none;
+		visibility: hidden;
 		opacity: 1;
 	}
 
 	1% {
-		display: block;
+		visibility: visible;
 		opacity: 1;
 	}
 
 	100% {
-		display: block;
+		visibility: visible;
 		opacity: 1;
 	}
 }
 
 @keyframes fadeOut {
 	0% {
-		display: block;
+		visibility: visible;
 		opacity: 1;
 	}
 
 	99% {
-		display: block;
+		visibility: visible;
 		opacity: 1;
 	}
 
 	100% {
-		display: none;
-		opacity: 1;
+		visibility: hidden;
+		opacity: 0;
 	}
 }
 

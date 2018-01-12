@@ -9,8 +9,8 @@
 	.content {
 		opacity: 0;
 		visibility: hidden;
-		transform: translateY(60px);
-		transition: transform 0.8s;
+		transform: translateY(180px);
+		transition: transform 0.65s;
 		transition-timing-function: ease-out;
 
 		&.fade-in {
@@ -66,13 +66,13 @@
 
 	.rail {
 		position: absolute;
-		width: 47.5%;
+		width: 47.4%;
 		height: 6px;
-		left: 10.7%;
+		left: 13.1%;
 		top: 46%;
 	}
 
-	$indicatorWidth: 94px;
+	$indicatorWidth: 76px;
 	.indicator {
 		position: absolute;
 		width: $indicatorWidth;
@@ -102,16 +102,26 @@
 		margin-top: -10px;
 		width: 339px;
 
+		.rail {
+			width: 42%;
+			left: 15.2%;
+		}
+
 		.indicator {
 			pointer-events: none;
 		}
 	}
 
 	@media(min-height: $largeScreen) {
-		width: 476px;
+		width: 482px;
 
 		.rail {
-			left: 13.2%;
+			left: 14%;
+			width: 47.3%
+		}
+
+		.indicator {
+			width: 86px;
 		}
 	}
 }

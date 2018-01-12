@@ -166,12 +166,7 @@ export default class Slider extends Component { // lightbox
 		this.element.animate({
 			opacity: 1
 		}, 300)
-
-		if (typeof this.currentVideo !== 'undefined') {
-			// this.currentVideo.play()
-		} else {
-			this.load(0)
-		}
+		this.load(0)
 	}
 
 	hide() {

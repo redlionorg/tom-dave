@@ -124,7 +124,7 @@
 	@media(max-width: $phone) {
 		top: 240px;
 		width: 100%;
-		padding: 0 30px 30px 30px;
+		padding: 0 30px 70px 30px;
 
 		div, p, h4 {
 			letter-spacing: 0.5;
@@ -144,11 +144,11 @@
 			}
 	
 			button.tv {
-				margin-bottom: 20px;
+				margin-bottom: 25px;
 			}
 	
 			button.radio {
-				margin-top: 20px;
+				margin-top: 25px;
 			}
 		}
 	}

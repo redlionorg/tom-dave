@@ -142,14 +142,16 @@
 		}
 	
 		&.read .album {
-			.hover .read {
+			&.selected .active {
 				opacity: 0;
 			}
 
-			&.selected {
-				.active .read {
-					opacity: 1;
-				}
+			&.selected .hover {
+				opacity: 1;
+			}
+			
+			.hover .read {
+				opacity: 1;
 			}
 
 			&:hover .hover {
