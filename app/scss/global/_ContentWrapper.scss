@@ -44,6 +44,7 @@
 
 	@media(max-width: $phone) {
 		margin-top: 65px;
+		overflow: scroll;
 		height: calc(100% - 65px);
 		
 		> .background {

@@ -21,7 +21,6 @@ class App extends Component {
 		AudioManager.add(Enum.ALBUMS.CONTACT, 'audio/contact.mp3')
 		AudioManager.add(Enum.ALBUMS.WORK, 'audio/work.mp3')
 		AudioManager.add('record_noises', 'audio/player_start.mp3')
-		AudioManager.add('record_noises_end', 'audio/player_end.mp3')
 		AudioManager.on('end', this.onAudioEnd.bind(this))
 
 		State.init({

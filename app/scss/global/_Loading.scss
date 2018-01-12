@@ -26,12 +26,14 @@
 			animation-name: airpodLeft;
 			animation-duration: 4s;
 			animation-fill-mode: forwards;
+			z-index: 2;
 		}
 
 		.airpod.right {
 			animation-name: airpodRight;
 			animation-duration: 4s;
 			animation-fill-mode: forwards;
+			z-index: 2;
 		}
 	}
 
@@ -41,6 +43,11 @@
 
 	.foreground {
 		position: absolute;
+		z-index: 3;
+	}
+
+	.background {
+		z-index: 1;
 	}
 
 	p, button.enter {
@@ -113,7 +120,7 @@
 		p {
 			width: 260px;
 			line-height: 17px;
-			letter-spacing: 0.5px;
+			letter-spacing: 0.4px;
 		}
 
 		button.enter {

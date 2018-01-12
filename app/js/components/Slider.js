@@ -30,7 +30,7 @@ export default class Slider extends Component { // lightbox
 			this.unload(this.lastSlide)
 		}
 
-		this.currentVideo.play()
+		// this.currentVideo.play()
 	}
 
 	setSlide(index) {
@@ -168,7 +168,7 @@ export default class Slider extends Component { // lightbox
 		}, 300)
 
 		if (typeof this.currentVideo !== 'undefined') {
-			this.currentVideo.play()
+			// this.currentVideo.play()
 		} else {
 			this.load(0)
 		}

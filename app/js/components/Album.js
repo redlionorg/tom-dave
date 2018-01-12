@@ -8,7 +8,9 @@ export default class Album extends Component {
 		this.deselect()
 		this.setProp('index', index)
 
-		this.cacheDOMElement('albumRead', '.normal .read, .hover .read')
+		this.cacheDOMElement('albumRead', '.normal .read')
+		this.cacheDOMElement('albumReadHover', '.hover .read')
+		this.cacheDOMElement('albumReadActive', '.active .read')
 		this.cacheDOMElement('albumListen', '.normal .listen, .hover .listen')
 
 		if (UserAgent.isMobile()) {
@@ -57,15 +59,20 @@ export default class Album extends Component {
 				this.deselect()
 			}
 			break
-		case 'reading':
-			if (value) {
-				this.elements.albumRead.css('opacity', 1)
-				this.elements.albumListen.css('opacity', 0)
-			} else {
-				this.elements.albumRead.css('opacity', 0)
-				this.elements.albumListen.css('opacity', 1)
-			}
-			break
+		// case 'reading':
+		// 	if (value) {
+		// 		if (UserAgent.isMobile()) {
+
+		// 		} else {
+
+		// 		}
+		// 		this.elements.albumRead.css('opacity', 1)
+		// 		this.elements.albumListen.css('opacity', 0)
+		// 	} else {
+		// 		this.elements.albumRead.css('opacity', 0)
+		// 		this.elements.albumListen.css('opacity', 1)
+		// 	}
+		// 	break
 		default:
 			break
 		}

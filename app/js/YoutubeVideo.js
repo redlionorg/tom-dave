@@ -24,7 +24,7 @@ export default class YoutubeVideo extends Observer {
 		this.player = new YT.Player(this.parent, {
 			videoId: this.id,
 			origin,
-        	widget_referrer: origin,
+			widget_referrer: origin,
 			events: {
 				onReady: this.onReady.bind(this),
 				onStateChange: this.onStateChange.bind(this),

@@ -52,7 +52,7 @@ export default class RecordAnimation extends Component {
 			}, CSSPlugin)
 				.to(this.currentAlbum, 1, { x: 0, rotation: 90, boxShadow: '11px -8px 8px -2px rgba(0, 0, 0, 0.3) ' })
 				.to([this.elements.record, this.currentRecord], 0, { opacity: 1 })
-				.to([this.elements.record], 1.2, { y: 198 })
+				.to([this.elements.record], 1.2, { y: 199 })
 				.add(() => {
 					if (!this.animatedDown) {
 						this.onAlbumAnimatedDown()
@@ -158,7 +158,9 @@ export default class RecordAnimation extends Component {
 			}
 			break
 		case 'recordAngle':
-			this.currentRecord.animate({ rotate: `${value}deg` }, 0)
+			if (typeof this.currentRecord !== 'undefined') {
+				this.currentRecord.animate({ rotate: `${value}deg` }, 0)
+			}
 			break
 		case 'recordOnPlayer':
 			if (!this.currentRecord) {

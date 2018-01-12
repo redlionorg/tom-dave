@@ -1,10 +1,11 @@
 import $ from '../vendor/zepto'
 import Component from '../base/Component'
-import AudioManager from '../services/AudioManager'
+import { UserAgent, AudioManager } from '../services'
 import Enum from '../Enum'
+import Util from '../Util'
 
 const CSSPlugin = require('../../../node_modules/gsap/CSSPlugin.js')
-const TimelineLite = require('../../../node_modules/gsap/TimelineLite.js')
+const TimelineMax = require('../../../node_modules/gsap/TimelineMax.js')
 
 export default class RecordPlayer extends Component {
 	constructor(parent) {
@@ -18,7 +19,19 @@ export default class RecordPlayer extends Component {
 		this.cacheDOMElement('reflection', '.record .reflection')
 		this.currentSound = undefined
 
-		this.elements.button.on('click', this.onButtonClick.bind(this))
+		this.recordTimelines = []
+		this.initTimelines()
+
+		this.elements.button.on('click touchstart', (e) => {
+			if (event.handled === false) {
+				return
+			}
+			e.stopPropagation()
+			e.preventDefault()
+			e.handled = true
+
+			this.onButtonClick()
+		})
 	}
 
 	onButtonClick() {
@@ -57,21 +70,49 @@ export default class RecordPlayer extends Component {
 		return Math.round(Math.atan2(values[1], values[0]) * (180 / Math.PI))
 	}
 
+	initTimelines() {
+		for (let i = 0; i <= 2; i += 1) {
+			this.recordTimelines.push(new TimelineMax({ repeat: -1 })
+				.to(this.elements[i], 1, { ease: window.Power0.easeNone, rotation: '360deg' })
+			)
+		}
+	}
+
+	recordPlay() {
+		this.recordTimelines[this.state.currentRecord].play()
+	}
+
+	recordPause() {
+		this.recordTimelines[this.state.currentRecord].pause()
+	}
+
+	recordUnpause() {
+		this.recordTimelines[this.state.currentRecord].play()
+	}
+
+	recordReset() {
+		this.recordTimelines[this.state.currentRecord].pause()
+
+		setTimeout(() => {
+			this.recordTimelines[this.state.currentRecord].pause(0, true)
+		}, 1000)
+	}
+
 	needlePlay() {
-		this.timeline = new TimelineLite()
+		this.timeline = new TimelineMax()
 			.to(this.elements.needle, this.currentSound.audio.duration(), { rotation: '35deg' })
 		this.timeline.play()
 	}
 
 	needleCue() {
-		this.timeline = new TimelineLite()
+		this.timeline = new TimelineMax()
 			.to(this.elements.needle, 2, { rotation: '22deg' })
 			.add(this.onNeedleCued.bind(this))
 		this.timeline.play()
 	}
 
 	needleReset() {
-		this.timeline = new TimelineLite()
+		this.timeline = new TimelineMax()
 			.to(this.elements.needle, 2, { rotation: '0deg' })
 			.add(this.onNeedleReset.bind(this))
 		this.timeline.play()
@@ -100,7 +141,6 @@ export default class RecordPlayer extends Component {
 				this.needleCue()
 				this.setState('spinning', true)
 			} else {
-				AudioManager.play('record_noises_end')
 				this.needleReset()
 			}
 			break
@@ -130,6 +170,11 @@ export default class RecordPlayer extends Component {
 				AudioManager.stop('record_noises')
 				this.elements.button.removeClass('playing')
 				this.elements[this.state.currentRecord].addClass('paused')
+
+				if (UserAgent.isMobile()) {
+					this.recordPause()
+				}
+
 				this.setState('needleActivated', false)
 			}
 			break
@@ -142,11 +187,19 @@ export default class RecordPlayer extends Component {
 				AudioManager.pause(this.state.currentRecord)
 				this.elements.button.removeClass('playing')
 				this.elements[this.state.currentRecord].addClass('paused')
+
+				if (UserAgent.isMobile()) {
+					this.recordPause()
+				}
 			} else {
 				this.timeline.play()
 				AudioManager.play(this.state.currentRecord)
 				this.elements.button.addClass('playing')
 				this.elements[this.state.currentRecord].removeClass('paused')
+
+				if (UserAgent.isMobile()) {
+					this.recordUnpause()
+				}
 			}
 			break
 		case 'recordOnPlayer':
@@ -157,9 +210,17 @@ export default class RecordPlayer extends Component {
 				this.elements[this.state.currentRecord].addClass('show')
 				this.elements.reflection.addClass('show')
 				this.currentSound = AudioManager.get(this.state.currentRecord)
+
+				if (UserAgent.isMobile()) {
+					this.recordPlay()
+				}
 			} else {
 				this.elements[this.state.currentRecord].removeClass('show').removeClass('spin').removeClass('paused')
 				this.elements.reflection.removeClass('show')
+
+				if (UserAgent.isMobile()) {
+					this.recordReset()
+				}
 			}
 			break
 		case 'spinning':

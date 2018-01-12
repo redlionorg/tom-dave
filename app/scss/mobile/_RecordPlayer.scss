@@ -4,4 +4,9 @@
 			opacity: 0;
 		}
 	}
+
+	img.spin {
+		animation: none !important;
+		-webkit-animation: none !important;
+	}
 }

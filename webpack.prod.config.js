@@ -95,7 +95,8 @@ plugins: [
   }),
   new webpack.optimize.OccurrenceOrderPlugin(),
   new webpack.optimize.UglifyJsPlugin({
-    mangle: false,
+    mangle: true,
+    sourceMap: true,
      output: {
         space_colon: false,
         comments: function(node, comment) {

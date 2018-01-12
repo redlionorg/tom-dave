@@ -13,6 +13,18 @@
 	&.listen .album {
 		box-shadow: 5px 3px 2px -2px rgba(0, 0, 0, 0.3);
 
+		.read {
+			opacity: 0;
+		}
+
+		.listen {
+			opacity: 1;
+		}
+
+		.active .listen {
+			opacity: 0;
+		}
+
 		&.selected {
 			opacity: 0;
 		}
@@ -24,14 +36,43 @@
 	}
 
 	&.read .album {
+		.listen {
+			opacity: 0;
+		}
+
+		.read {
+			opacity: 1;
+		}
+
+		/* uncomment to remove active state for desktop */
+		// .active .read {
+		// 	opacity: 0;
+		// }
+
 		&.selected {
 			.hover {
 				opacity: 1;
 			}
 
+			/* remove to remove active state for desktop */
+			&:hover .hover {
+				opacity: 0;
+			}
+			.active {
+				opacity: 1;
+			}
+			.hover {
+				opacity: 0;
+			}
+			/* remove to remove active state for desktop */
+
 			.normal {
 				opacity: 0;
 			}
+		}
+
+		&.active {
+			opacity: 0;
 		}
 
 		.normal {
@@ -71,6 +112,11 @@
 			opacity: 0;
 		}
 
+		.active {
+			z-index: 3;
+			opacity: 0;
+		}
+
 		&.selected {
 			cursor: auto;
 		}
@@ -87,6 +133,33 @@
 	@media(max-width: $phone) {
 		width: 550px;
 		top: 16px;
+
+		&.listen .album {
+			&:hover {
+				transform: none;
+				box-shadow: auto;
+			}
+		}
+	
+		&.read .album {
+			.hover .read {
+				opacity: 0;
+			}
+
+			&.selected {
+				.active .read {
+					opacity: 1;
+				}
+			}
+
+			&:hover .hover {
+				opacity: 0;
+			}
+	
+			&:hover .normal {
+				opacity: 1;
+			}
+		}
 
 		.album {
 			width: 170px;
