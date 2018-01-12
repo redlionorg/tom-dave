@@ -141,7 +141,7 @@ export default class AlbumGallery extends Component {
 			break
 		case 'animating': {
 			const record = typeof this.state.currentRecord === 'undefined' ? this.lastCurrentRecord : this.state.currentRecord
-			if (UserAgent.isMobile()) {
+			if (UserAgent.isMobile() && !this.state.reading) {
 				if (!value) {
 					// show the gallery record again so the user can navigate
 					this.albums[record].element.css('opacity', 1)

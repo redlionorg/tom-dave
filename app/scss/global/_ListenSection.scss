@@ -20,7 +20,7 @@
 
 	@media(max-width: $phone) {
 		width: 100%;
-		margin-top: 260px;
+		margin-top: 240px;
 
 		.work {
 			.message {
@@ -98,7 +98,8 @@
 	}
 
 	@media(max-width: $phone) {
-		padding: 0 20px;
+		padding: 0 19px;
+		margin-top: -10px;
 		width: 339px;
 
 		.indicator {

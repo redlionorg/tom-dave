@@ -201,5 +201,12 @@
 		.dots {
 			bottom: 25px;
 		}
+
+		.arrow:hover .hover, .exit:hover .hover {
+			opacity: 0 !important;
+		}
+		.arrow:hover .normal, .exit:hover .normal {
+			opacity: 1 !important;
+		}
 	}
 }

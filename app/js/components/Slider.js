@@ -140,8 +140,8 @@ export default class Slider extends Component { // lightbox
 
 		this.elements.dots.append(dotElements)
 
-		this.element.find('.arrow-left').on('click touchstart', this.previous.bind(this))
-		this.element.find('.arrow-right').on('click touchstart', this.next.bind(this))
+		this.element.find('.arrow-left').on('click', this.previous.bind(this))
+		this.element.find('.arrow-right').on('click', this.next.bind(this))
 		this.element.find('.exit').on('click touchstart', this.hide.bind(this))
 		this.elements.background.on('click touchstart', this.hide.bind(this))
 
@@ -149,7 +149,7 @@ export default class Slider extends Component { // lightbox
 		dots.forEach((dom, index) => {
 			const dot = $(dom)
 			this.dots.push(dom)
-			dot.on('click touchstart', this.setSlide.bind(this, index))
+			dot.on('click', this.setSlide.bind(this, index))
 		})
 	}
 

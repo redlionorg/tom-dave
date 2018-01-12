@@ -10,7 +10,7 @@ export default class TVSlider extends Slider {
 				this.setState('animating', true)
 				this.show()
 			} else {
-				this.setState('animating', true)
+				setTimeout(() => this.setState('animating', false), 300)
 				this.hide()
 			}
 			break

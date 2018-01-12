@@ -164,7 +164,8 @@ class GoogleMapsAPIClass extends Observer {
 		const map = new window.google.maps.Map(element, {
 			center: { lat: this.lat, lng: this.lng },
 			zoom: 17,
-			styles: this.styles
+			styles: this.styles,
+			draggable: false
 		})
 
 		const marker = new window.google.maps.Marker({
