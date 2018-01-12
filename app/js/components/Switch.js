@@ -22,10 +22,11 @@ export default class Switch extends Component { // TV / Radio switch
 			})
 
 			zt.body.bind(this.element[0], 'tap', (event) => {
-				event.clientX = event.detail.events[0].clientX
-				event.clientY = event.detail.events[0].clientY
-				this.onMouseDown(event)
-				this.onMouseUp(event)
+				const mEvent = event
+				mEvent.clientX = event.detail.events[0].clientX
+				mEvent.clientY = event.detail.events[0].clientY
+				this.onMouseDown(mEvent)
+				this.onMouseUp(mEvent)
 			})
 		}
 

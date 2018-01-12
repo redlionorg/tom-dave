@@ -20,7 +20,10 @@ export default class RecordPlayer extends Component {
 		this.currentSound = undefined
 
 		this.recordTimelines = []
-		this.initTimelines()
+
+		if (UserAgent.isMobile()) {
+			this.initTimelines()
+		}
 
 		this.elements.button.on('click touchstart', (e) => {
 			if (event.handled === false) {
