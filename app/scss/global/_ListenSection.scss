@@ -9,8 +9,8 @@
 	.content {
 		opacity: 0;
 		visibility: hidden;
-		transform: translateY(180px);
-		transition: transform 0.65s;
+		transform: translateY(120px);
+		transition: transform 1s;
 		transition-timing-function: ease-out;
 
 		&.fade-in {
@@ -21,6 +21,10 @@
 	@media(max-width: $phone) {
 		width: 100%;
 		margin-top: 240px;
+
+		.content {
+			transform: translateY(80px);
+		}
 
 		.work {
 			.message {
@@ -38,7 +42,7 @@
 	}
 
 	@media(min-height: $largeScreen) {
-		margin-top: 410px;
+		margin-top: 394px;
 		width: 865px;
 	}
 }
@@ -104,10 +108,11 @@
 
 		.rail {
 			width: 42%;
-			left: 15.2%;
+			left: 16.9%;
 		}
 
 		.indicator {
+			width: 62px;
 			pointer-events: none;
 		}
 	}

@@ -173,7 +173,8 @@ export default class Slider extends Component { // lightbox
 		this.element.animate({ opacity: 0 }, 300, () => {
 			this.element.css('display', 'none')
 		})
-		this.currentVideo.stop()
+
+		this.currentVideo.pause()
 	}
 
 	normalizeIndex(index) {

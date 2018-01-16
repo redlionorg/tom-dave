@@ -35,7 +35,7 @@ export default class Switch extends Component { // TV / Radio switch
 	}
 
 	onMouseDown(event) {
-		if (this.state.animating || this.state.currentRecord !== 1) {
+		if (this.state.animating || (typeof this.state.currentRecord !== 'undefined' && this.state.currentRecord !== 1)) {
 			return
 		}
 
@@ -48,7 +48,7 @@ export default class Switch extends Component { // TV / Radio switch
 	}
 
 	onMouseUp(event) {
-		if (this.state.animating || this.state.currentRecord !== 1) {
+		if (this.state.animating || (typeof this.state.currentRecord !== 'undefined' && this.state.currentRecord !== 1)) {
 			return
 		}
 

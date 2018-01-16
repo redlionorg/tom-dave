@@ -4,7 +4,11 @@ class YoutubeIframeAPIClass extends Observer {
 	constructor() {
 		super()
 		this.ready = false
-		window.onYouTubeIframeAPIReady = this.onAPIReady.bind(this)
+		if ('YT' in window) {
+			this.onAPIReady()
+		} else {
+			window.onYouTubeIframeAPIReady = this.onAPIReady.bind(this)
+		}
 	}
 
 	onAPIReady() {

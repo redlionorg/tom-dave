@@ -93,14 +93,22 @@ export default class YoutubeVideo extends Observer {
 
 	onEnded() {
 		this.player.seek(0)
+		this.playing = false
+		this.stopped = true
+		this.paused = false
 		this.emit('ended')
 	}
 
 	onPlaying() {
+		this.stopped = false
+		this.paused = false
+		this.playing = true
 		this.emit('playing')
 	}
 
 	onPaused() {
+		this.playing = false
+		this.paused = true
 		this.emit('paused')
 	}
 
@@ -145,19 +153,19 @@ export default class YoutubeVideo extends Observer {
 	onStateChange(event) {
 		switch (event.data) {
 		case YT.PlayerState.ENDED:
-			this.onEnded.bind(this)
+			this.onEnded(event)
 			break
 		case YT.PlayerState.PLAYING:
-			this.onPlaying.bind(this)
+			this.onPlaying(event)
 			break
 		case YT.PlayerState.PAUSED:
-			this.onPaused.bind(this)
+			this.onPaused(event)
 			break
 		case YT.PlayerState.BUFFERING:
-			this.onBuffering.bind(this)
+			this.onBuffering(event)
 			break
 		case YT.PlayerState.CUED:
-			this.onCued.bind(this)
+			this.onCued(event)
 			break
 		default:
 			break

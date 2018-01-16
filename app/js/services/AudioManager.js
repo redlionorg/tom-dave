@@ -27,6 +27,21 @@ class _AudioManager extends Observer {
 		}
 	}
 
+	volume(tag, volume) {
+		const sound = this.get(tag)
+		let normalizedVolume = volume
+
+		if (!!sound && typeof normalizedVolume === 'number') {
+			if (normalizedVolume > 1) {
+				normalizedVolume = 1
+			}
+			if (normalizedVolume < 0) {
+				normalizedVolume = 0
+			}
+			sound.audio.volume(normalizedVolume)
+		}
+	}
+
 	stop(tag, emit = true) {
 		if (tag in this.sounds && this.sounds[tag].playing) {
 			const sound = this.sounds[tag]
