@@ -22,11 +22,14 @@ export default class Album extends Component {
 	}
 
 	select() {
-		if (this.state.animating || this.prop.selected) {
+		if ((!this.state.reading && this.state.animating) || this.prop.selected) {
 			return
 		}
+
 		if (!this.state.playing) {
-			this.setState('currentRecord', this.prop.index)
+			if (this.state.currentRecord !== this.prop.index) {
+				this.setState('currentRecord', this.prop.index)
+			}
 			if (!this.state.reading) {
 				this.setState('animating', true)
 			}
@@ -59,20 +62,6 @@ export default class Album extends Component {
 				this.deselect()
 			}
 			break
-		// case 'reading':
-		// 	if (value) {
-		// 		if (UserAgent.isMobile()) {
-
-		// 		} else {
-
-		// 		}
-		// 		this.elements.albumRead.css('opacity', 1)
-		// 		this.elements.albumListen.css('opacity', 0)
-		// 	} else {
-		// 		this.elements.albumRead.css('opacity', 0)
-		// 		this.elements.albumListen.css('opacity', 1)
-		// 	}
-		// 	break
 		default:
 			break
 		}
