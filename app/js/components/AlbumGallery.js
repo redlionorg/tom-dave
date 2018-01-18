@@ -48,11 +48,12 @@ export default class AlbumGallery extends Component {
 	}
 
 	setGalleryIndex(index, didSelect = false) {
-		if (index < 0 || index > 2 || this.index === index || !UserAgent.isMobile()) {
+		if (index < 0 || index > 2 || !UserAgent.isMobile() || this.index === index) {
 			return
 		}
 
 		this.index = index
+
 		if (!didSelect) {
 			this.setState('mobileGalleryIndex', index)
 		}
@@ -73,11 +74,11 @@ export default class AlbumGallery extends Component {
 	}
 
 	navigateLeft() {
-		this.setGalleryIndex(this.index - 1)
+		this.setState('currentRecord', this.index - 1)
 	}
 
 	navigateRight() {
-		this.setGalleryIndex(this.index + 1)
+		this.setState('currentRecord', this.index + 1)
 	}
 
 	disableSwipe() {
@@ -112,10 +113,7 @@ export default class AlbumGallery extends Component {
 			if (value) {
 				this.element.addClass('read')
 				this.element.removeClass('listen')
-
-				if (UserAgent.isMobile()) {
-					this.setState('currentRecord', this.index)
-				}
+				this.setState('currentRecord', this.index)
 			} else {
 				this.element.removeClass('read')
 				this.element.addClass('listen')

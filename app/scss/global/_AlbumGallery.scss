@@ -71,6 +71,12 @@
 			}
 		}
 
+		&:not(.selected) {
+			.normal {
+				opacity: 1;
+			}
+		}
+
 		&.active {
 			opacity: 0;
 		}
@@ -142,26 +148,48 @@
 		}
 	
 		&.read .album {
-			&.selected .active {
-				opacity: 0;
-				z-index: 1;
+			&.selected {
+				.active {
+					opacity: 0;
+					z-index: 1;
+				}
+
+				.hover {
+					opacity: 1;
+					z-index: 3;
+				}
+
+				.normal {
+					opacity: 0;
+				}
+
+				&:hover .hover {
+					opacity: 1;
+				}
 			}
 
-			&.selected .hover {
-				opacity: 1;
-				z-index: 3;
+			&:not(.selected) {
+				.hover {
+					opacity: 0;
+				}
+
+				.normal {
+					opacity: 1;
+				}
 			}
 			
 			.hover .read {
 				opacity: 1;
 			}
+			
+			&:hover {
+				.normal {
+					opacity: auto;
+				}
 
-			&:hover .hover {
-				opacity: 0;
-			}
-	
-			&:hover .normal {
-				opacity: 1;
+				.hover {
+					opacity: auto;
+				}
 			}
 		}
 

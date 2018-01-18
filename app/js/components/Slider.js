@@ -96,7 +96,7 @@ export default class Slider extends Component { // lightbox
 
 	resize(width, height) {
 		const scaledWidth = width < 750 ? width * 0.8 : width * 0.6
-		const scaledHeight = (scaledWidth / (16 / 9)) + 30
+		const scaledHeight = scaledWidth / (16 / 9)
 
 		$(this.elements.container).css({
 			width: scaledWidth,
