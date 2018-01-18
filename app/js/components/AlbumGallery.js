@@ -74,27 +74,19 @@ export default class AlbumGallery extends Component {
 	}
 
 	navigateLeft() {
-		this.setState('currentRecord', this.index - 1)
+		if (this.state.reading) {
+			this.setState('currentRecord', this.index - 1)
+		} else {
+			this.setGalleryIndex(this.index - 1)
+		}
 	}
 
 	navigateRight() {
-		this.setState('currentRecord', this.index + 1)
-	}
-
-	disableSwipe() {
-		if (UserAgent.isDesktop()) {
-			return
+		if (this.state.reading) {
+			this.setState('currentRecord', this.index + 1)
+		} else {
+			this.setGalleryIndex(this.index + 1)
 		}
-		this.interactable = false
-		this.elements.controls.css('opacity', 0.5)
-	}
-
-	enableSwipe() {
-		if (UserAgent.isDesktop()) {
-			return
-		}
-		this.interactable = true
-		this.elements.controls.css('opacity', 1)
 	}
 
 	stateWillUpdate(param, value) {
@@ -113,7 +105,9 @@ export default class AlbumGallery extends Component {
 			if (value) {
 				this.element.addClass('read')
 				this.element.removeClass('listen')
-				this.setState('currentRecord', this.index)
+				if (UserAgent.isMobile()) {
+					this.setState('currentRecord', this.index)
+				}
 			} else {
 				this.element.removeClass('read')
 				this.element.addClass('listen')

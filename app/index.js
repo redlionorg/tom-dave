@@ -39,7 +39,6 @@ class App extends Component {
 			tvLightboxIndex: 0,
 			recordOnPlayer: false,
 			needleActivated: false,
-			recordRotation: undefined,
 			currentRecord: undefined,
 			cuedRecord: undefined,
 			mobileGalleryIndex: 0
@@ -52,20 +51,21 @@ class App extends Component {
 	}
 
 	onAudioEnd(sound) {
-		if (typeof sound.id === 'number') {
+		if (typeof sound.id === 'number') { // if audio is one of the records
 			this.setState('playing', false)
 		}
 	}
 
 	onLoad() {
 		this.setState('loaded', true)
-		this.element.removeClass('no-transition')
+		this.element.removeClass('no-transition') // prevents content-wrapper transform from animating on page load
 	}
 
 	stateDidUpdate(param, value) {
 		switch (param) {
 		case 'animating':
 			if (!value && typeof this.state.cuedRecord !== 'undefined' && !this.state.playing && !this.state.reading) {
+				// if a record is cued and UI has just finished animating, play the cued record
 				setTimeout(() => {
 					this.setState('currentRecord', this.state.cuedRecord)
 					this.setState('cuedRecord', undefined)
@@ -97,7 +97,7 @@ new Components.TVSlider('.slider.tv-slider', app)
 new Components.RadioSlider('.slider.radio-slider', app)
 
 const userHasVisited = Store.get('visited')
-if (userHasVisited) {
+if (userHasVisited) {	// if the user has already visited (stored in localstorage), hide the loading page
 	loader.setLoaded()
 	State.set('visited', true)
 	State.set('entered', true)

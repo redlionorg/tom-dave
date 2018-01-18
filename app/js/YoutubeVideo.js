@@ -92,7 +92,6 @@ export default class YoutubeVideo extends Observer {
 	}
 
 	onEnded() {
-		this.player.seek(0)
 		this.playing = false
 		this.stopped = true
 		this.paused = false
@@ -136,7 +135,7 @@ export default class YoutubeVideo extends Observer {
 			this.error('The owner of the requested video does not allow it to be played in embedded players.')
 			break
 		default:
-			this.error('An unknown error has occurred')
+			this.error('An unknown error has occurred.')
 		}
 	}
 

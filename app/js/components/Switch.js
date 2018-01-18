@@ -20,14 +20,6 @@ export default class Switch extends Component { // TV / Radio switch
 				const { currentDirection } = event.detail.data[0]
 				this.onSwipe(currentDirection)
 			})
-
-			zt.body.bind(this.element[0], 'tap', (event) => {
-				const mEvent = event
-				mEvent.clientX = event.detail.events[0].clientX
-				mEvent.clientY = event.detail.events[0].clientY
-				this.onMouseDown(mEvent)
-				this.onMouseUp(mEvent)
-			})
 		}
 
 		this.isMouseDown = false

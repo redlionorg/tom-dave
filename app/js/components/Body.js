@@ -4,7 +4,7 @@ import { WindowSize } from '../services'
 export default class Body extends Component {
 	constructor(parent) {
 		super('.body', parent)
-		WindowSize.on('resize', this.resize.bind(this))
+		WindowSize.on('resize', this.onResize.bind(this))
 		this.largeScreen = WindowSize.height >= 900
 	}
 
@@ -23,7 +23,7 @@ export default class Body extends Component {
 		}
 	}
 
-	resize() {
+	onResize() {
 		const windowIsLarge = WindowSize.height >= 900
 		// extend element to 100% height only when the window is scrollable
 		if (windowIsLarge && !this.largeScreen) {

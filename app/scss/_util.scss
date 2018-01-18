@@ -26,6 +26,10 @@
 	color: $orangeColor;
 }
 
+.no-overflow {
+	overflow: hidden !important;
+}
+
 @keyframes fadeIn {
 	0% {
 		visibility: hidden;

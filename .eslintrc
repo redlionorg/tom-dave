@@ -13,7 +13,8 @@
 		"import/first": 0,
 		"no-unused-vars": 0,
 		"comma-dangle": [2, "never"],
-		"react/jsx-indent": [2, "tab"]
+		"react/jsx-indent": [2, "tab"],
+		"no-mixed-operators": 0
 	},
 	"env": {
 		"browser": true

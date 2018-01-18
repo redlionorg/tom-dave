@@ -1,9 +1,22 @@
 import $ from '../vendor/zepto'
 import Component from '../base/Component'
+import { UserAgent } from '../services'
 
 export default class ContentWrapper extends Component {
 	constructor(parent) {
 		super('.content-wrapper', parent)
+	}
+
+	hideOverflow() {
+		if (UserAgent.isMobile()) {
+			this.element.addClass('no-overflow')
+		}
+	}
+
+	showOverflow() {
+		if (UserAgent.isMobile()) {
+			this.element.removeClass('no-overflow')
+		}
 	}
 
 	stateDidUpdate(param, value) {
@@ -11,6 +24,7 @@ export default class ContentWrapper extends Component {
 		case 'entered':
 			if (value) {
 				this.element.addClass('entered')
+				this.hideOverflow()
 			} else {
 				this.element.removeClass('entered')
 			}
@@ -31,9 +45,11 @@ export default class ContentWrapper extends Component {
 			if (value) {
 				this.element.removeClass('listen')
 				this.element.addClass('read')
+				this.showOverflow()
 			} else {
 				this.element.addClass('listen')
 				this.element.removeClass('read')
+				this.hideOverflow()
 			}
 			break
 		default:

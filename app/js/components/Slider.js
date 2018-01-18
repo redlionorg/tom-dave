@@ -22,15 +22,13 @@ export default class Slider extends Component { // lightbox
 		this.cacheDOMElement('inner', '.slides')
 		this.initialize()
 
-		WindowSize.on('resize', this.resize.bind(this))
+		WindowSize.on('resize', this.onResize.bind(this))
 	}
 
 	onVideoReady() {
 		if (typeof this.lastSlide !== 'undefined') {
 			this.unload(this.lastSlide)
 		}
-
-		// this.currentVideo.play()
 	}
 
 	setSlide(index) {
@@ -94,9 +92,9 @@ export default class Slider extends Component { // lightbox
 		}
 	}
 
-	resize(width, height) {
+	onResize(width, height) {
 		const scaledWidth = width < 750 ? width * 0.8 : width * 0.6
-		const scaledHeight = scaledWidth / (16 / 9)
+		const scaledHeight = (scaledWidth / (16 / 9)) + 40 - (scaledWidth * 0.0107)
 
 		$(this.elements.container).css({
 			width: scaledWidth,

@@ -21,10 +21,6 @@
 			opacity: 1;
 		}
 
-		.active .listen {
-			opacity: 0;
-		}
-
 		&.selected {
 			opacity: 0;
 		}
@@ -44,27 +40,10 @@
 			opacity: 1;
 		}
 
-		/* uncomment to remove active state for desktop */
-		// .active .read {
-		// 	opacity: 0;
-		// }
-
 		&.selected {
 			.hover {
 				opacity: 1;
 			}
-
-			/* remove to remove active state for desktop */
-			&:hover .hover {
-				opacity: 0;
-			}
-			.active {
-				opacity: 1;
-			}
-			.hover {
-				opacity: 0;
-			}
-			/* remove to remove active state for desktop */
 
 			.normal {
 				opacity: 0;
@@ -75,10 +54,6 @@
 			.normal {
 				opacity: 1;
 			}
-		}
-
-		&.active {
-			opacity: 0;
 		}
 
 		.normal {
@@ -117,12 +92,7 @@
 			width: 100%;
 			opacity: 0;
 		}
-
-		.active {
-			z-index: 3;
-			opacity: 0;
-		}
-
+		
 		&.selected {
 			cursor: auto;
 		}
@@ -149,11 +119,6 @@
 	
 		&.read .album {
 			&.selected {
-				.active {
-					opacity: 0;
-					z-index: 1;
-				}
-
 				.hover {
 					opacity: 1;
 					z-index: 3;
