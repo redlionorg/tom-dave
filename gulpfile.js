@@ -1,5 +1,6 @@
 const gulp = require('gulp')
 const sass = require('gulp-sass')
+const imageMin = require('gulp-imagemin')
 const minify = require('gulp-minify-css')
  
 gulp.task('sass', function () {
@@ -16,6 +17,7 @@ gulp.task('audio-assets', function() {
 
 gulp.task('image-assets', function() {
   return gulp.src('./images/**/*')
+    .pipe(imageMin())
     .pipe(gulp.dest('./dist/images'))
 })
  

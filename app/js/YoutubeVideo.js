@@ -142,12 +142,12 @@ export default class YoutubeVideo extends Observer {
 
 	error(...args) {
 		args.splice(0, 0, `YoutubeVideo (${this.id}):`)
-		console.error.apply(this, args)
+		// console.error.apply(this, args)
 	}
 
 	log(...args) {
 		args.splice(0, 0, `YoutubeVideo (${this.id}):`)
-		console.log.apply(this, args)
+		// console.log.apply(this, args)
 	}
 
 	onStateChange(event) {

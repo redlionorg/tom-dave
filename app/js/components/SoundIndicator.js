@@ -40,6 +40,7 @@ export default class SoundIndicator extends Component {
 				this.resetTimeout()
 				this.hide()
 			}
+			break
 		default:
 			break
 		}

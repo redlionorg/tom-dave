@@ -12,7 +12,7 @@ class _State extends Observer {
 			return
 		}
 		if (!(param in this.state) || value !== this.state[param]) {
-			console.log(`${this.constructor.name} updated State`, param, value)
+			// console.log(`${this.constructor.name} updated State`, param, value)
 			const newState = { ...this.state }
 			newState[param] = value
 			this.state = newState

@@ -44,7 +44,7 @@ export default class Component extends Observer {
 	}
 
 	setProp(param, value, object) {	// propagates down
-		console.log(`${this.constructor.name} updated Prop`, param, value, object)
+		// console.log(`${this.constructor.name} updated Prop`, param, value, object)
 		if (typeof param === 'undefined') {
 			return
 		}
