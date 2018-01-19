@@ -30,7 +30,7 @@ export default class SoundIndicator extends Component {
 
 		switch (param) {
 		case 'currentRecord':
-			if (this.state.reading === false && value !== 'undefined') {
+			if (this.state.reading === false && typeof value !== 'undefined') {
 				this.resetTimeout()
 				this.show()
 			}

@@ -97,7 +97,8 @@ new Components.TVSlider('.slider.tv-slider', app)
 new Components.RadioSlider('.slider.radio-slider', app)
 
 const userHasVisited = Store.get('visited')
-if (userHasVisited) {	// if the user has already visited (stored in localstorage), hide the loading page
+if (userHasVisited) {
+	// if the user has already visited (stored in localstorage), hide the loading page
 	loader.setLoaded()
 	State.set('visited', true)
 	State.set('entered', true)

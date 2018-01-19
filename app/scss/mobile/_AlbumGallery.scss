@@ -1,11 +1,4 @@
 .album-gallery {
-	&.listen .album {
-		&:hover {
-			transform: scale(1);
-			box-shadow: auto;
-		}
-	}
-
 	.album-gallery-inner {
 		transition: transform 0.3s;
 

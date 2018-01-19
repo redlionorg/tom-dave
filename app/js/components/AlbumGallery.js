@@ -74,6 +74,9 @@ export default class AlbumGallery extends Component {
 	}
 
 	navigateLeft() {
+		if (this.index === 0) {
+			return
+		}
 		if (this.state.reading) {
 			this.setState('currentRecord', this.index - 1)
 		} else {
@@ -82,6 +85,9 @@ export default class AlbumGallery extends Component {
 	}
 
 	navigateRight() {
+		if (this.index === 2) {
+			return
+		}
 		if (this.state.reading) {
 			this.setState('currentRecord', this.index + 1)
 		} else {

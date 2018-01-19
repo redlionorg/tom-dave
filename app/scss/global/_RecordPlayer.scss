@@ -15,12 +15,29 @@
 		bottom: 21px;
 		left: 19px;
 		z-index: 5;
-		cursor: pointer;
 
 		.stopped, .normal {
 			position: absolute;
 			left: 0;
 			top: 0;
+		}
+
+		&.playing, &.paused {
+			cursor: pointer;
+
+			&:hover .hover {
+				opacity: 1;
+			}
+
+			&:active {
+				transform: translate(1px, 1px);
+			}
+		}
+
+		&.playing {
+			.stopped {
+				opacity: 0;
+			}
 		}
 
 		.playing, .hover {
@@ -42,18 +59,6 @@
 
 		.normal {
 			z-index: 1;
-		}
-
-		&:hover .hover {
-			opacity: 1;
-		}
-
-		&:active {
-			transform: translate(1px, 1px);
-		}
-
-		&.playing .stopped {
-			opacity: 0;
 		}
 	}
 

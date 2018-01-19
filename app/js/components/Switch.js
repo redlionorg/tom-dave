@@ -75,7 +75,7 @@ export default class Switch extends Component { // TV / Radio switch
 	}
 
 	onSwipe(angle) {
-		if (this.state.animating || this.state.currentRecord !== 1) {
+		if (this.state.animating || (this.state.currentRecord !== 1 && typeof this.state.currentRecord !== 'undefined')) {
 			return
 		}
 

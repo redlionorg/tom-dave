@@ -8,6 +8,18 @@ export default class Body extends Component {
 		this.largeScreen = WindowSize.height >= 900
 	}
 
+	onResize() {
+		const windowIsLarge = WindowSize.height >= 900
+		// extend element to 100% height only when the window is scrollable
+		if (windowIsLarge && !this.largeScreen) {
+			this.largeScreen = true
+			this.element.css('height', '100%')
+		} else if (!windowIsLarge && this.largeScreen) {
+			this.largeScreen = false
+			this.element.css('height', 'auto')
+		}
+	}
+
 	stateDidUpdate(param, value) {
 		switch (param) {
 		case 'entered':
@@ -20,18 +32,6 @@ export default class Body extends Component {
 			break
 		default:
 			break
-		}
-	}
-
-	onResize() {
-		const windowIsLarge = WindowSize.height >= 900
-		// extend element to 100% height only when the window is scrollable
-		if (windowIsLarge && !this.largeScreen) {
-			this.largeScreen = true
-			this.element.css('height', '100%')
-		} else if (!windowIsLarge && this.largeScreen) {
-			this.largeScreen = false
-			this.element.css('height', 'auto')
 		}
 	}
 }

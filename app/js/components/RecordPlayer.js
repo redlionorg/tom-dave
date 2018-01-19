@@ -145,14 +145,13 @@ export default class RecordPlayer extends Component {
 				this.setState('spinning', true)
 			} else {
 				this.needleReset()
+				this.elements.button.removeClass('paused')
 			}
 			break
 		case 'showRadioLightbox':
 		case 'showTVLightbox':
 			if (value && this.state.playing) {
 				this.setState('paused', true)
-			} else if (!value && this.state.playing) {
-				// this.setState('paused', false)
 			}
 			break
 		case 'playing':
@@ -163,6 +162,7 @@ export default class RecordPlayer extends Component {
 				AudioManager.play(this.state.currentRecord)
 				this.needlePlay()
 				this.elements.button.addClass('playing')
+				this.elements.button.removeClass('paused')
 			} else {
 				if (!this.state.reading) {
 					this.setState('animating', true)
@@ -172,6 +172,7 @@ export default class RecordPlayer extends Component {
 				AudioManager.stop(this.state.currentRecord)
 				AudioManager.stop('record_noises')
 				this.elements.button.removeClass('playing')
+				this.elements.button.addClass('paused')
 				this.elements[this.state.currentRecord].addClass('paused')
 
 				if (UserAgent.isMobile()) {
@@ -189,6 +190,7 @@ export default class RecordPlayer extends Component {
 				this.timeline.pause()
 				AudioManager.pause(this.state.currentRecord)
 				this.elements.button.removeClass('playing')
+				this.elements.button.addClass('paused')
 				this.elements[this.state.currentRecord].addClass('paused')
 
 				if (UserAgent.isMobile()) {
@@ -198,6 +200,7 @@ export default class RecordPlayer extends Component {
 				this.timeline.play()
 				AudioManager.play(this.state.currentRecord)
 				this.elements.button.addClass('playing')
+				this.elements.button.removeClass('paused')
 				this.elements[this.state.currentRecord].removeClass('paused')
 
 				if (UserAgent.isMobile()) {

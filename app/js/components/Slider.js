@@ -31,6 +31,27 @@ export default class Slider extends Component { // lightbox
 		}
 	}
 
+	onResize(width, height) {
+		const scaledWidth = width < 750 ? width * 0.8 : width * 0.6
+		const scaledHeight = (scaledWidth / (16 / 9)) + 40 - (scaledWidth * 0.0107)
+
+		$(this.elements.container).css({
+			width: scaledWidth,
+			height: scaledHeight
+		})
+		$(this.elements.slides).css({
+			width: scaledWidth,
+			height: scaledHeight
+		})
+		$(this.elements.controls).css({
+			width: scaledWidth,
+			height: scaledHeight
+		})
+
+		this.slideWidth = scaledWidth
+		this.setSlidesPosition()
+	}
+
 	setSlide(index) {
 		let newIndex = index
 
@@ -90,27 +111,6 @@ export default class Slider extends Component { // lightbox
 			video.destroy()
 			delete this.videos[id]
 		}
-	}
-
-	onResize(width, height) {
-		const scaledWidth = width < 750 ? width * 0.8 : width * 0.6
-		const scaledHeight = (scaledWidth / (16 / 9)) + 40 - (scaledWidth * 0.0107)
-
-		$(this.elements.container).css({
-			width: scaledWidth,
-			height: scaledHeight
-		})
-		$(this.elements.slides).css({
-			width: scaledWidth,
-			height: scaledHeight
-		})
-		$(this.elements.controls).css({
-			width: scaledWidth,
-			height: scaledHeight
-		})
-
-		this.slideWidth = scaledWidth
-		this.setSlidesPosition()
 	}
 
 	initialize() {

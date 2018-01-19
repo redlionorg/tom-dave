@@ -24,11 +24,6 @@
 		&.selected {
 			opacity: 0;
 		}
-
-		&:hover {
-			transform: scale(1.03);
-			box-shadow: 11px 8px 8px -2px rgba(0, 0, 0, 0.3);
-		}
 	}
 
 	&.read .album {
@@ -110,13 +105,6 @@
 		width: 550px;
 		top: 16px;
 
-		&.listen .album {
-			&:hover {
-				transform: none;
-				box-shadow: auto;
-			}
-		}
-	
 		&.read .album {
 			&.selected {
 				.hover {
