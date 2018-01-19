@@ -91,7 +91,6 @@ const readSection = new Components.ReadSection(app)
 const listenSection = new Components.ListenSection(app)
 new Components.WorkSection(listenSection)
 new Components.Switch(listenSection)
-new Components.SoundIndicator(app)
 
 new Components.TVSlider('.slider.tv-slider', app)
 new Components.RadioSlider('.slider.radio-slider', app)

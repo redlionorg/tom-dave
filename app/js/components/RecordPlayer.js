@@ -26,12 +26,13 @@ export default class RecordPlayer extends Component {
 		}
 
 		this.elements.button.on('click touchstart', (e) => {
+			const event = e
 			if (event.handled === false) {
 				return
 			}
-			e.stopPropagation()
-			e.preventDefault()
-			e.handled = true
+			event.stopPropagation()
+			event.preventDefault()
+			event.handled = true
 
 			this.onButtonClick()
 		})

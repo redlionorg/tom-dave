@@ -14,5 +14,4 @@ export RadioSlider from './RadioSlider'
 export TVSlider from './TVSlider'
 export WorkSection from './WorkSection'
 export Switch from './Switch'
-export SoundIndicator from './SoundIndicator'
 

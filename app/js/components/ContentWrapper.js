@@ -50,6 +50,7 @@ export default class ContentWrapper extends Component {
 				this.element.addClass('listen')
 				this.element.removeClass('read')
 				this.hideOverflow()
+				this.element.scrollTop(0)
 			}
 			break
 		default:

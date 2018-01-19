@@ -16,19 +16,20 @@ export default class ZingTouch {
 	}
 
 	IsLeft(value) {
-		return value > 90 && value < 270
+		return value > 90 + 45 && value < 270 - 45
 	}
 
 	IsDown(value) {
-		return value > 180 && value < 360
+		return value > 180 + 45 && value < 360 - 45
 	}
 
 	IsUp(value) {
-		return value > 0 && value < 180
+		return value > 45 && value < 180 - 45
 	}
 
 	IsRight(value) {
-		return (value > 270 && value <= 360) || (value >= 0 && value < 90)
+		return (value > 270 + 45 && value <= 360) ||
+			(value >= 0 && value < 90 - 45)
 	}
 
 	get Direction() {
