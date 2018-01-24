@@ -101,6 +101,8 @@
 		}
 	}
 
+	
+
 	@media(max-width: $phone) {
 		width: 550px;
 		top: 16px;
@@ -156,7 +158,68 @@
 				box-shadow: 11px 8px 8px -2px rgba(0, 0, 0, 0.3);
 			}
 		}
+
+		
 	}
+
+	@media(max-width: $phone5) {
+		width: 422px;
+		top: 16px;
+
+		&.read .album {
+			&.selected {
+				.hover {
+					opacity: 1;
+					z-index: 3;
+				}
+
+				.normal {
+					opacity: 0;
+				}
+
+				&:hover .hover {
+					opacity: 1;
+				}
+			}
+
+			&:not(.selected) {
+				.hover {
+					opacity: 0;
+				}
+
+				.normal {
+					opacity: 1;
+				}
+			}
+			
+			.hover .read {
+				opacity: 1;
+			}
+			
+			&:hover {
+				.normal {
+					opacity: auto;
+				}
+
+				.hover {
+					opacity: auto;
+				}
+			}
+		}
+
+		.album {
+			width: 130px;
+			height: 130px;
+			margin: 0 8px;
+		}
+
+		&.listen .album {
+			&.selected {
+				box-shadow: 8px 6px 6px -2px rgba(0, 0, 0, 0.3);
+			}
+		}
+	}
+
 
 	@media(min-height: $largeScreen) {
 		width: 865px;

@@ -59,6 +59,17 @@
 			transform: none;
 		}
 	}
+	@media(max-width: $phone5) {
+		width: 130px;
+		top: 16px;
+		.record {
+			top: 10px;
+		}
+
+		.animation-album .contact, .animation-album .about {
+			transform: none;
+		}
+	}
 
 	@media(min-height: $largeScreen) {
 		width: 275px;

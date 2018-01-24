@@ -41,6 +41,29 @@
 		}
 	}
 
+	@media(max-width: $phone5) {
+		width: 100%;
+		margin-top: 240px;
+
+		.content {
+			transform: translateY(80px);
+		}
+
+		.work {
+			.message {
+				width: 330px;
+
+				.message-inner {
+					padding: 5px;
+				}
+
+				p {
+					line-height: 20px;
+				}
+			}
+		}
+	}
+
 	@media(min-height: $largeScreen) {
 		margin-top: 394px;
 		width: 865px;
@@ -104,7 +127,7 @@
 	@media(max-width: $phone) {
 		padding: 0 19px;
 		margin-top: -10px;
-		width: 339px;
+		width: 338px;
 
 		.rail {
 			width: 42%;
@@ -113,6 +136,23 @@
 
 		.indicator {
 			width: 62px;
+			pointer-events: none;
+		}
+	}
+
+	@media(max-width: $phone5) {
+		padding: 0 19px;
+		margin-top: -50px;
+		width: 268px;
+
+		.rail {
+			width: 40.8%;
+			left: 18.2%;
+			top: 45%;
+		}
+
+		.indicator {
+			width: 46px;
 			pointer-events: none;
 		}
 	}

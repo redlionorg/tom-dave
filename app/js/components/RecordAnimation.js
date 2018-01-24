@@ -46,7 +46,7 @@ export default class RecordAnimation extends Component {
 	setTimeline() {
 		const xOrigin = this.currentAlbum.position().left
 
-		if (UserAgent.isMobile()) {
+		if (UserAgent.isMobile() && WindowSize.width > 320) {
 			this.timeline = new TimelineLite({
 				onReverseComplete: this.onAlbumAnimatedUp.bind(this)
 			}, CSSPlugin)
@@ -62,6 +62,22 @@ export default class RecordAnimation extends Component {
 					}
 				})
 				.to(this.currentAlbum, 1, { x: xOrigin, y: 0, rotation: 0, boxShadow: '11px 8px 8px -2px rgba(0, 0, 0, 0.3) ' })
+		} else if (UserAgent.isMobile() && WindowSize.width <= 320) {
+			this.timeline = new TimelineLite({
+				onReverseComplete: this.onAlbumAnimatedUp.bind(this)
+			}, CSSPlugin)
+				.to(this.currentAlbum, 1, { x: 0, rotation: 90, boxShadow: '8px -6px 6px -2px rgba(0, 0, 0, 0.3) ' })
+				.to([this.elements.record, this.currentRecord], 0, { opacity: 1 })
+				.to([this.elements.record], 1.2, { y: 176 })
+				.add(() => {
+					if (!this.animatedDown) {
+						this.onAlbumAnimatedDown()
+						this.animatedDown = true
+					} else {
+						this.animatedDown = false
+					}
+				})
+				.to(this.currentAlbum, 1, { x: xOrigin, y: 0, rotation: 0, boxShadow: '8px 6px 6px -2px rgba(0, 0, 0, 0.3) ' })
 		} else {
 			let yOffset = 0
 			if (WindowSize.height >= 900) {

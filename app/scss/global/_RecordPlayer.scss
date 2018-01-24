@@ -138,6 +138,27 @@
 		}
 	}
 
+	@media(max-width: $phone5) {
+		width: 230px;
+		top: 190px;
+
+		.needle {
+			top: -68px;
+    		right: -75px;
+		}
+
+		.play-button {
+			bottom: 13px;
+    		left: 12px;
+		}
+
+		.record {
+			width: 130px;
+			left: 50px;
+			top: 12px;
+		}
+	}
+
 	@media(min-height: $largeScreen) {
 		width: 483px;
 		top: 390px;
