@@ -16,6 +16,9 @@ export default class ListenSection extends Component {
 		switch (param) {
 		case 'reading':
 			if (value) {
+				this.elements.about.removeClass('fade-out').removeClass('fade-in')
+				this.elements.contact.removeClass('fade-out').removeClass('fade-in')
+				this.elements.work.removeClass('fade-out').removeClass('fade-in')
 				this.element.addClass('hide-block')
 			} else {
 				this.element.removeClass('hide-block')
