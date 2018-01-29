@@ -72,11 +72,8 @@
 	}
 
 	@media(max-width: $tablet) and (min-height: $largeScreen) {
-		top: 50px;
-	width: 220px;
-	@include hcenter();
-	z-index: 3;
-	pointer-events: none;
+		width: 170px;
+		top: 16px;
 
 	.animation-album .contact, .animation-album .about {
 		transform: none;
@@ -103,4 +100,5 @@
 	100% {
 		transform: scale(0.95) translateY(265px) rotate(360deg);
 	}
+}
 }

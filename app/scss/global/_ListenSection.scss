@@ -64,7 +64,30 @@
 		}
 	}
 
-	@media(min-height: $largeScreen) {
+	@media(max-width: $tablet) and (min-height: $largeScreen){
+		// width: 100%;
+		// margin-top: 240px;
+
+		// .content {
+		// 	transform: translateY(80px);
+		// }
+
+		// .work {
+		// 	.message {
+		// 		width: 330px;
+
+		// 		.message-inner {
+		// 			padding: 5px;
+		// 		}
+
+		// 		p {
+		// 			line-height: 20px;
+		// 		}
+		// 	}
+		// }
+	}
+
+	@media(min-width: $tablet + 1) and (min-height: $largeScreen)  {
 		margin-top: 394px;
 		width: 865px;
 	}
@@ -123,7 +146,22 @@
 			left: 100%;
 		}
 	}
+	
+	@media(max-width: $tablet) and (min-height: $largeScreen) {
+		padding: 0 19px;
+		margin-top: -10px;
+		width: 338px;
 
+		.rail {
+			width: 42%;
+			left: 16.9%;
+		}
+
+		.indicator {
+			width: 62px;
+			pointer-events: none;
+		}
+	}
 	@media(max-width: $phone) {
 		padding: 0 19px;
 		margin-top: -10px;
@@ -157,7 +195,7 @@
 		}
 	}
 
-	@media(min-height: $largeScreen) {
+	@media (min-width: $tablet + 1) and (min-height: $largeScreen) {
 		width: 482px;
 
 		.rail {

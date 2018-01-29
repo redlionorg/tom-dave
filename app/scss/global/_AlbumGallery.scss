@@ -100,67 +100,6 @@
 			margin-right: 0;
 		}
 	}
-
-	@media(max-width: $tablet){
-		width: 550px;
-		top: 16px;
-
-		&.read .album {
-			&.selected {
-				.hover {
-					opacity: 1;
-					z-index: 3;
-				}
-
-				.normal {
-					opacity: 0;
-				}
-
-				&:hover .hover {
-					opacity: 1;
-				}
-			}
-
-			&:not(.selected) {
-				.hover {
-					opacity: 0;
-				}
-
-				.normal {
-					opacity: 1;
-				}
-			}
-			
-			.hover .read {
-				opacity: 1;
-			}
-			
-			&:hover {
-				.normal {
-					opacity: auto;
-				}
-
-				.hover {
-					opacity: auto;
-				}
-			}
-		}
-
-		.album {
-			width: 170px;
-			height: 170px;
-		}
-
-		&.listen .album {
-			&.selected {
-				box-shadow: 11px 8px 8px -2px rgba(0, 0, 0, 0.3);
-			}
-		}
-
-		
-
-}	
-
 	@media(max-width: $phone) {
 		width: 550px;
 		top: 16px;
@@ -278,6 +217,64 @@
 		}
 	}
 
+	@media(max-width: $tablet){
+		width: 550px;
+		top: 16px;
+
+		&.read .album {
+			&.selected {
+				.hover {
+					opacity: 1;
+					z-index: 3;
+				}
+
+				.normal {
+					opacity: 0;
+				}
+
+				&:hover .hover {
+					opacity: 1;
+				}
+			}
+
+			&:not(.selected) {
+				.hover {
+					opacity: 0;
+				}
+
+				.normal {
+					opacity: 1;
+				}
+			}
+			
+			.hover .read {
+				opacity: 1;
+			}
+			
+			&:hover {
+				.normal {
+					opacity: auto;
+				}
+
+				.hover {
+					opacity: auto;
+				}
+			}
+		}
+
+		.album {
+			width: 170px;
+			height: 170px;
+		}
+
+		&.listen .album {
+			&.selected {
+				box-shadow: 11px 8px 8px -2px rgba(0, 0, 0, 0.3);
+			}
+		}
+
+		
+	}
 	@media(min-width: $tablet + 1) and (min-height: $largeScreen) {
 		width: 865px;
 
