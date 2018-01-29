@@ -195,6 +195,7 @@ export default class RecordPlayer extends Component {
 				this.elements[this.state.currentRecord].addClass('paused')
 
 				if (UserAgent.isMobile()) {
+					console.log(this.elements[this.state.currentRecord])
 					this.recordPause()
 				}
 			} else {

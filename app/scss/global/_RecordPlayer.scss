@@ -159,7 +159,28 @@
 		}
 	}
 
-	@media(min-height: $largeScreen) {
+	@media(max-width: $tablet) and (min-height: $largeScreen) {
+		width: 300px;
+		top: 230px;
+
+		.needle {
+			top: -88px;
+    		right: -98px;
+		}
+
+		.play-button {
+			bottom: 17px;
+    		left: 15px;
+		}
+
+		.record {
+			width: 170px;
+			left: 65px;
+			top: 15px;
+		}
+	}
+
+	@media(min-width: $tablet + 1) and (min-height: $largeScreen) {
 		width: 483px;
 		top: 390px;
 

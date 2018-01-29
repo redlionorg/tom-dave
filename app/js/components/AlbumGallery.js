@@ -112,7 +112,7 @@ export default class AlbumGallery extends Component {
 				this.element.addClass('read')
 				this.element.removeClass('listen')
 				if (UserAgent.isMobile()) {
-					this.setState('currentRecord', this.index)
+					// this.setState('currentRecord', this.index)
 				}
 			} else {
 				this.element.removeClass('read')

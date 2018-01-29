@@ -71,7 +71,17 @@
 		}
 	}
 
-	@media(min-height: $largeScreen) {
+	@media(max-width: $tablet) and (min-height: $largeScreen) {
+		top: 50px;
+	width: 220px;
+	@include hcenter();
+	z-index: 3;
+	pointer-events: none;
+
+	.animation-album .contact, .animation-album .about {
+		transform: none;
+	}
+	@media (min-width: $tablet + 1) and (min-height: $largeScreen) {
 		width: 275px;
 		height: 275px;
 
