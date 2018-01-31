@@ -13,7 +13,10 @@ class App extends Component {
 
 		if (UserAgent.isDesktop()) {
 			this.element.addClass('desktop')
-		} else {
+		} else if (UserAgent.isTablet()) {
+			console.log('Tablet')
+			this.element.addClass('desktop')
+		} else if (UserAgent.isMobile()) {
 			this.element.addClass('mobile')
 		}
 
@@ -44,7 +47,7 @@ class App extends Component {
 			mobileGalleryIndex: 0
 		})
 
-		if (UserAgent.isMobile()) {
+		if (UserAgent.isMobile() && !UserAgent.isTablet()) {
 			this.element.find('.desktop').addClass('hide-block')
 			this.element.find('.mobile').addClass('show')
 		}

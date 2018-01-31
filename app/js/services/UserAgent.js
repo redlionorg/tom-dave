@@ -2,6 +2,7 @@ class UserAgentClass {
 	constructor() {
 		this.ua = navigator.userAgent
 		this.mobile = !!this.ua.match(/mobi/i)
+		this.tablet = !!this.ua.match(/tablet|ipad/i)
 	}
 
 	userAgent() {
@@ -11,9 +12,12 @@ class UserAgentClass {
 	isMobile() {
 		return this.mobile
 	}
+	isTablet() {
+		return this.tablet
+	}
 
 	isDesktop() {
-		return !this.mobile
+		return !this.mobile && !this.tablet
 	}
 }
 

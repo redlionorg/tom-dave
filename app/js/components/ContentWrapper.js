@@ -8,16 +8,27 @@ export default class ContentWrapper extends Component {
 	}
 
 	hideOverflow() {
-		if (UserAgent.isMobile()) {
+		if (UserAgent.isMobile() && !UserAgent.isTablet()) {
+			console.log('mobile no overflow')
+			this.element.addClass('no-overflow')
+		}
+		if (UserAgent.isTablet()) {
+			console.log('tablet no overflow')
 			this.element.addClass('no-overflow')
 		}
 	}
 
 	showOverflow() {
-		if (UserAgent.isMobile()) {
+		if (UserAgent.isMobile() && !UserAgent.isTablet()) {
+			console.log('mobile showing overflow')
+			this.element.removeClass('no-overflow')
+		}
+		if (UserAgent.isTablet()) {
+			console.log('tablet showing overflow')
 			this.element.removeClass('no-overflow')
 		}
 	}
+
 
 	stateDidUpdate(param, value) {
 		switch (param) {

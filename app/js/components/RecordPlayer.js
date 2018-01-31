@@ -168,7 +168,7 @@ export default class RecordPlayer extends Component {
 				if (!this.state.reading) {
 					this.setState('animating', true)
 				}
-
+				console.log('did it also play desktop, lets find out on the next episode of dragon ball z')
 				this.setState('paused', false)
 				AudioManager.stop(this.state.currentRecord)
 				AudioManager.stop('record_noises')
@@ -177,6 +177,7 @@ export default class RecordPlayer extends Component {
 				this.elements[this.state.currentRecord].addClass('paused')
 
 				if (UserAgent.isMobile()) {
+					console.log('this is mobile..')
 					this.recordPause()
 				}
 
@@ -188,6 +189,7 @@ export default class RecordPlayer extends Component {
 				break
 			}
 			if (value) {
+				console.log('des this also do the desktop stuff........ FRIEZA???')
 				this.timeline.pause()
 				AudioManager.pause(this.state.currentRecord)
 				this.elements.button.removeClass('playing')
@@ -242,6 +244,7 @@ export default class RecordPlayer extends Component {
 				this.elements[this.state.currentRecord].addClass('paused')
 				this.setState('recordAngle', this.getCSSRotation($(this.elements[this.state.currentRecord])))
 				this.setState('recordOnPlayer', false)
+				console.log(this.elements[this.state.currentRecord])
 			}
 			break
 		case 'reading':

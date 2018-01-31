@@ -158,27 +158,24 @@
 			top: 12px;
 		}
 	}
-
 	@media(max-width: $tablet) and (min-height: $largeScreen) {
-		width: 300px;
-		top: 230px;
-
-		.needle {
-			top: -88px;
-    		right: -98px;
-		}
-
+		position: relative !important;
+		@include hcenter();
+		width: 380px;
+		top: 320px;
+		z-index: 1;	
 		.play-button {
-			bottom: 17px;
-    		left: 15px;
+			&:hover .hover {
+				opacity: 0 !important;
+			}
 		}
-
-		.record {
-			width: 170px;
-			left: 65px;
-			top: 15px;
+	
+		img.spin {
+			animation: none !important;
+			-webkit-animation: none !important;
 		}
 	}
+
 
 	@media(min-width: $tablet + 1) and (min-height: $largeScreen) {
 		width: 483px;
@@ -199,6 +196,20 @@
 			left: 104px;
 			top: 23px;
 		}
+	}
+}
+
+@media(max-height: $tablet) and (min-width: 1024) {
+
+	.play-button {
+		&:hover .hover {
+			opacity: 0 !important;
+		}
+	}
+
+	img.spin {
+		animation: none !important;
+		-webkit-animation: none !important;
 	}
 }
 

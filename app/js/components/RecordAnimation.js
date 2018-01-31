@@ -46,7 +46,7 @@ export default class RecordAnimation extends Component {
 	setTimeline() {
 		const xOrigin = this.currentAlbum.position().left
 
-		if (UserAgent.isMobile() && WindowSize.width > 320) {
+		if (UserAgent.isMobile() && !UserAgent.isTablet() && WindowSize.width > 320) {
 			this.timeline = new TimelineLite({
 				onReverseComplete: this.onAlbumAnimatedUp.bind(this)
 			}, CSSPlugin)
@@ -62,7 +62,7 @@ export default class RecordAnimation extends Component {
 					}
 				})
 				.to(this.currentAlbum, 1, { x: xOrigin, y: 0, rotation: 0, boxShadow: '11px 8px 8px -2px rgba(0, 0, 0, 0.3) ' })
-		} else if (UserAgent.isMobile() && WindowSize.width <= 320) {
+		} else if (UserAgent.isMobile() && !UserAgent.isTablet() && WindowSize.width <= 320) {
 			this.timeline = new TimelineLite({
 				onReverseComplete: this.onAlbumAnimatedUp.bind(this)
 			}, CSSPlugin)
@@ -78,7 +78,7 @@ export default class RecordAnimation extends Component {
 					}
 				})
 				.to(this.currentAlbum, 1, { x: xOrigin, y: 0, rotation: 0, boxShadow: '8px 6px 6px -2px rgba(0, 0, 0, 0.3) ' })
-		} else {
+		} else if (UserAgent.isDesktop() && !UserAgent.isTablet()) {
 			let yOffset = 0
 			if (WindowSize.height >= 900) {
 				yOffset = 333
@@ -92,6 +92,22 @@ export default class RecordAnimation extends Component {
 				.to(this.currentAlbum, 1, { x: 0, y: 30, rotation: 90, boxShadow: '11px -8px 8px -2px rgba(0, 0, 0, 0.3) ' })
 				.to([this.elements.record, this.currentRecord], 0, { opacity: 1 })
 				.to(this.elements.record, 1.2, { scale: 1, y: yOffset })
+				.add(() => {
+					if (!this.animatedDown) {
+						this.onAlbumAnimatedDown()
+						this.animatedDown = true
+					} else {
+						this.animatedDown = false
+					}
+				})
+				.to(this.currentAlbum, 1, { x: xOrigin, y: 0, rotation: 0, boxShadow: '11px 8px 8px -2px rgba(0, 0, 0, 0.3) ' })
+		} else if (UserAgent.isTablet()) {
+			this.timeline = new TimelineLite({
+				onReverseComplete: this.onAlbumAnimatedUp.bind(this)
+			}, CSSPlugin)
+				.to(this.currentAlbum, 1, { x: 0, y: 30, rotation: 90, boxShadow: '11px -8px 8px -2px rgba(0, 0, 0, 0.3) ' })
+				.to([this.elements.record, this.currentRecord], 0, { opacity: 1 })
+				.to(this.elements.record, 1.2, { scale: 1, y: 256 })
 				.add(() => {
 					if (!this.animatedDown) {
 						this.onAlbumAnimatedDown()
@@ -176,6 +192,7 @@ export default class RecordAnimation extends Component {
 		case 'recordAngle':
 			if (typeof this.currentRecord !== 'undefined') {
 				this.currentRecord.animate({ rotate: `${value}deg` }, 0)
+				console.log(`${value}`)
 			}
 			break
 		case 'recordOnPlayer':
