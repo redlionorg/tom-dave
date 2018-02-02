@@ -224,6 +224,7 @@
 		}
 	
 		.rotateAlbum {
+			will-change: transform; 
 			animation-name: rotateAlbum;
 			animation-duration: 2s;
 		}

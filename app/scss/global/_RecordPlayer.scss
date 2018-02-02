@@ -233,6 +233,7 @@
 
 @keyframes needleStopped {
 	0% {
+		will-change: transform; 
 		transform: translate3d(0,0,0);
 		-webkit-transform: translate3d(0,0,0);
 		-webkit-transform: translateZ(0);
@@ -241,6 +242,7 @@
 	}
 
 	100% {
+		will-change: transform; 
 		transform: translate3d(0,0,0);
 		-webkit-transform: translate3d(0,0,0);
 		-webkit-transform: translateZ(0);
@@ -251,6 +253,7 @@
 
 @keyframes needlePlaying {
 	0% {
+		will-change: transform; 
 		transform: translate3d(0,0,0);
 		-webkit-transform: translate3d(0,0,0);
 		-webkit-transform: translateZ(0);
@@ -259,6 +262,7 @@
 	}
 
 	100% {
+		will-change: transform; 
 		transform: translate3d(0,0,0);
 		-webkit-transform: translate3d(0,0,0);
 		-webkit-transform: translateZ(0);
@@ -270,6 +274,7 @@
 
 @keyframes spin {
 	0% {
+		will-change: transform; 
 		transform: translate3d(0,0,0);
 		-webkit-transform: translate3d(0,0,0);
 		-webkit-transform: translateZ(0);
@@ -278,6 +283,7 @@
 	}
 
 	100% {
+		will-change: transform; 
 		transform: translate3d(0,0,0);
 		-webkit-transform: translate3d(0,0,0);
 		-webkit-transform: translateZ(0);
