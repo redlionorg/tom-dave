@@ -115,7 +115,7 @@
 		text-transform: uppercase;
 	}
 
-	@media(min-height: $largeScreen) {
+	@media(min-width: $tablet + 1) and (min-height: $largeScreen) {
 		width: 865px;
 		top: 380px;
 		padding: 0 50px;

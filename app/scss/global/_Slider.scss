@@ -33,6 +33,8 @@
 		.arrow {
 			top: 50%;
 			transform: translateY(-50%);
+			width: 63px;
+			height: 50px;
 		}
 
 		.arrow:hover .hover, .exit:hover .hover {
@@ -58,21 +60,23 @@
 		}
 
 		.arrow-left {
-			left: -45px;
+			left: -63px;
 		}
 
 		.arrow-right {
-			right: -45px;
+			right: -63px;
 			transform: translateY(-50%) scaleX(-1);
 		}
 
 		.exit {
-			top: -40px;
+			top: -50px;
 			right: 0;
 		}
 
 		img {
 			width: 20px;
+			margin-left: 15px;
+			margin-top: 15px;
 		}
 	}
 
@@ -194,7 +198,7 @@
 
 			.arrow-left, .arrow-right {
 				top: auto;
-				bottom: -64px;
+				bottom: -76px;
 			}
 		}
 
@@ -202,6 +206,14 @@
 			bottom: 25px;
 		}
 
+		.arrow:hover .hover, .exit:hover .hover {
+			opacity: 0 !important;
+		}
+		.arrow:hover .normal, .exit:hover .normal {
+			opacity: 1 !important;
+		}
+	}
+	@media(min-width: $phone) and (max-width: $tablet) and (min-height: $largeScreen) {
 		.arrow:hover .hover, .exit:hover .hover {
 			opacity: 0 !important;
 		}

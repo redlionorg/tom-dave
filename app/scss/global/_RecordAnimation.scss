@@ -39,10 +39,14 @@
 	}
 
 	.animation-album .contact {
+		-webkit-transform: translateZ(0);
+		-webkit-transform: translateX(240px);
 		transform: translateX(240px);
 	}
 
 	.animation-album .about {
+		-webkit-transform: translateZ(0);
+		-webkit-transform: translateX(-240px);
 		transform: translateX(-240px);
 	}
 
@@ -113,10 +117,22 @@
 		}
 	
 		.animation-album .contact {
+			will-change: transform; 
+			-webkit-transform: translateZ(0);
+			transform: translate3d(0,0,0);
+			-webkit-transform: translate3d(0,0,0);
+			transform: translateZ(0);
 			transform: translateX(240px);
+			-webkit-transform: translateX(240px);
 		}
 	
 		.animation-album .about {
+			will-change: transform; 
+			-webkit-transform: translateZ(0);
+			transform: translate3d(0,0,0);
+			-webkit-transform: translate3d(0,0,0);
+			transform: translateZ(0);
+			-webkit-transform: translateX(-240px);
 			transform: translateX(-240px);
 		}
 	
@@ -131,15 +147,25 @@
 		height: 275px;
 
 		.animation-album .contact {
+			will-change: transform; 
+			-webkit-transform: translateZ(0);
+			transform: translate3d(0,0,0);
+			-webkit-transform: translate3d(0,0,0);
 			transform: translateX(294px);
+			-webkit-transform: translateX(294px);
 		}
 	
 		.animation-album .about {
+			will-change: transform; 
+			-webkit-transform: translateZ(0);
+			transform: translate3d(0,0,0);
+			-webkit-transform: translate3d(0,0,0);
 			transform: translateX(-296px);
+			-webkit-transform: translateX(-296px);
 		}
 	}
 
-		@media (max-height: $tablet) and (min-width: 1024) {
+	@media (max-height: $tablet) and (min-width: 1024px) {
 		top: 50px;
 		width: 220px;
 		@include hcenter();
@@ -180,11 +206,21 @@
 		}
 	
 		.animation-album .contact {
+			will-change: transform; 
+			transform: translate3d(0,0,0);
+			-webkit-transform: translate3d(0,0,0);
+			transform: translateZ(0);
 			transform: translateX(240px);
+			-webkit-transform: translateX(240px);
 		}
 	
 		.animation-album .about {
+			will-change: transform; 
+			transform: translate3d(0,0,0);
+			-webkit-transform: translate3d(0,0,0);
+			transform: translateZ(0);
 			transform: translateX(-240px);
+			-webkit-transform: translateX(-240px);
 		}
 	
 		.rotateAlbum {
@@ -196,11 +232,21 @@
 
 @keyframes rotateAlbum {
 	0% {
+		will-change: transform; 
+		transform: translate3d(0,0,0);
+		-webkit-transform: translate3d(0,0,0);
+		-webkit-transform: translateZ(0);
 		transform: scale(0.95) translateY(265px) rotate(0deg);
+		-webkit-transform: scale(0.95) translateY(265px) rotate(0deg);
 	}
 
 	100% {
+		will-change: transform; 
+		transform: translate3d(0,0,0);
+		-webkit-transform: translate3d(0,0,0);
+		-webkit-transform: translateZ(0);
 		transform: scale(0.95) translateY(265px) rotate(360deg);
+		-webkit-transform: scale(0.95) translateY(265px) rotate(360deg);
 	}
 }
 }

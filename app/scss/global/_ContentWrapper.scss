@@ -50,8 +50,10 @@
 		height: calc(100% - 65px);
 		
 		> .background {
-			background-size: 416px;
 			height: 100vh;
 		}
+	}
+	@media(max-width: $tablet) and (min-height: $largeScreen){
+		height: calc(100% - 120px);
 	}
 }

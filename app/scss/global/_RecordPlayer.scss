@@ -116,6 +116,28 @@
 			animation-fill-mode: forwards;
 		}
 	}
+	@media(max-width: $tablet) and (min-height: $largeScreen) {
+		position: relative !important;
+		@include hcenter();
+		width: 380px;
+		top: 320px;
+		z-index: 1;	
+		.play-button {
+			&:hover .hover {
+				opacity: 0 !important;
+			}
+		}
+	
+		img.spin {
+			will-change: transform; 
+			-webkit-transform: translate3d(0,0,0);
+			-webkit-transform: translateZ(0);
+			transform: translate3d(0,0,0);
+			transform: translateZ(0);
+			animation: none !important;
+			-webkit-animation: none !important;
+		}
+	}
 
 	@media(max-width: $phone) {
 		width: 300px;
@@ -158,23 +180,6 @@
 			top: 12px;
 		}
 	}
-	@media(max-width: $tablet) and (min-height: $largeScreen) {
-		position: relative !important;
-		@include hcenter();
-		width: 380px;
-		top: 320px;
-		z-index: 1;	
-		.play-button {
-			&:hover .hover {
-				opacity: 0 !important;
-			}
-		}
-	
-		img.spin {
-			animation: none !important;
-			-webkit-animation: none !important;
-		}
-	}
 
 
 	@media(min-width: $tablet + 1) and (min-height: $largeScreen) {
@@ -197,9 +202,13 @@
 			top: 23px;
 		}
 	}
-}
 
-@media(max-height: $tablet) and (min-width: 1024) {
+	@media(max-height: $tablet) and (min-width: $phone) and (max-width: 1024px)  {
+		position: relative !important;
+		@include hcenter();
+		width: 379px;
+		top: 320px;
+		z-index: 1;	
 
 	.play-button {
 		&:hover .hover {
@@ -208,38 +217,72 @@
 	}
 
 	img.spin {
+		will-change: transform; 
+		-webkit-transform: translate3d(0,0,0);
+		-webkit-transform: translateZ(0);
+		transform: translate3d(0,0,0);
+		transform: translateZ(0);
 		animation: none !important;
 		-webkit-animation: none !important;
 	}
 }
 
+
+
+
+
 @keyframes needleStopped {
 	0% {
+		transform: translate3d(0,0,0);
+		-webkit-transform: translate3d(0,0,0);
+		-webkit-transform: translateZ(0);
 		transform: rotate(20deg);
+		-webkit-transform: rotate(20deg);
 	}
 
 	100% {
+		transform: translate3d(0,0,0);
+		-webkit-transform: translate3d(0,0,0);
+		-webkit-transform: translateZ(0);
 		transform: rotate(0deg);
+		-webkit-transform: rotate(0deg);
 	}
 }
 
 @keyframes needlePlaying {
 	0% {
+		transform: translate3d(0,0,0);
+		-webkit-transform: translate3d(0,0,0);
+		-webkit-transform: translateZ(0);
 		transform: rotate(0deg);
+		-webkit-transform: rotate(0deg);
 	}
 
 	100% {
-		transform: rotate(25deg)
+		transform: translate3d(0,0,0);
+		-webkit-transform: translate3d(0,0,0);
+		-webkit-transform: translateZ(0);
+		transform: rotate(25deg);
+		-webkit-transform: rotate(25deg);
 	}
 }
 
 
 @keyframes spin {
 	0% {
+		transform: translate3d(0,0,0);
+		-webkit-transform: translate3d(0,0,0);
+		-webkit-transform: translateZ(0);
 		transform: rotate(0deg);
+		-webkit-transform: rotate(0deg);
 	}
 
 	100% {
+		transform: translate3d(0,0,0);
+		-webkit-transform: translate3d(0,0,0);
+		-webkit-transform: translateZ(0);
 		transform: rotate(360deg);
+		-webkit-transform: rotate(360deg);
 	}
+}
 }

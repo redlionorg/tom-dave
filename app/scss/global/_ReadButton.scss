@@ -60,8 +60,10 @@
 			height: 35px;
 		}
 	}
-
-	@media(min-height: $largeScreen) {
+	@media(max-width: $tablet) and (min-height: $largeScreen){
+		top: 453px;
+	}
+	@media(min-width: $tablet + 1) and (min-height: $largeScreen) {
 		top: 527px;
 	}
 }
