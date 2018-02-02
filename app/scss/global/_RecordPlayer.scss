@@ -206,7 +206,7 @@
 	@media(max-height: $tablet) and (min-width: $phone) and (max-width: 1024px)  {
 		position: relative !important;
 		@include hcenter();
-		width: 379px;
+		width: 380px;
 		top: 320px;
 		z-index: 1;	
 
