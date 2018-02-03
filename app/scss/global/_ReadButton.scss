@@ -48,6 +48,7 @@
 			height: 35px;
 		}
 	}
+	
 	@media(max-width: $phone5) {
 		right: -40px;
 		top: 271px;
@@ -59,6 +60,10 @@
 		button {
 			height: 35px;
 		}
+	}
+	@media(max-width: $phone) and (orientation: landscape){
+		position: absolute;
+		z-index: 4;
 	}
 	@media(max-width: $tablet) and (min-height: $largeScreen){
 		top: 453px;

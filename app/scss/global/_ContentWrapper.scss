@@ -53,6 +53,16 @@
 			height: 100vh;
 		}
 	}
+	@media(max-width: $phone) and (orientation: landscape) {
+		overflow-x: hidden;
+		-webkit-overflow-scrolling: touch;
+		overflow-y: scroll;
+		height: 178%;
+		
+		> .background {
+			height: 100% !important;
+		}
+	}
 	@media(max-width: $tablet) and (min-height: $largeScreen){
 		height: calc(100% - 120px);
 	}

@@ -192,7 +192,6 @@ export default class RecordAnimation extends Component {
 		case 'recordAngle':
 			if (typeof this.currentRecord !== 'undefined') {
 				this.currentRecord.animate({ rotate: `${value}deg` }, 0)
-				console.log(`${value}`)
 			}
 			break
 		case 'recordOnPlayer':

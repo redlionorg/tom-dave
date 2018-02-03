@@ -14,7 +14,6 @@ class App extends Component {
 		if (UserAgent.isDesktop()) {
 			this.element.addClass('desktop')
 		} else if (UserAgent.isTablet()) {
-			console.log('Tablet')
 			this.element.addClass('desktop')
 		} else if (UserAgent.isMobile()) {
 			this.element.addClass('mobile')

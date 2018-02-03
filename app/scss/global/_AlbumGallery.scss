@@ -162,7 +162,6 @@
 	@media(max-width: $phone5) {
 		width: 422px;
 		top: 16px;
-
 		&.read .album {
 			&.selected {
 				.hover {
@@ -224,7 +223,13 @@
 		top: 50px;
 		@include hcenter();
 		z-index: 2;
-		
+
+			&.listen .album {
+				&:hover {
+					transform: scale(1) !important;
+					box-shadow: 11px 8px 8px -2px rgba(0, 0, 0, 0.3);
+				}
+			}
 	
 		&.read .album {
 			&.selected {
@@ -298,6 +303,13 @@
 		top: 50px;
 		@include hcenter();
 		z-index: 2;
+
+		&.listen .album {
+			&:hover {
+				transform: scale(0);
+				box-shadow: 11px 8px 8px -2px rgba(0, 0, 0, 0.3);
+			}
+		}
 		
 	
 		&.read .album {
