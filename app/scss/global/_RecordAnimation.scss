@@ -45,6 +45,7 @@
 	}
 
 	.animation-album .about {
+		
 		-webkit-transform: translateZ(0);
 		-webkit-transform: translateX(-240px);
 		transform: translateX(-240px);
@@ -228,6 +229,10 @@
 			animation-name: rotateAlbum;
 			animation-duration: 2s;
 		}
+	}
+
+	@media (max-width: $phone) and (orientation: landscape) { 
+		display: none;
 	}
 
 

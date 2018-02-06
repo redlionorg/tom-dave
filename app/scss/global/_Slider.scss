@@ -221,4 +221,7 @@
 			opacity: 1 !important;
 		}
 	}
+	@media (max-width: $phone) and (orientation: landscape) { 
+		display: none;
+	}
 }

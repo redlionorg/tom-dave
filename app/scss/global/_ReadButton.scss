@@ -62,8 +62,7 @@
 		}
 	}
 	@media(max-width: $phone) and (orientation: landscape){
-		position: absolute;
-		z-index: 4;
+		display: none !important;
 	}
 	@media(max-width: $tablet) and (min-height: $largeScreen){
 		top: 453px;

@@ -124,7 +124,7 @@
 	@media(max-width: $phone) {
 		top: 240px;
 		width: 100%;
-		padding: 0 30px 70px 30px;
+		padding: 0 30px 75px 30px;
 		-webkit-overflow-scrolling: touch;
 
 		div, p, h4 {
@@ -159,9 +159,7 @@
 			}
 		}
 	}
-	@media(max-width: $phone) and (orientation: landscape) {
-		-webkit-overflow-scrolling: touch;
-		overflow-y: scroll;
-	
+	@media (max-width: $phone) and (orientation: landscape) { 
+		display: none;
 	}
 }

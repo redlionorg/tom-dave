@@ -43,7 +43,7 @@ export default class ReadSection extends Component {
 				this.element.addClass('hide-block')
 			}
 			break
-		case 'currentRecord':
+		case 'mobileGalleryIndex':
 			if (typeof value === 'undefined') {
 				return
 			}
@@ -52,14 +52,14 @@ export default class ReadSection extends Component {
 			this.elements.contact.removeClass('show')
 
 			switch (value) {
-			case Enum.ALBUMS.ABOUT:
+			case 0:
 				this.elements.about.addClass('show')
 				break
-			case Enum.ALBUMS.CONTACT:
+			case 2:
 				this.elements.contact.addClass('show')
 				this.onResize()
 				break
-			case Enum.ALBUMS.WORK:
+			case 1:
 				this.elements.work.addClass('show')
 				break
 			default:

@@ -131,6 +131,10 @@
 	@media(max-width: $phone) and (orientation: landscape) {
 		top: 10%;
 	}
+
+	@media(max-height: $tablet) and (min-width: 1024px){
+		
+	}
 }
 
 @keyframes airpodLeftMobile {

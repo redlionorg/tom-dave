@@ -40,6 +40,10 @@
 			transition: 0.4s opacity;
 		}
 	}
+	.turnDeviceNotification { 
+		display: none;
+
+		} 
 
 	@media(max-width: $phone) {
 		margin-top: 65px;
@@ -55,15 +59,60 @@
 	}
 	@media(max-width: $phone) and (orientation: landscape) {
 		overflow-x: hidden;
-		-webkit-overflow-scrolling: touch;
-		overflow-y: scroll;
-		height: 178%;
+		overflow-y: hidden;
 		
 		> .background {
+			display: none;
 			height: 100% !important;
+			overflow-y: hidden;
+			-webkit-overflow-scrolling: hidden;
 		}
 	}
 	@media(max-width: $tablet) and (min-height: $largeScreen){
 		height: calc(100% - 120px);
+		.turnDeviceNotification { 
+			display: none;
+
+			} 
 	}
+
+	@media (max-width: $phone) and (orientation: landscape) { 
+		.turnDeviceNotification { 
+			display:block;
+			position:fixed;
+			top: 0;
+			left:0;
+			width:100%;	
+			height: 100%;
+			background-color: #fcedd8;
+			z-index: 999;
+			overflow-y: hidden;
+			-webkit-overflow-scrolling: hidden;
+
+			.phone {
+				position: relative;
+				top: 45% !important;
+				left: 50%;
+				transform: translate3d(0,0,0) translate(-50%,-50%)!important;
+				width: 125px;
+			}
+
+			.phone-message {
+				color: #45b6d9;
+				position: relative;
+				text-align: center;
+				top: 15%;
+	
+			}
+
+		} 
+
+
+	} 
+	@media (max-width: $phone) and (orientation:portrait) {
+		 .turnDeviceNotification { 
+			display: none;
+
+			} 
+		} 
 }
