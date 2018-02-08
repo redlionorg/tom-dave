@@ -44,26 +44,53 @@ export default class ReadSection extends Component {
 			}
 			break
 		case 'mobileGalleryIndex':
-			if (typeof value === 'undefined') {
-				return
-			}
-			this.elements.about.removeClass('show')
-			this.elements.work.removeClass('show')
-			this.elements.contact.removeClass('show')
+			if (UserAgent.isMobile()) {
+				if (typeof value === 'undefined') {
+					return
+				}
+				this.elements.about.removeClass('show')
+				this.elements.work.removeClass('show')
+				this.elements.contact.removeClass('show')
 
-			switch (value) {
-			case 0:
-				this.elements.about.addClass('show')
-				break
-			case 2:
-				this.elements.contact.addClass('show')
-				this.onResize()
-				break
-			case 1:
-				this.elements.work.addClass('show')
-				break
-			default:
-				break
+				switch (value) {
+				case 0:
+					this.elements.about.addClass('show')
+					break
+				case 2:
+					this.elements.contact.addClass('show')
+					this.onResize()
+					break
+				case 1:
+					this.elements.work.addClass('show')
+					break
+				default:
+					break
+				}
+			}
+			break
+		case 'currentRecord':
+			if (UserAgent.isDesktop()) {
+				if (typeof value === 'undefined') {
+					return
+				}
+				this.elements.about.removeClass('show')
+				this.elements.work.removeClass('show')
+				this.elements.contact.removeClass('show')
+
+				switch (value) {
+				case Enum.ALBUMS.ABOUT:
+					this.elements.about.addClass('show')
+					break
+				case Enum.ALBUMS.CONTACT:
+					this.elements.contact.addClass('show')
+					this.onResize()
+					break
+				case Enum.ALBUMS.WORK:
+					this.elements.work.addClass('show')
+					break
+				default:
+					break
+				}
 			}
 			break
 		default:

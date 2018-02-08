@@ -70,6 +70,7 @@
 	}
 	@media(max-width: $tablet) and (min-height: $largeScreen){
 		height: calc(100% - 120px);
+		overflow-x: hidden;
 		.turnDeviceNotification { 
 			display: none;
 
