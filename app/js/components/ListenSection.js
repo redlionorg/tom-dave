@@ -38,6 +38,8 @@ export default class ListenSection extends Component {
 					break
 				case Enum.ALBUMS.CONTACT:
 					this.elements.contact.addClass('fade-out').removeClass('fade-in')
+					this.setState('showEmail', false)
+					this.setState('showPhone', false)
 					break
 				case Enum.ALBUMS.WORK:
 					this.elements.work.addClass('fade-out').removeClass('fade-in')
@@ -62,6 +64,10 @@ export default class ListenSection extends Component {
 				break
 			case Enum.ALBUMS.CONTACT:
 				this.elements.contact.addClass('fade-in')
+				this.setState('showEmail', true)
+				setTimeout(() => {
+					this.setState('showPhone', true)
+				}, 300)
 				break
 			case Enum.ALBUMS.WORK:
 				this.elements.work.addClass('fade-in')

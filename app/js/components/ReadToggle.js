@@ -29,10 +29,15 @@ export default class ReadToggle extends Component {
 				setTimeout(() => {
 					// disable toggle button to allow for the listen animation to reset
 					this.setState('animating', false)
-				}, 2000)
+				}, 2500)
 
 				this.element.removeClass('listen')
 				this.element.addClass('read')
+			} else if (this.state.animating === true) {
+				setTimeout(() => {
+					this.element.removeClass('listen')
+					this.element.addClass('read')
+				}, 3000)
 			} else {
 				this.element.addClass('listen')
 				this.element.removeClass('read')

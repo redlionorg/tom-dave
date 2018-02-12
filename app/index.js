@@ -43,7 +43,9 @@ class App extends Component {
 			needleActivated: false,
 			currentRecord: undefined,
 			cuedRecord: undefined,
-			mobileGalleryIndex: 0
+			mobileGalleryIndex: 0,
+			showEmail: false,
+			showPhone: false
 		})
 
 		if (UserAgent.isMobile() && !UserAgent.isTablet()) {
@@ -85,6 +87,8 @@ new Components.Body(app)
 new Components.Header(app)
 new Components.Loading(app)
 new Components.ReadToggle(app)
+new Components.EmailToggle(app)
+new Components.PhoneToggle(app)
 const contentWrapper = new Components.ContentWrapper(app)
 new Components.AlbumGallery(contentWrapper)
 new Components.RecordAnimation(contentWrapper)

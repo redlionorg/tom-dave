@@ -14,4 +14,6 @@ export RadioSlider from './RadioSlider'
 export TVSlider from './TVSlider'
 export WorkSection from './WorkSection'
 export Switch from './Switch'
+export EmailToggle from './EmailToggle'
+export PhoneToggle from './PhoneToggle'
 

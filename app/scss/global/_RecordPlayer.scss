@@ -16,13 +16,13 @@
 		left: 19px;
 		z-index: 5;
 
-		.stopped, .normal {
+		.stopped, .normal, .blank {
 			position: absolute;
 			left: 0;
 			top: 0;
 		}
 
-		&.playing, &.paused {
+		&.playing, &.paused, &.blank {
 			cursor: pointer;
 
 			&:hover .hover {
@@ -50,6 +50,10 @@
 
 		.playing {
 			z-index: 1;
+		}
+		.blank {
+			z-index:3;
+			position: absolute;
 		}
 
 		.hover {

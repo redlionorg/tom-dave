@@ -12,6 +12,7 @@ export default class RecordPlayer extends Component {
 		super('.record-player', parent)
 
 		this.cacheDOMElement('button', '.play-button')
+		this.cacheDOMElement('blank', '.play-button .blank')
 		this.cacheDOMElement('needle', '.needle')
 		this.cacheDOMElement(Enum.ALBUMS.ABOUT, '.record .about')
 		this.cacheDOMElement(Enum.ALBUMS.CONTACT, '.record .contact')
@@ -162,6 +163,7 @@ export default class RecordPlayer extends Component {
 			if (value) {
 				AudioManager.play(this.state.currentRecord)
 				this.needlePlay()
+				this.elements.blank.addClass('hide')
 				this.elements.button.addClass('playing')
 				this.elements.button.removeClass('paused')
 			} else {

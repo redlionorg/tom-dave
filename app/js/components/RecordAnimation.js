@@ -50,9 +50,9 @@ export default class RecordAnimation extends Component {
 			this.timeline = new TimelineLite({
 				onReverseComplete: this.onAlbumAnimatedUp.bind(this)
 			}, CSSPlugin)
-				.to(this.currentAlbum, 1, { x: 0, rotation: 90, boxShadow: '11px -8px 8px -2px rgba(0, 0, 0, 0.3) ' })
+				.to(this.currentAlbum, 0.8, { x: 0, rotation: 90, boxShadow: '11px -8px 8px -2px rgba(0, 0, 0, 0.3) ' })
 				.to([this.elements.record, this.currentRecord], 0, { opacity: 1 })
-				.to([this.elements.record], 1.2, { y: 199 })
+				.to([this.elements.record], 1, { y: 199 })
 				.add(() => {
 					if (!this.animatedDown) {
 						this.onAlbumAnimatedDown()
@@ -61,14 +61,14 @@ export default class RecordAnimation extends Component {
 						this.animatedDown = false
 					}
 				})
-				.to(this.currentAlbum, 1, { x: xOrigin, y: 0, rotation: 0, boxShadow: '11px 8px 8px -2px rgba(0, 0, 0, 0.3) ' })
+				.to(this.currentAlbum, 0.6, { x: xOrigin, y: 0, rotation: 0, boxShadow: '11px 8px 8px -2px rgba(0, 0, 0, 0.3) ' })
 		} else if (UserAgent.isMobile() && !UserAgent.isTablet() && WindowSize.width <= 320) {
 			this.timeline = new TimelineLite({
 				onReverseComplete: this.onAlbumAnimatedUp.bind(this)
 			}, CSSPlugin)
-				.to(this.currentAlbum, 1, { x: 0, rotation: 90, boxShadow: '8px -6px 6px -2px rgba(0, 0, 0, 0.3) ' })
+				.to(this.currentAlbum, 0.6, { x: 0, rotation: 90, boxShadow: '8px -6px 6px -2px rgba(0, 0, 0, 0.3) ' })
 				.to([this.elements.record, this.currentRecord], 0, { opacity: 1 })
-				.to([this.elements.record], 1.2, { y: 176 })
+				.to([this.elements.record], 0.8, { y: 176 })
 				.add(() => {
 					if (!this.animatedDown) {
 						this.onAlbumAnimatedDown()
@@ -77,7 +77,7 @@ export default class RecordAnimation extends Component {
 						this.animatedDown = false
 					}
 				})
-				.to(this.currentAlbum, 1, { x: xOrigin, y: 0, rotation: 0, boxShadow: '8px 6px 6px -2px rgba(0, 0, 0, 0.3) ' })
+				.to(this.currentAlbum, 0.6, { x: xOrigin, y: 0, rotation: 0, boxShadow: '8px 6px 6px -2px rgba(0, 0, 0, 0.3) ' })
 		} else if (UserAgent.isDesktop() && !UserAgent.isTablet()) {
 			let yOffset = 0
 			if (WindowSize.height >= 900) {
@@ -89,9 +89,9 @@ export default class RecordAnimation extends Component {
 			this.timeline = new TimelineLite({
 				onReverseComplete: this.onAlbumAnimatedUp.bind(this)
 			}, CSSPlugin)
-				.to(this.currentAlbum, 1, { x: 0, y: 30, rotation: 90, boxShadow: '11px -8px 8px -2px rgba(0, 0, 0, 0.3) ' })
+				.to(this.currentAlbum, 0.6, { x: 0, y: 30, rotation: 90, boxShadow: '11px -8px 8px -2px rgba(0, 0, 0, 0.3) ' })
 				.to([this.elements.record, this.currentRecord], 0, { opacity: 1 })
-				.to(this.elements.record, 1.2, { scale: 1, y: yOffset })
+				.to(this.elements.record, 0.8, { scale: 1, y: yOffset })
 				.add(() => {
 					if (!this.animatedDown) {
 						this.onAlbumAnimatedDown()
@@ -100,14 +100,14 @@ export default class RecordAnimation extends Component {
 						this.animatedDown = false
 					}
 				})
-				.to(this.currentAlbum, 1, { x: xOrigin, y: 0, rotation: 0, boxShadow: '11px 8px 8px -2px rgba(0, 0, 0, 0.3) ' })
+				.to(this.currentAlbum, 0.6, { x: xOrigin, y: 0, rotation: 0, boxShadow: '11px 8px 8px -2px rgba(0, 0, 0, 0.3) ' })
 		} else if (UserAgent.isTablet()) {
 			this.timeline = new TimelineLite({
 				onReverseComplete: this.onAlbumAnimatedUp.bind(this)
 			}, CSSPlugin)
-				.to(this.currentAlbum, 1, { x: 0, y: 30, rotation: 90, boxShadow: '11px -8px 8px -2px rgba(0, 0, 0, 0.3) ' })
+				.to(this.currentAlbum, 0.6, { x: 0, y: 30, rotation: 90, boxShadow: '11px -8px 8px -2px rgba(0, 0, 0, 0.3) ' })
 				.to([this.elements.record, this.currentRecord], 0, { opacity: 1 })
-				.to(this.elements.record, 1.2, { scale: 1, y: 256 })
+				.to(this.elements.record, 0.8, { scale: 1, y: 256 })
 				.add(() => {
 					if (!this.animatedDown) {
 						this.onAlbumAnimatedDown()
@@ -116,7 +116,7 @@ export default class RecordAnimation extends Component {
 						this.animatedDown = false
 					}
 				})
-				.to(this.currentAlbum, 1, { x: xOrigin, y: 0, rotation: 0, boxShadow: '11px 8px 8px -2px rgba(0, 0, 0, 0.3) ' })
+				.to(this.currentAlbum, 0.6, { x: xOrigin, y: 0, rotation: 0, boxShadow: '11px 8px 8px -2px rgba(0, 0, 0, 0.3) ' })
 		}
 	}
 

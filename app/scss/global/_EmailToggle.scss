@@ -1,0 +1,82 @@
+.emailToggle{
+    position: fixed;
+    right: -48px;
+    top: 550px;
+    width: 45px;
+    height: 48px;
+    border-radius: 5px 0px 0px 5px;
+    z-index: 100;
+    pointer-events: none;
+    transition: .3s opacity,.1s transform;
+    background: #da4225;
+    
+
+    button {
+        height: 48px;
+		font-size: 1.3em;
+		position: absolute;
+        width: 35px;
+		color: #ffffff;
+    }
+
+    button > a > img {
+        display: block;
+        margin-left: auto;
+        width: 70%;
+
+    }
+    button > * {
+        vertical-align: middle;  
+    }
+
+
+    button.email {
+        background: #ef3007;
+    }
+
+    @media(max-width: $phone) {
+        width: 41px;
+		right: -48px;
+		top: 415px;
+		button {
+            height: 48px;
+            width: 27px;
+        }
+        button > a > img {
+            display: block;
+            margin-left: auto;
+            width: 60%;
+        }
+	}
+
+}
+
+.slide-in {
+    animation: slide-in 1s forwards;
+    -webkit-animation: slide-in 1s forwards;
+}
+
+.slide-out {
+    animation: slide-out 1s forwards;
+    -webkit-animation: slide-out 1s forwards;
+}
+    
+@keyframes slide-in {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(0%); }
+}
+
+@-webkit-keyframes slide-in {
+    0% { -webkit-transform: translateX(-100%); }
+    100% { -webkit-transform: translateX(0%); }
+}
+    
+@keyframes slide-out {
+    0% { transform: translateX(0%); }
+    100% { transform: translateX(-100%); }
+}
+
+@-webkit-keyframes slide-out {
+    0% { -webkit-transform: translateX(0%); }
+    100% { -webkit-transform: translateX(-100%); }
+}

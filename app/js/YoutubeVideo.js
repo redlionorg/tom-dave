@@ -20,9 +20,10 @@ export default class YoutubeVideo extends Observer {
 
 	onAPIReady() {
 		const origin = location.origin.replace('http://', 'https://')
+		const relString = '?rel=0&'
 
 		this.player = new YT.Player(this.parent, {
-			videoId: this.id,
+			videoId: this.id + relString,
 			origin,
 			widget_referrer: origin,
 			events: {
