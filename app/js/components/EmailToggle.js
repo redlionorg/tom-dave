@@ -16,6 +16,7 @@ export default class EmailToggle extends Component {
 			} else {
 				this.element.removeClass('hide')
 				this.element.addClass('show')
+				console.log(this.state.showEmail)
 			}
 			break
 		case 'showEmail':

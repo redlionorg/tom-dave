@@ -225,6 +225,7 @@ export default class RecordPlayer extends Component {
 			} else {
 				this.elements[this.state.currentRecord].removeClass('show').removeClass('spin').removeClass('paused')
 				this.elements.reflection.removeClass('show')
+				this.elements.blank.removeClass('hide')
 
 				if (UserAgent.isMobile()) {
 					this.recordReset()

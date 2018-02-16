@@ -16,14 +16,15 @@
         height: 48px;
 		font-size: 1.3em;
 		position: absolute;
-        width: 35px;
+        width: 45px;
 		color: #ffffff;
     }
 
     button > a > img {
         display: block;
         margin-left: auto;
-        width: 70%;
+        margin-right: auto;
+        width: 45%;
     }
 
 
@@ -31,6 +32,10 @@
         background: #ffbc75;
 
     }
+    button:hover {
+        transform: translateX(-3px);
+    }
+
 
     @media(max-width: $phone) {
         width: 41px;
@@ -45,7 +50,17 @@
             margin-left: auto;
             width: 60%;
         }
+        button:hover {
+			transform: none;
+		}
+
     
+    }
+    
+    @media(min-width: $tablet + 1) and (min-height: $largeScreen) {
+        top: 675px;
+        width: 46px;
+
 	}
 
 }
@@ -58,6 +73,8 @@
 .slide-out-phone {
     animation: slide-out-phone 1s forwards;
     -webkit-animation: slide-out-phone 1s forwards;
+    -webkit-animation-delay: 300ms;
+    animation-delay: 300ms;
 }
     
 @keyframes slide-in-phone {

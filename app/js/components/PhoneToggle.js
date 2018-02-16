@@ -21,6 +21,7 @@ export default class PhoneToggle extends Component {
 			} else {
 				this.element.removeClass('hide')
 				this.element.addClass('show')
+				console.log(this.state.showPhone)
 			}
 			break
 		case 'showPhone':

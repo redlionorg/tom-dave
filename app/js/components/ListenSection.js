@@ -65,9 +65,7 @@ export default class ListenSection extends Component {
 			case Enum.ALBUMS.CONTACT:
 				this.elements.contact.addClass('fade-in')
 				this.setState('showEmail', true)
-				setTimeout(() => {
-					this.setState('showPhone', true)
-				}, 300)
+				this.setState('showPhone', true)
 				break
 			case Enum.ALBUMS.WORK:
 				this.elements.work.addClass('fade-in')

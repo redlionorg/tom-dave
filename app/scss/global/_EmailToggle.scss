@@ -15,14 +15,15 @@
         height: 48px;
 		font-size: 1.3em;
 		position: absolute;
-        width: 35px;
+        width: 45px;
 		color: #ffffff;
     }
 
     button > a > img {
         display: block;
         margin-left: auto;
-        width: 70%;
+        margin-right: auto;
+        width: 45%;
 
     }
     button > * {
@@ -31,7 +32,11 @@
 
 
     button.email {
-        background: #ef3007;
+        background: #da4225;
+    }
+
+    button:hover {
+        transform: translateX(-3px);
     }
 
     @media(max-width: $phone) {
@@ -47,6 +52,15 @@
             margin-left: auto;
             width: 60%;
         }
+        button:hover {
+			transform: none;
+		}
+    }
+    
+    @media(min-width: $tablet + 1) and (min-height: $largeScreen) {
+        top: 620px;
+        width: 46px;
+
 	}
 
 }
