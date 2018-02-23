@@ -38,6 +38,9 @@ export default class RecordPlayer extends Component {
 			this.onButtonClick()
 		})
 	}
+	onRecordClick() {
+		this.setState('spinning', false)
+	}
 
 	onButtonClick() {
 		if (!this.state.playing) {
