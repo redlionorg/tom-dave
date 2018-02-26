@@ -1,8 +1,8 @@
 .phoneToggle{
     position: fixed;
-    right: -48px;
+    right: -158px;
     top: 605px;
-    width: 45px;
+    width: 154px;
     height: 48px;
     border-radius: 5px 0px 0px 5px;
     z-index: 100;
@@ -15,16 +15,26 @@
     button {
         height: 48px;
 		font-size: 1.3em;
-		position: absolute;
+		position: relative;
         width: 45px;
-		color: #ffffff;
+        color: #fff;
+        float: left;
     }
 
-    button > a > img {
-        display: block;
+    button > img {
+        display: inline-block;
         margin-left: auto;
         margin-right: auto;
         width: 45%;
+    }
+
+    > p {
+        display: inline-block;
+        color: white;
+        position: relative;
+        vertical-align: middle;
+        line-height: 49px;
+
     }
 
 
@@ -35,6 +45,9 @@
     button:hover {
         transform: translateX(-3px);
     }
+    button:focus {
+        transform: none;
+    }
 
 
     @media(max-width: $phone) {
@@ -44,6 +57,8 @@
 		button {
             height: 48px;
             width: 26px;
+            position: absolute;
+            float: none;
         }
         button > a > img {
             display: block;
@@ -56,10 +71,28 @@
 
     
     }
+
+    @media(max-width: $phone5) {
+        width: 41px;
+		right: -48px;
+		top: 420px;
+		button {
+            height: 48px;
+            width: 27px;
+        }
+        button > a > img {
+            display: block;
+            margin-left: auto;
+            width: 60%;
+        }
+        button:hover {
+			transform: none;
+		}
+    }
     
     @media(min-width: $tablet + 1) and (min-height: $largeScreen) {
         top: 675px;
-        width: 46px;
+        width: 154px;
 
 	}
 
@@ -68,6 +101,18 @@
 .slide-in-phone {
     animation: slide-in-phone 1s forwards;
     -webkit-animation: slide-in-phone 1s forwards;
+}
+
+.slide-in-phone-desktop {
+    animation: slide-in-phone-desktop 1s forwards;
+    -webkit-animation: slide-in-phone 1s forwards;
+}
+
+.slide-out-phone-desktop {
+    animation: slide-out-phone-desktop 1s forwards;
+    -webkit-animation: slide-out-phone-desktop 1s forwards;
+    -webkit-animation-delay: 300ms;
+    animation-delay: 300ms;
 }
 
 .slide-out-phone {
@@ -95,4 +140,26 @@
 @-webkit-keyframes slide-out-phone {
     0% { -webkit-transform: translateX(0%); }
     100% { -webkit-transform: translateX(-100%); }
+}
+
+//Desktop keyframes
+
+@keyframes slide-in-phone-desktop {
+    0% { transform: translateX(-31%); }
+    100% { transform: translateX(0%); }
+}
+
+@-webkit-keyframes slide-in-phone-desktop {
+    0% { -webkit-transform: translateX(-31%); }
+    100% { -webkit-transform: translateX(0%); }
+}
+
+@keyframes slide-out-phone-desktop {
+    0% { transform: translateX(0%); }
+    100% { transform: translateX(-31%); }
+}
+
+@-webkit-keyframes slide-out-phone-desktop {
+    0% { -webkit-transform: translateX(0%); }
+    100% { -webkit-transform: translateX(-31%); }
 }

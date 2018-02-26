@@ -18,6 +18,8 @@ export default class ReadToggle extends Component {
 		} else {
 			this.setState('reading', true)
 			this.setState('playing', false)
+			this.setState('emailSlide', false)
+			this.setState('phoneSlide', false)
 			this.setState('showEmail', false)
 			this.setState('showPhone', false)
 		}

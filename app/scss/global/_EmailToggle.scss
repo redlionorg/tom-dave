@@ -1,8 +1,8 @@
 .emailToggle{
     position: fixed;
-    right: -48px;
+    right: -204px;
     top: 550px;
-    width: 45px;
+    width: 200px;
     height: 48px;
     border-radius: 5px 0px 0px 5px;
     z-index: 100;
@@ -14,16 +14,26 @@
     button {
         height: 48px;
 		font-size: 1.3em;
-		position: absolute;
+		position: relative;
         width: 45px;
-		color: #ffffff;
+        color: #fff;
+        float: left;
     }
 
-    button > a > img {
-        display: block;
+    button > img {
+        display: inline-block;
         margin-left: auto;
         margin-right: auto;
         width: 45%;
+
+    }
+
+    a {
+        display: inline-block;
+        color: white;
+        position: relative;
+        vertical-align: middle;
+        line-height: 49px;
 
     }
     button > * {
@@ -38,6 +48,9 @@
     button:hover {
         transform: translateX(-3px);
     }
+    button:focus {
+        transform: none;
+    }
 
     @media(max-width: $phone) {
         width: 41px;
@@ -50,16 +63,36 @@
         button > a > img {
             display: block;
             margin-left: auto;
-            width: 60%;
+            width: 61%;
         }
         button:hover {
 			transform: none;
 		}
     }
+
+    @media(max-width: $phone5) {
+        width: 41px;
+		right: -48px;
+		top: 366px;
+		button {
+            height: 48px;
+            width: 27px;
+        }
+        button > a > img {
+            display: block;
+            margin-left: auto;
+            width: 61%;
+        }
+        button:hover {
+			transform: none;
+		}
+    }
+
+    
     
     @media(min-width: $tablet + 1) and (min-height: $largeScreen) {
         top: 620px;
-        width: 46px;
+        width: 200px;
 
 	}
 
@@ -70,9 +103,18 @@
     -webkit-animation: slide-in 1s forwards;
 }
 
+.slide-in-desktop {
+    animation: slide-in-desktop 1s forwards;
+    -webkit-animation: slide-in-desktop 1s forwards;
+}
+
 .slide-out {
     animation: slide-out 1s forwards;
     -webkit-animation: slide-out 1s forwards;
+}
+.slide-out-desktop {
+    animation: slide-out-desktop 1s forwards;
+    -webkit-animation: slide-out-desktop 1s forwards;
 }
     
 @keyframes slide-in {
@@ -93,4 +135,25 @@
 @-webkit-keyframes slide-out {
     0% { -webkit-transform: translateX(0%); }
     100% { -webkit-transform: translateX(-100%); }
+}
+
+//Desktop animations
+@keyframes slide-in-desktop {
+    0% { transform: translateX(-24%); }
+    100% { transform: translateX(0%); }
+}
+
+@-webkit-keyframes slide-in-desktop {
+    0% { -webkit-transform: translateX(-24%); }
+    100% { -webkit-transform: translateX(0%); }
+}
+
+@keyframes slide-out-desktop {
+    0% { transform: translateX(0%); }
+    100% { transform: translateX(-24%); }
+}
+
+@-webkit-keyframes slide-out-desktop {
+    0% { -webkit-transform: translateX(0%); }
+    100% { -webkit-transform: translateX(-24%); }
 }
