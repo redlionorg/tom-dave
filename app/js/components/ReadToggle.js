@@ -1,6 +1,8 @@
 import Component from '../base/Component'
 import AudioManager from '../services/AudioManager'
+import Enum from '../Enum'
 import { UserAgent } from '../services'
+
 
 export default class ReadToggle extends Component {
 	constructor(parent) {
@@ -54,6 +56,24 @@ export default class ReadToggle extends Component {
 			} else {
 				this.element.addClass('hide')
 				this.element.removeClass('show')
+			}
+			break
+		case 'playing':
+			switch (this.state.currentRecord) {
+			case Enum.ALBUMS.WORK:
+				setTimeout(() => {
+					// disable toggle button to allow for the listen animation to reset
+					this.setState('animating', true)
+					console.log(this.state.animating)
+				}, 10)
+				setTimeout(() => {
+					// disable toggle button to allow for the listen animation to reset
+					this.setState('animating', false)
+					console.log(this.state.animating)
+				}, 1500)
+				break
+			default:
+				break
 			}
 			break
 		default:

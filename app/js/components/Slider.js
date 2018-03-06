@@ -81,6 +81,8 @@ export default class Slider extends Component { // lightbox
 
 		dots.removeClass('selected')
 		dots.eq(index).addClass('selected')
+		console.log(typeof video.id)
+		console.log(video)
 		this.currentVideo = video
 	}
 
@@ -129,7 +131,7 @@ export default class Slider extends Component { // lightbox
 			const label = slide.attr('data-label')
 			const videoId = slide.attr('data-id')
 			dotElements += '<div class="dot"><div class="filled"></div><div class="unfilled"></div></div>'
-
+			console.log(typeof videoId)
 			this.labels.push(label || '')
 			this.videoIds.push(videoId)
 			slide.append(`<div class="label">${label}</div>`)
@@ -171,8 +173,8 @@ export default class Slider extends Component { // lightbox
 		this.element.animate({ opacity: 0 }, 300, () => {
 			this.element.css('display', 'none')
 		})
-
 		this.currentVideo.pause()
+		console.log(typeof this.currentVideo)
 	}
 
 	normalizeIndex(index) {

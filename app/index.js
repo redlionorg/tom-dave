@@ -46,21 +46,14 @@ class App extends Component {
 			mobileGalleryIndex: 0,
 			showEmail: false,
 			showPhone: false,
-			phoneSlide: false,
-			emailSlide: false
+			hoverEmail: false,
+			hoverPhone: false,
+			sliding: false
 		})
 
 		if (UserAgent.isMobile() && !UserAgent.isTablet()) {
 			this.element.find('.desktop').addClass('hide-block')
 			this.element.find('.mobile').addClass('show')
-		}
-		if (UserAgent.isMobile() && !UserAgent.isTablet()) {
-			this.element.find('.emailToggle').append('<button class="email"><a href="mailto:dave@tomdave.ca"><img src="images/email_button.png" draggable="false" ondragstart="return false;"></a></button>')
-			this.element.find('.phoneToggle').append('<button class="phone show"><a href="tel:4165048084"><img src="images/phone_button.png" draggable="false" ondragstart="return false;"></a></button>')
-		} else {
-			this.element.find('.emailToggle').append('<button class="email"><img src="images/email_button.png" draggable="false" ondragstart="return false;"></button><a href="mailto:dave@tomdave.ca"><p>dave@tomdave.ca</p></a>')
-			this.element.find('.phoneToggle').append('<button class="phone show"><img src="images/phone_button.png" draggable="false" ondragstart="return false;"></button><p>416.504.8084</p>')
-			console.log('loading desktop???')
 		}
 	}
 

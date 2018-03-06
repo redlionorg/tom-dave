@@ -2,117 +2,150 @@
     position: fixed;
     right: -158px;
     top: 605px;
-    width: 154px;
+    width: 130px;
     height: 48px;
     border-radius: 5px 0px 0px 5px;
     z-index: 100;
     pointer-events: none;
     transition: .3s opacity,.1s transform;
     background: #ffbc75;
-
+    -webkit-transition: right 1s ease-out;
+    -moz-transition: right 1s ease-out;
+    -o-transition: right 1s ease-out;
+    transition: right 1s ease-out;
     
 
     button {
         height: 48px;
 		font-size: 1.3em;
-		position: relative;
-        width: 45px;
+        width: 200px;
         color: #fff;
-        float: left;
+
+        > a {
+            color: #fff;
+            position: relative;
+            vertical-align: middle;
+            line-height: 23px;
+            float: left;
+
+            > img {
+                float: left;
+                margin-left: 14px;
+                margin-right: auto;
+                width: 10%;
+                }
+
+            > p {
+                float: left;
+                margin-left: 15px;
+            }
+    
+        }
     }
 
-    button > img {
-        display: inline-block;
-        margin-left: auto;
-        margin-right: auto;
-        width: 45%;
+    button > * {
+        vertical-align: middle;  
     }
 
-    > p {
-        display: inline-block;
-        color: white;
-        position: relative;
-        vertical-align: middle;
-        line-height: 49px;
 
-    }
+
+    
+
+   
 
 
     button.phone {
         background: #ffbc75;
 
     }
-    button:hover {
-        transform: translateX(-3px);
-    }
-    button:focus {
-        transform: none;
-    }
 
 
     @media(max-width: $phone) {
-        width: 41px;
-		right: -48px;
+		width: 130px;
 		top: 467px;
+		-webkit-transition: none;
+		-moz-transition: none;
+		-o-transition: none;
+		transition: none;
 		button {
             height: 48px;
             width: 26px;
             position: absolute;
             float: none;
-        }
-        button > a > img {
-            display: block;
-            margin-left: auto;
-            width: 60%;
-        }
-        button:hover {
-			transform: none;
+        
+			> a {
+				color: #fff;
+				position: relative;
+				vertical-align: middle;
+				line-height: 23px;
+				float: left;
+	
+				> img {
+					float: left;
+					margin-left: 10px;
+					margin-right: auto;
+					width: 59%;
+					}
+	
+		> p {
+			display: none;
 		}
+	}
+
+	}
+
 
     
     }
 
     @media(max-width: $phone5) {
-        width: 41px;
-		right: -48px;
+        width: 130px;
 		top: 420px;
+		-webkit-transition: none;
+		-moz-transition: none;
+		-o-transition: none;
+		transition: none;
 		button {
             height: 48px;
             width: 27px;
-        }
-        button > a > img {
-            display: block;
-            margin-left: auto;
-            width: 60%;
-        }
-        button:hover {
-			transform: none;
+				> a {
+					color: #fff;
+					position: relative;
+					vertical-align: middle;
+					line-height: 23px;
+					float: left;
+
+           		> img {
+					float: left;
+					margin-left: 10px;
+					margin-right: auto;
+					width: 59%;
+                }
+
+					> p {
+					display: none;
+				}
+			}
+
 		}
     }
     
     @media(min-width: $tablet + 1) and (min-height: $largeScreen) {
         top: 675px;
-        width: 154px;
+        width: 130px;
 
 	}
 
 }
+.phoneToggle:hover {
+    right: -25px;
+}
+
+
 
 .slide-in-phone {
     animation: slide-in-phone 1s forwards;
     -webkit-animation: slide-in-phone 1s forwards;
-}
-
-.slide-in-phone-desktop {
-    animation: slide-in-phone-desktop 1s forwards;
-    -webkit-animation: slide-in-phone 1s forwards;
-}
-
-.slide-out-phone-desktop {
-    animation: slide-out-phone-desktop 1s forwards;
-    -webkit-animation: slide-out-phone-desktop 1s forwards;
-    -webkit-animation-delay: 300ms;
-    animation-delay: 300ms;
 }
 
 .slide-out-phone {
@@ -122,44 +155,26 @@
     animation-delay: 300ms;
 }
     
+
+
+//Desktop keyframes
+
 @keyframes slide-in-phone {
-    0% { transform: translateX(-100%); }
+    0% { transform: translateX(-48%); }
     100% { transform: translateX(0%); }
 }
 
 @-webkit-keyframes slide-in-phone {
-    0% { -webkit-transform: translateX(-100%); }
+    0% { -webkit-transform: translateX(-48%); }
     100% { -webkit-transform: translateX(0%); }
 }
-    
+
 @keyframes slide-out-phone {
     0% { transform: translateX(0%); }
-    100% { transform: translateX(-100%); }
+    100% { transform: translateX(-48%); }
 }
 
 @-webkit-keyframes slide-out-phone {
     0% { -webkit-transform: translateX(0%); }
-    100% { -webkit-transform: translateX(-100%); }
-}
-
-//Desktop keyframes
-
-@keyframes slide-in-phone-desktop {
-    0% { transform: translateX(-31%); }
-    100% { transform: translateX(0%); }
-}
-
-@-webkit-keyframes slide-in-phone-desktop {
-    0% { -webkit-transform: translateX(-31%); }
-    100% { -webkit-transform: translateX(0%); }
-}
-
-@keyframes slide-out-phone-desktop {
-    0% { transform: translateX(0%); }
-    100% { transform: translateX(-31%); }
-}
-
-@-webkit-keyframes slide-out-phone-desktop {
-    0% { -webkit-transform: translateX(0%); }
-    100% { -webkit-transform: translateX(-31%); }
+    100% { -webkit-transform: translateX(-48%); }
 }

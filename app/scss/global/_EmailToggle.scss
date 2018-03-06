@@ -1,41 +1,50 @@
 .emailToggle{
     position: fixed;
-    right: -204px;
+    right: -261px;
     top: 550px;
-    width: 200px;
+    width: 260px;
     height: 48px;
     border-radius: 5px 0px 0px 5px;
     z-index: 100;
     pointer-events: none;
     transition: .3s opacity,.1s transform;
     background: #da4225;
+    //you did it on a go train ahahah oyu crazy asshole
+	-webkit-transition: right 1s ease-out;
+	-moz-transition: right 1s ease-out;
+	-o-transition: right 1s ease-out;
+	transition: right 1s ease-out;
+
     
 
     button {
         height: 48px;
 		font-size: 1.3em;
-		position: relative;
-        width: 45px;
-        color: #fff;
-        float: left;
+        width: 245px;
+		color: #fff;
+
+        > a {
+            color: #fff;
+            position: relative;
+            vertical-align: middle;
+            line-height: 16px;
+            float: left;
+
+            > img {
+                float: left;
+                margin-left: 13px;
+                margin-right: auto;
+                width: 8%;
+                }
+
+            > p {
+                float: left;
+                margin-left: 15px;
+            }
+    
+        }
     }
 
-    button > img {
-        display: inline-block;
-        margin-left: auto;
-        margin-right: auto;
-        width: 45%;
-
-    }
-
-    a {
-        display: inline-block;
-        color: white;
-        position: relative;
-        vertical-align: middle;
-        line-height: 49px;
-
-    }
     button > * {
         vertical-align: middle;  
     }
@@ -45,46 +54,74 @@
         background: #da4225;
     }
 
-    button:hover {
-        transform: translateX(-3px);
-    }
-    button:focus {
-        transform: none;
-    }
+
+
+
+
 
     @media(max-width: $phone) {
-        width: 41px;
-		right: -48px;
+		width: 260px;
 		top: 415px;
+		right: -273px;
+		-webkit-transition: none;
+		-moz-transition: none;
+		-o-transition: none;
+		transition: none;
 		button {
             height: 48px;
             width: 27px;
-        }
-        button > a > img {
-            display: block;
-            margin-left: auto;
-            width: 61%;
-        }
-        button:hover {
-			transform: none;
+			> a {
+				color: #fff;
+				position: relative;
+				vertical-align: middle;
+				line-height: 16px;
+				float: left;
+	
+				> img {
+					float: left;
+					margin-left: 10px;
+					margin-right: auto;
+					width: 60%;
+					}
+	
+				> p {
+					display: none;
+				}
+		
+			}
 		}
     }
 
     @media(max-width: $phone5) {
-        width: 41px;
-		right: -48px;
+        width: 260px;
 		top: 366px;
+		right: -273px;
+		-webkit-transition: none;
+		-moz-transition: none;
+		-o-transition: none;
+		transition: none;
 		button {
             height: 48px;
             width: 27px;
-        }
-        button > a > img {
-            display: block;
-            margin-left: auto;
-            width: 61%;
-        }
-        button:hover {
-			transform: none;
+			> a {
+				color: #fff;
+				position: relative;
+				vertical-align: middle;
+				line-height: 16px;
+				float: left;
+	
+				> img {
+					float: left;
+					margin-left: 10px;
+					margin-right: auto;
+					width: 60%;
+					}
+	
+				> p {
+					display: none;
+				}
+		
+			}
 		}
     }
 
@@ -92,68 +129,56 @@
     
     @media(min-width: $tablet + 1) and (min-height: $largeScreen) {
         top: 620px;
-        width: 200px;
+		width: 260px;
 
 	}
 
 }
+.emailToggle:hover {
+    right: -15px;
+}
+
+
 
 .slide-in {
     animation: slide-in 1s forwards;
     -webkit-animation: slide-in 1s forwards;
 }
 
-.slide-in-desktop {
-    animation: slide-in-desktop 1s forwards;
-    -webkit-animation: slide-in-desktop 1s forwards;
-}
-
 .slide-out {
     animation: slide-out 1s forwards;
     -webkit-animation: slide-out 1s forwards;
 }
-.slide-out-desktop {
-    animation: slide-out-desktop 1s forwards;
-    -webkit-animation: slide-out-desktop 1s forwards;
+.hover-state-in{
+	animation: hover-state-in 1s both forwards;
+	-webkit-animation: hover-state-in 1s both forwards;
 }
+
+.hover-state-out {
+	animation: hover-state-out 1s both ease-in-out;
+	-webkit-animation: hover-state-out 1s both ease-in-out;
+}
+
     
+
+//animations
 @keyframes slide-in {
-    0% { transform: translateX(-100%); }
+    0% { transform: translateX(-18%); }
     100% { transform: translateX(0%); }
 }
 
 @-webkit-keyframes slide-in {
-    0% { -webkit-transform: translateX(-100%); }
+    0% { -webkit-transform: translateX(-18%); }
     100% { -webkit-transform: translateX(0%); }
 }
-    
+
 @keyframes slide-out {
     0% { transform: translateX(0%); }
-    100% { transform: translateX(-100%); }
+    100% { transform: translateX(-18%); }
 }
 
 @-webkit-keyframes slide-out {
     0% { -webkit-transform: translateX(0%); }
-    100% { -webkit-transform: translateX(-100%); }
+    100% { -webkit-transform: translateX(-18%); }
 }
 
-//Desktop animations
-@keyframes slide-in-desktop {
-    0% { transform: translateX(-24%); }
-    100% { transform: translateX(0%); }
-}
-
-@-webkit-keyframes slide-in-desktop {
-    0% { -webkit-transform: translateX(-24%); }
-    100% { -webkit-transform: translateX(0%); }
-}
-
-@keyframes slide-out-desktop {
-    0% { transform: translateX(0%); }
-    100% { transform: translateX(-24%); }
-}
-
-@-webkit-keyframes slide-out-desktop {
-    0% { -webkit-transform: translateX(0%); }
-    100% { -webkit-transform: translateX(-24%); }
-}
