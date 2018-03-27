@@ -1,6 +1,6 @@
 .emailToggle{
     position: fixed;
-    right: -261px;
+    right: -262px;
     top: 550px;
     width: 260px;
     height: 48px;
@@ -89,7 +89,10 @@
 				}
 		
 			}
-		}
+        }
+        .emailToggle:hover {
+            right: inherit;
+        }
     }
 
     @media(max-width: $phone5) {
@@ -122,7 +125,10 @@
 				}
 		
 			}
-		}
+        }
+        .emailToggle:hover {
+            right: inherit;
+        }
     }
 
     
@@ -135,7 +141,7 @@
 
 }
 .emailToggle:hover {
-    right: -15px;
+    right: -65px;
 }
 
 

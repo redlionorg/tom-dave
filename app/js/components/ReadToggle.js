@@ -39,11 +39,6 @@ export default class ReadToggle extends Component {
 
 				this.element.removeClass('listen')
 				this.element.addClass('read')
-			} else if (this.state.animating === true) {
-				setTimeout(() => {
-					this.element.removeClass('listen')
-					this.element.addClass('read')
-				}, 3000)
 			} else {
 				this.element.addClass('listen')
 				this.element.removeClass('read')
@@ -61,15 +56,13 @@ export default class ReadToggle extends Component {
 		case 'playing':
 			switch (this.state.currentRecord) {
 			case Enum.ALBUMS.WORK:
+				//	disable buttons pointer events for slider to come up
+				this.element.removeClass('show')
+				this.element.addClass('unclickable')
 				setTimeout(() => {
-					// disable toggle button to allow for the listen animation to reset
-					this.setState('animating', true)
-					console.log(this.state.animating)
-				}, 10)
-				setTimeout(() => {
-					// disable toggle button to allow for the listen animation to reset
-					this.setState('animating', false)
-					console.log(this.state.animating)
+					//	reset the click event for that the button is clickable
+					this.element.addClass('show')
+					this.element.removeClass('unclickable')
 				}, 1500)
 				break
 			default:

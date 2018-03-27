@@ -1,6 +1,6 @@
 .phoneToggle{
     position: fixed;
-    right: -158px;
+    right: -159px;
     top: 605px;
     width: 130px;
     height: 48px;
@@ -61,7 +61,8 @@
 
 
     @media(max-width: $phone) {
-		width: 130px;
+        width: 130px;
+        right: -170px;
 		top: 467px;
 		-webkit-transition: none;
 		-moz-transition: none;
@@ -93,13 +94,16 @@
 	}
 
 	}
-
+    .phoneToggle:hover {
+        right: inherit;
+    }
 
     
     }
 
     @media(max-width: $phone5) {
         width: 130px;
+        right: -170px;
 		top: 420px;
 		-webkit-transition: none;
 		-moz-transition: none;
@@ -127,7 +131,10 @@
 				}
 			}
 
-		}
+        }
+        .phoneToggle:hover {
+            right: inherit;
+        }
     }
     
     @media(min-width: $tablet + 1) and (min-height: $largeScreen) {
@@ -160,21 +167,21 @@
 //Desktop keyframes
 
 @keyframes slide-in-phone {
-    0% { transform: translateX(-48%); }
+    0% { transform: translateX(-57%); }
     100% { transform: translateX(0%); }
 }
 
 @-webkit-keyframes slide-in-phone {
-    0% { -webkit-transform: translateX(-48%); }
+    0% { -webkit-transform: translateX(-57%); }
     100% { -webkit-transform: translateX(0%); }
 }
 
 @keyframes slide-out-phone {
     0% { transform: translateX(0%); }
-    100% { transform: translateX(-48%); }
+    100% { transform: translateX(-57%); }
 }
 
 @-webkit-keyframes slide-out-phone {
     0% { -webkit-transform: translateX(0%); }
-    100% { -webkit-transform: translateX(-48%); }
+    100% { -webkit-transform: translateX(-57%); }
 }

@@ -24,7 +24,7 @@
 		.airpod.left {
 			transform: scaleX(-1);
 			animation-name: airpodLeft;
-			animation-duration: 4s;
+			animation-duration: 3.5s;
 			animation-fill-mode: forwards;
 			z-index: 2;
 		}
@@ -80,6 +80,9 @@
 		background: $loadingTextColor;
 		color: $loadingBackgroundColor;
 		font-weight: 800;
+	}
+	.redColour{
+		background: red !important;
 	}
 
 	button.enter:hover {

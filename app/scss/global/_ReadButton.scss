@@ -36,6 +36,7 @@
 		transform: rotate(-90deg) translateY(-3px);
 	}
 
+
 	@media(max-width: $phone) {
 		right: -40px;
 		top: 311px;
@@ -70,4 +71,9 @@
 	@media(min-width: $tablet + 1) and (min-height: $largeScreen) {
 		top: 527px;
 	}
+
+}
+
+.unclickable {
+	opacity: 1 !important;
 }

@@ -25,22 +25,22 @@ export default class YoutubeVideo extends Observer {
 			videoId: this.id,
 			origin,
 			widget_referrer: origin,
+			playerVars: {
+				html5: 1,
+				playsinline: 1,
+				hidecontrols: 1,
+				modestbranding: 1,
+				autoplay: 0,
+				showinfo: 0,
+				showsearch: 0,
+				enablejsapi: 1,
+				rel: 0,
+				border: 0
+			},
 			events: {
 				onReady: this.onReady.bind(this),
 				onStateChange: this.onStateChange.bind(this),
-				onError: this.onError.bind(this),
-				playerVars: {
-					html5: 1,
-					playsinline: 1,
-					hidecontrols: 1,
-					modestbranding: 1,
-					autoplay: 0,
-					showinfo: 0,
-					showsearch: 0,
-					enablejsapi: 1,
-					rel: 0,
-					border: 0
-				}
+				onError: this.onError.bind(this)
 			}
 		})
 	}

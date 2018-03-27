@@ -130,14 +130,24 @@
 	@media(max-width: $phone) {
 		top: 240px;
 		width: 100%;
-		padding: 0 30px 75px 30px;
-		-webkit-overflow-scrolling: touch;
+		padding: 0 30px 60px 30px;
+		overflow-y: scroll;
 
 		div, p, h4 {
 			letter-spacing: 0.01px; // designer made me do it
 		}
 
+		.safarifix {
+			overflow-y: scroll;
+			margin-bottom: 50px;
+		}
+		.safarifixW {
+			overflow-y: scroll;
+			margin-bottom: 70px !important;
+		}
+
 		.work {
+			margin-bottom: 20px;
 			.buttons {
 				width: auto;
 			}
@@ -160,10 +170,15 @@
 		}
 
 		.contact {
+			margin-bottom: 20px;
 			.map {
 				margin-bottom: 0px;
 			}
 		}
+	}
+
+	@media(max-width: $phone5) {
+		margin-top: 5px;
 	}
 	@media (max-width: $phone) and (orientation: landscape) { 
 		display: none;

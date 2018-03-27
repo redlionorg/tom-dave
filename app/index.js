@@ -19,6 +19,13 @@ class App extends Component {
 			this.element.addClass('mobile')
 		}
 
+		//	Safari code here..
+		if (UserAgent.isOSSafari()) {
+			this.element.find('.about').addClass('safarifix')
+			this.element.find('.work').addClass('safarifixW')
+			this.element.find('.contact').addClass('safarifix')
+		}
+
 		AudioManager.add(Enum.ALBUMS.ABOUT, 'audio/about.mp3')
 		AudioManager.add(Enum.ALBUMS.CONTACT, 'audio/contact.mp3')
 		AudioManager.add(Enum.ALBUMS.WORK, 'audio/work.mp3')
@@ -105,11 +112,11 @@ new Components.TVSlider('.slider.tv-slider', app)
 new Components.RadioSlider('.slider.radio-slider', app)
 
 const userHasVisited = Store.get('visited')
-if (userHasVisited) {
-	// if the user has already visited (stored in localstorage), hide the loading page
-	loader.setLoaded()
-	State.set('visited', true)
-	State.set('entered', true)
-} else {
-	Store.set('visited', true)
-}
+// if (userHasVisited) {
+// 	// if the user has already visited (stored in localstorage), hide the loading page
+// 	loader.setLoaded()
+// 	State.set('visited', true)
+// 	State.set('entered', true)
+// } else {
+// 	Store.set('visited', true)
+// }
