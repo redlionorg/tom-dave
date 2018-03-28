@@ -94,10 +94,7 @@
 	}
 
 	}
-    .phoneToggle:hover {
-        right: inherit;
-    }
-
+  
     
     }
 
@@ -132,9 +129,7 @@
 			}
 
         }
-        .phoneToggle:hover {
-            right: inherit;
-        }
+        
     }
     
     @media(min-width: $tablet + 1) and (min-height: $largeScreen) {
@@ -146,6 +141,18 @@
 }
 .phoneToggle:hover {
     right: -25px;
+}
+
+@media(max-width: $phone) {
+    .phoneToggle:hover {
+        right: -170px;
+    }
+}
+
+@media(max-width: $phone5) {
+    .phoneToggle:hover {
+        right: -170px;
+    }
 }
 
 

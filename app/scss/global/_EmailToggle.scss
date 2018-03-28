@@ -90,9 +90,7 @@
 		
 			}
         }
-        .emailToggle:hover {
-            right: inherit;
-        }
+        
     }
 
     @media(max-width: $phone5) {
@@ -126,9 +124,7 @@
 		
 			}
         }
-        .emailToggle:hover {
-            right: inherit;
-        }
+       
     }
 
     
@@ -142,6 +138,17 @@
 }
 .emailToggle:hover {
     right: -65px;
+}
+@media(max-width: $phone) {
+    .emailToggle:hover {
+        right: -273px !important;
+    }
+}
+
+@media(max-width: $phone5) {
+    .emailToggle:hover {
+        right: -273px !important;
+    }
 }
 
 
