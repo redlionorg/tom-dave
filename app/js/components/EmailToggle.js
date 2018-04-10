@@ -8,13 +8,11 @@ export default class EmailToggle extends Component {
 	constructor(parent) {
 		super('.emailToggle', parent)
 
-		console.log('emailToggle is working') // this
+		if (UserAgent.isTablet()) {
+			this.element.removeClass('emailHoverToggle')
+		}
 	}
 
-	setEmailTimeline() {
-		this.timeline = new TimelineLite(CSSPlugin)
-		.to(this.element, 1, { right: -50 })
-	}
 	stateDidUpdate(param, value) {
 		switch (param) {
 		case 'reading':

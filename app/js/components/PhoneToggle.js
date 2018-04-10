@@ -9,7 +9,9 @@ export default class PhoneToggle extends Component {
 		super('.phoneToggle', parent)
 		this.cacheDOMElement('phone', '.phone')
 
-		console.log('Phone toggle is working') // this
+		if (UserAgent.isTablet()) {
+			this.element.removeClass('phoneHoverToggle')
+		}
 	}
 
 	stateDidUpdate(param, value) {
@@ -21,18 +23,15 @@ export default class PhoneToggle extends Component {
 			} else {
 				this.element.removeClass('hide')
 				this.element.addClass('show')
-				console.log(this.state.showPhone)
 			}
 			break
 		case 'showPhone':
 			if (value) {
 				this.element.removeClass('slide-in-phone')
 				this.element.addClass('slide-out-phone')
-				console.log(this.state.showPhone)
 			} else {
 				this.element.addClass('slide-in-phone')
 				this.element.removeClass('slide-out-phone')
-				console.log(this.state.showPhone)
 			}
 			break
 		default:

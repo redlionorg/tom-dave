@@ -139,18 +139,18 @@
 	}
 
 }
-.phoneToggle:hover {
+.phoneHoverToggle:hover {
     right: -25px;
 }
 
 @media(max-width: $phone) {
-    .phoneToggle:hover {
+    .phoneHoverToggle:hover {
         right: -170px;
     }
 }
 
 @media(max-width: $phone5) {
-    .phoneToggle:hover {
+    .phoneHoverToggle:hover {
         right: -170px;
     }
 }

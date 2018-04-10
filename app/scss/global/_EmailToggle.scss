@@ -9,7 +9,6 @@
     pointer-events: none;
     transition: .3s opacity,.1s transform;
     background: #da4225;
-    //you did it on a go train ahahah oyu crazy asshole
 	-webkit-transition: right 1s ease-out;
 	-moz-transition: right 1s ease-out;
 	-o-transition: right 1s ease-out;
@@ -136,17 +135,17 @@
 	}
 
 }
-.emailToggle:hover {
+.emailHoverToggle:hover {
     right: -65px;
 }
 @media(max-width: $phone) {
-    .emailToggle:hover {
+    .emailHoverToggle:hover {
         right: -273px !important;
     }
 }
 
 @media(max-width: $phone5) {
-    .emailToggle:hover {
+    .emailHoverToggle:hover {
         right: -273px !important;
     }
 }
